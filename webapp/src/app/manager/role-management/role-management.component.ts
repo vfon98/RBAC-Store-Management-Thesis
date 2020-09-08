@@ -2,7 +2,7 @@ import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { RoleUpdateModalComponent } from './../../modal/role-update-modal/role-update-modal.component';
 import { Component, OnInit } from '@angular/core';
-import { RoleManagementService } from '../../service/role-management.service';
+import { RoleService } from '../../core/http/role-management.service';
 import { MDBModalService } from 'ng-uikit-pro-standard';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewRoleDetailsManagementComponent } from '../../modal/view-role-details-management/view-role-details-management.component';
@@ -19,7 +19,7 @@ export class RoleManagementComponent implements OnInit {
   currentUser: IUser;
 
   constructor(
-    private roleManagementService: RoleManagementService,
+    private roleService: RoleService,
     private modalService: MDBModalService,
     private ngbService: NgbModal,
     private notiSerive: NotificationService,
@@ -29,7 +29,7 @@ export class RoleManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchRoles();
-    this.roleManagementService.updateObservable$.subscribe((role: IRole) => {
+    this.roleService.updateObservable$.subscribe((role: IRole) => {
       const index: number = this.roles.findIndex((r) => r.id === role.id);
       this.roles[index] = { ...this.roles[index], ...role };
     });
@@ -37,13 +37,13 @@ export class RoleManagementComponent implements OnInit {
   }
 
   fetchRoles(): void {
-    this.roleManagementService.findAllAdminRoles().subscribe((roles) => {
+    this.roleService.findAllAdminRoles().subscribe((roles) => {
       this.roles = roles;
     });
   }
 
   viewRoleDetails(role: IRole): void {
-    this.roleManagementService.findAdminRoleById(role.id).subscribe((role) => {
+    this.roleService.findAdminRoleById(role.id).subscribe((role) => {
       this.modalService.show(ViewRoleDetailsManagementComponent, {
         containerClass: 'fade',
         class: 'modal-dialog-centered modal-xl',
@@ -53,7 +53,7 @@ export class RoleManagementComponent implements OnInit {
   }
 
   openUpdateModal(role: IRole): void {
-    this.roleManagementService.findAdminRoleById(role.id).subscribe((role) => {
+    this.roleService.findAdminRoleById(role.id).subscribe((role) => {
       this.modalService.show(RoleUpdateModalComponent, {
         class: 'modal-xl',
         data: { role },
@@ -63,7 +63,7 @@ export class RoleManagementComponent implements OnInit {
 
   deleteRole(role: IRole): void {
     this.confirmService.show().onYes(() => {
-      this.roleManagementService.deleteAdminRoleById(role.id).subscribe(() => {
+      this.roleService.deleteAdminRoleById(role.id).subscribe(() => {
         // delete role in view
         const index = this.roles.indexOf(role);
         this.roles.splice(index, 1);

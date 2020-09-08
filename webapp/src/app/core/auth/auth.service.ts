@@ -1,6 +1,6 @@
 import { UserService } from './user.service';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
-import { CartService } from './../../service/cart.service';
+import { CartService } from '../http/cart.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 

@@ -1,10 +1,8 @@
-import { IProductBody } from 'src/app/core/models';
-import {
-  ProductService,
-} from './../../manager/product-management/product.service';
-import { CategoryService } from './../../manager/category-management/category.service';
+import { IProductBody } from './../../core/models/product.model';
+import { CategoryService } from '../../core/http/category.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ProductService } from '../../core/http/product.service';
 
 @Injectable({
   providedIn: 'root',
@@ -826,8 +824,7 @@ export class ProductsFakerService {
       fakeArray.forEach((fake) => {
         const body: IProductBody = {
           name: fake.name,
-          price: parseFloat(fake.price),
-          // @ts-ignore
+        price: parseFloat(fake.price),
           quantity: Math.floor(Math.random() * 100) + 1,
           categories: [
             this.categoryIds[
@@ -840,7 +837,7 @@ export class ProductsFakerService {
           (product) => {
             console.log('Saved product', product.name);
           },
-          (err) => console.log('Save failed')
+          () => console.log('Save failed')
         );
       });
     });

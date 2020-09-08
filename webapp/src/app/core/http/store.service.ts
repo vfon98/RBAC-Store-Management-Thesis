@@ -60,6 +60,7 @@ export class StoreService {
   }
 
   // Deprecated
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   fetchAllStaffsInStore(storeId: number): Observable<IUser[]> {
     return this.http.get<IUser[]>(SERVER_URL + `/manager/staffs`);
   }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ICategory } from 'src/app/core/models';
-import { CategoryService } from '../category.service';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
+import { CategoryService } from 'src/app/core/http/category.service';
 
 @Component({
   selector: 'app-category-add',
@@ -22,7 +22,7 @@ export class CategoryAddComponent implements OnInit {
     this.location.back();
   }
 
-  handleSubmit(body: ICategory) {
+  handleSubmit(body: ICategory): void {
     this.categoryService.save(body).subscribe(category => {
       this.back();
       this.notiService.showSuccess();

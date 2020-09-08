@@ -1,14 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { CartService } from './../../service/cart.service';
-import { CustomerService } from './../../service/customer.service';
-import { StripeFormComponent } from './../../shopping/cart-checkout/stripe-form/stripe-form.component';
-import {
-  PaymentModalService,
-  IPaymentInfo,
-} from './../../service/payment-modal.service';
+import { CartService } from '../../core/http/cart.service';
+import { StripeFormComponent } from '../../shopping/cart-checkout/stripe-form/stripe-form.component';
+import { PaymentModalService } from '../../service/payment-modal.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/core/http';
+import { IPaymentInfo } from 'src/app/core/models';
 
 @Component({
   selector: 'app-payment-modal',

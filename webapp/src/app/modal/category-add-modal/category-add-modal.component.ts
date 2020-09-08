@@ -1,7 +1,7 @@
 import { CategoryModalService } from './../../service/category-modal.service';
-import { CategoryService } from '../../manager/category-management/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/app/core/models';
+import { CategoryService } from 'src/app/core/http/category.service';
 
 @Component({
   selector: 'app-category-add-modal',

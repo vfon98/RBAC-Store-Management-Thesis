@@ -1,11 +1,11 @@
-import { StoreService } from './../../../manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { ConfirmModalService } from './../../../service/confirm-modal.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryModalService } from './../../../service/category-modal.service';
-import { CategoryService } from '../../../manager/category-management/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/app/core/models';
+import { CategoryService } from 'src/app/core/http/category.service';
 
 @Component({
   selector: 'app-store-categories',

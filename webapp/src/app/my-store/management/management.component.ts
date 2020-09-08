@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/core/auth/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StoreService } from '../../manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { IStore, StatusType } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
 import { IGrantedPermisson } from 'src/app/core/models';

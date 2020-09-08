@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { SERVER_URL } from './../core/constants/api.constants';
+import { SERVER_URL } from '../constants/api.constants';
 import { Injectable } from '@angular/core';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { StoreModalService } from './../../../service/store-modal.service';
-import { StoreService } from './../../../manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { IStore, StatusType } from 'src/app/core/models';
 

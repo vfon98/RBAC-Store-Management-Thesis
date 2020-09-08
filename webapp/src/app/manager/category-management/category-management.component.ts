@@ -1,5 +1,5 @@
+import { CategoryService } from '../../core/http/category.service';
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from './category.service';
 import { CategoryModalService } from '../../service/category-modal.service';
 import { NotificationService } from '../../layouts/notification/notification.service';
 import { ConfirmModalService } from '../../service/confirm-modal.service';

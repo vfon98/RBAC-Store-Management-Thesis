@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { ShoppingModalService } from './../../../service/shopping-modal.service';
-import { CartService } from './../../../service/cart.service';
+import { CartService } from '../../../core/http/cart.service';
 import { IProduct } from 'src/app/core/models';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';

@@ -1,7 +1,7 @@
+import { ProductService } from './../../core/http/product.service';
 import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { ProductModalService } from './../../service/product-modal.service';
 import { NotificationService } from './../../layouts/notification/notification.service';
-import { ProductService } from './product.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/core/models';
 

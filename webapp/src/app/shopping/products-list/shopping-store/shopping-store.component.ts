@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { StoreService } from './../../../manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { IStore } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
 

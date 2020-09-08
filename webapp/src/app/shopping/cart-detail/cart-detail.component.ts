@@ -5,7 +5,7 @@ import {
   ICartItemBody,
 } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../service/cart.service';
+import { CartService } from '../../core/http/cart.service';
 
 @Component({
   selector: 'app-cart-detail',

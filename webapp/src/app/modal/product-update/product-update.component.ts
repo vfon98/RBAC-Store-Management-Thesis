@@ -1,8 +1,8 @@
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { ProductModalService } from './../../service/product-modal.service';
-import { ProductService } from '../../manager/product-management/product.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IProduct, IProductBody } from 'src/app/core/models';
+import { ProductService } from 'src/app/core/http/product.service';
 
 @Component({
   selector: 'app-product-update',

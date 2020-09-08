@@ -1,9 +1,9 @@
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
-import { CategoryService } from '../../category-management/category.service';
 import { IProduct } from 'src/app/core/models';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ICategory } from 'src/app/core/models';
+import { CategoryService } from 'src/app/core/http/category.service';
 
 @Component({
   selector: 'app-product-form',

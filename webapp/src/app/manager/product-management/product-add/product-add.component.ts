@@ -1,8 +1,8 @@
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
-import { ProductService } from './../product.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IProductBody } from 'src/app/core/models';
+import { ProductService } from 'src/app/core/http/product.service';
 
 @Component({
   selector: 'app-product-add',

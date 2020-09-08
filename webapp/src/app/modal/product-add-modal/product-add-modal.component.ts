@@ -1,8 +1,8 @@
-import { ProductService } from '../../manager/product-management/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductModalService } from 'src/app/service/product-modal.service';
-import { StoreService } from 'src/app/manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { IProductBody } from 'src/app/core/models';
+import { ProductService } from 'src/app/core/http/product.service';
 
 @Component({
   selector: 'app-product-add-modal',

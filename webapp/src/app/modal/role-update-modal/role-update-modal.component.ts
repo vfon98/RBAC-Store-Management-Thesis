@@ -1,6 +1,6 @@
 import { MDBModalService, MDBModalRef } from 'ng-uikit-pro-standard';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
-import { RoleManagementService } from './../../service/role-management.service';
+import { RoleService } from '../../core/http/role-management.service';
 import { IRole } from './../../manager/role-management/role-management.component';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -14,7 +14,7 @@ export class RoleUpdateModalComponent implements OnInit {
   role: IRole;
 
   constructor(
-    private roleService: RoleManagementService,
+    private roleService: RoleService,
     private notiSerive: NotificationService,
     private modalService: MDBModalService
   ) {}

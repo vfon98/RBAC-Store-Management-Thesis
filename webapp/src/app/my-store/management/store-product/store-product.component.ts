@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from 'src/app/core/models';
-import { StoreService } from 'src/app/manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { ConfirmModalService } from 'src/app/service/confirm-modal.service';
 import { ProductImportModalService } from 'src/app/service/product-import-modal.service';
 import { ProductModalService } from 'src/app/service/product-modal.service';
-import { ProductService } from 'src/app/manager/product-management/product.service';
+import { ProductService } from 'src/app/core/http/product.service';
 
 @Component({
   selector: 'app-store-product',

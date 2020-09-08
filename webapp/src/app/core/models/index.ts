@@ -15,3 +15,4 @@ export {
   IProductFilter,
   IShoppingProduct,
 } from './customer.model';
+export { IPaymentInfo } from './payment.model';

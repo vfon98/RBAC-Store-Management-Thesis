@@ -1,5 +1,5 @@
 import { ICart } from 'src/app/core/models';
-import { CartService } from './../../service/cart.service';
+import { CartService } from '../../core/http/cart.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 

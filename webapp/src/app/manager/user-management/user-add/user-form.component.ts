@@ -1,9 +1,9 @@
 import { IRole } from './../../role-management/role-management.component';
-import { RoleManagementService } from './../../../service/role-management.service';
+import { RoleService } from '../../../core/http/role-management.service';
 import { NotificationService } from './../../../layouts/notification/notification.service';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { StoreService } from '../../store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { IUser } from 'src/app/core/models/user.model';
 import { IStore } from 'src/app/core/models';
 
@@ -43,7 +43,7 @@ export class UserFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private storeService: StoreService,
-    private roleService: RoleManagementService,
+    private roleService: RoleService,
     private notiService: NotificationService
   ) {}
 

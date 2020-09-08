@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { CategoryService } from '../../../manager/category-management/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ICategory } from 'src/app/core/models';
+import { CategoryService } from 'src/app/core/http/category.service';
 
 @Component({
   selector: 'app-shopping-category',
@@ -25,7 +25,7 @@ export class ShoppingCategoryComponent implements OnInit {
       this.checkActive();
     });
 
-    this.route.queryParams.subscribe((query) => {
+    this.route.queryParams.subscribe(() => {
       this.checkActive();
     });
   }

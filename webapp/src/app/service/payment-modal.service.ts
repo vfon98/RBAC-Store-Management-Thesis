@@ -1,6 +1,7 @@
 import { PaymentModalComponent } from './../modal/payment-modal/payment-modal.component';
 import { MDBModalService, MDBModalRef } from 'ng-uikit-pro-standard';
 import { Injectable } from '@angular/core';
+import { IPaymentInfo } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -30,14 +31,4 @@ export class PaymentModalService {
   hide(): void {
     this.modalRef.hide();
   }
-}
-
-export interface IPaymentInfo {
-  name: string;
-  address?: string;
-  shipAddress: string;
-  email: string;
-  stripeToken?: string;
-  phone: string;
-  totalPrice: number;
 }

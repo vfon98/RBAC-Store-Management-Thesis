@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IUser } from 'src/app/core/models/user.model';
 import { ISimpleStaff } from 'src/app/core/models';
-import { UserManagementService } from 'src/app/manager/user-management/user-management.service';
-import { StoreService } from 'src/app/manager/store-management/store.service';
+import { StoreService, StaffService } from  'src/app/core/http';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { UserModalService } from 'src/app/service/user-modal.service';
 import { ConfirmModalService } from 'src/app/service/confirm-modal.service';
@@ -24,7 +23,7 @@ export class StoreStaffsComponent implements OnInit, OnDestroy {
   listeners = new Subscription();
 
   constructor(
-    private staffService: UserManagementService,
+    private staffService: StaffService,
     private storeService: StoreService,
     private notiService: NotificationService,
     private route: ActivatedRoute,

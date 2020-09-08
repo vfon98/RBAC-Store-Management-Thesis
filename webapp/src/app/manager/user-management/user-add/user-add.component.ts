@@ -4,7 +4,7 @@ import { FormType } from 'src/app/manager/user-management/user-add/user-form.com
 import { NotificationService } from './../../../layouts/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { UserManagementService } from '../user-management.service';
+import { StaffService } from 'src/app/core/http';
 
 @Component({
   selector: 'app-user-add',
@@ -16,7 +16,7 @@ export class UserAddComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private userService: UserManagementService,
+    private staffService: StaffService,
     private notiService: NotificationService
   ) {}
 
@@ -27,7 +27,7 @@ export class UserAddComponent implements OnInit {
   }
 
   handleSubmit(user: IUser): void {
-    this.userService.saveFromAdmin(user).subscribe((addedUser) => {
+    this.staffService.saveFromAdmin(user).subscribe((addedUser) => {
       this.notiService.showSuccess('Added successfully!');
       this.back();
     }, (err: HttpErrorResponse) => {

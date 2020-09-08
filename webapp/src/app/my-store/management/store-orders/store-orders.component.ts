@@ -2,8 +2,8 @@ import { ActivatedRoute } from '@angular/router';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { ConfirmModalService } from './../../../service/confirm-modal.service';
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../../../service/customer.service';
 import { IOrder } from 'src/app/core/models';
+import { CustomerService } from 'src/app/core/http';
 
 @Component({
   selector: 'app-store-orders',

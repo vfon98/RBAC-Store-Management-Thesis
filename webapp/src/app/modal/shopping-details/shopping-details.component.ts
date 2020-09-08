@@ -1,6 +1,6 @@
 import { ICartItem } from 'src/app/core/models';
 import { Router } from '@angular/router';
-import { CartService } from './../../service/cart.service';
+import { CartService } from '../../core/http/cart.service';
 import { ShoppingModalService } from './../../service/shopping-modal.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/core/models';

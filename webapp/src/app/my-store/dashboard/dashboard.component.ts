@@ -1,5 +1,5 @@
 import { IStore } from 'src/app/core/models';
-import { StoreService } from './../../manager/store-management/store.service';
+import { StoreService } from  'src/app/core/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,6 +1,5 @@
 import { NotificationService } from './../../layouts/notification/notification.service';
-import { StoreService } from './../../manager/store-management/store.service';
-import { UserManagementService } from './../../manager/user-management/user-management.service';
+import { StoreService, StaffService } from  'src/app/core/http';
 import { UserModalService } from './../../service/user-modal.service';
 import { FormType } from '../../manager/user-management/user-add/user-form.component';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +17,7 @@ export class UserAddModalComponent implements OnInit {
 
   constructor(
     private userModalService: UserModalService,
-    private userService: UserManagementService,
+    private staffService: StaffService,
     private storeService: StoreService,
     private notiService: NotificationService
   ) {}
@@ -27,7 +26,7 @@ export class UserAddModalComponent implements OnInit {
 
   handleSubmit(user: IUser): void {
     this.storeService.addStaffToStore(user).subscribe((addedUser) => {
-      this.userService.userAddSubject.next(addedUser);
+      this.staffService.userAddSubject.next(addedUser);
       this.hideModal();
       this.notiService.showSuccess('Added staff to store');
     });

@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SERVER_URL } from '../../core/constants/api.constants';
+import { SERVER_URL } from '../constants/api.constants';
 import { IUser } from 'src/app/core/models/user.model';
 import { IMessageResponse } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserManagementService {
+export class StaffService {
   public updateSubject = new Subject();
   public updateObservable$ = this.updateSubject.asObservable();
 

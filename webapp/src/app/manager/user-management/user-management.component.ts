@@ -1,9 +1,9 @@
 import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { Component, OnInit } from '@angular/core';
-import { UserManagementService } from './user-management.service';
 import { UserModalService } from '../../service/user-modal.service';
 import { NotificationService } from '../../layouts/notification/notification.service';
 import { IUser } from 'src/app/core/models/user.model';
+import { StaffService } from 'src/app/core/http';
 
 @Component({
   selector: 'app-user-management',
@@ -14,7 +14,7 @@ export class UserManagementComponent implements OnInit {
   users: IUser[] = [];
 
   constructor(
-    private userService: UserManagementService,
+    private userService: StaffService,
     private userModalService: UserModalService,
     private notiService: NotificationService,
     private confirmService: ConfirmModalService

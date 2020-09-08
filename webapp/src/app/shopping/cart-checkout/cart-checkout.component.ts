@@ -3,7 +3,7 @@ import { NotificationService } from 'src/app/layouts/notification/notification.s
 import { Subscription } from 'rxjs';
 import { UserCheckoutFormComponent } from './user-checkout-form/user-checkout-form.component';
 import { ICart } from 'src/app/core/models';
-import { CartService } from './../../service/cart.service';
+import { CartService } from '../../core/http/cart.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 
 @Component({

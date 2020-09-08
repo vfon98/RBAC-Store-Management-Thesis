@@ -3,7 +3,7 @@ import { NotificationService } from './../../../layouts/notification/notificatio
 import { ConfirmModalService } from './../../../service/confirm-modal.service';
 import { RoleModalService } from './../../../service/role-modal.service';
 import { IRole } from './../../../manager/role-management/role-management.component';
-import { RoleManagementService } from './../../../service/role-management.service';
+import { RoleService } from '../../../core/http/role-management.service';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/core/models/user.model';
 
@@ -17,7 +17,7 @@ export class StoreRolesComponent implements OnInit {
   currentUser: IUser;
 
   constructor(
-    private roleService: RoleManagementService,
+    private roleService: RoleService,
     private roleModalService: RoleModalService,
     private confirmService: ConfirmModalService,
     private notiService: NotificationService,

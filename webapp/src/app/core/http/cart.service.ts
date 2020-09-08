@@ -2,17 +2,17 @@ import { NotificationService } from 'src/app/layouts/notification/notification.s
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from 'src/app/core/models';
 import { BehaviorSubject } from 'rxjs';
-import { UserService } from './../core/auth/user.service';
+import { UserService } from '../auth/user.service';
 import {
   ICart,
   ICartItem,
   ICartItemBody,
   IMergeCartBody,
 } from 'src/app/core/models';
-import { LocalCartService } from './local-cart.service';
+import { LocalCartService } from '../../service/local-cart.service';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { CustomerService } from './customer.service';
+import { CustomerService } from '.';
 
 @Injectable({
   providedIn: 'root',

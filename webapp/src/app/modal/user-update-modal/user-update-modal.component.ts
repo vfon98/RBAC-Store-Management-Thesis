@@ -1,9 +1,9 @@
 import { NotificationService } from './../../layouts/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
-import { UserManagementService } from '../../manager/user-management/user-management.service';
 import { UserModalService } from '../../service/user-modal.service';
 import { FormType } from 'src/app/manager/user-management/user-add/user-form.component';
 import { IUser } from 'src/app/core/models/user.model';
+import { StaffService } from 'src/app/core/http';
 
 @Component({
   selector: 'app-user-update-modal',
@@ -15,7 +15,7 @@ export class UserUpdateModalComponent implements OnInit {
   type = FormType;
 
   constructor(
-    private userService: UserManagementService,
+    private staffService: StaffService,
     private modalService: UserModalService,
     private notiService: NotificationService
   ) {}
@@ -25,11 +25,11 @@ export class UserUpdateModalComponent implements OnInit {
   }
 
   handleSubmit(id: number, user: IUser): void {
-    this.userService.update(id, user).subscribe((newUser) => {
+    this.staffService.update(id, user).subscribe((newUser) => {
       this.modalService.userUpdateModalRef.hide();
       this.notiService.showSuccess();
       newUser.id = id;
-      this.userService.updateSubject.next(newUser);
+      this.staffService.updateSubject.next(newUser);
     });
   }
 

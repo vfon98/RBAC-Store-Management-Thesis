@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
-import { SERVER_URL } from '../core/constants/api.constants';
+import { SERVER_URL } from '../constants/api.constants';
 import { catchError, map, tap } from 'rxjs/operators';
 import {
   IPermission,
@@ -9,12 +9,12 @@ import {
   IResource,
   IRole,
   IRoleBody,
-} from '../manager/role-management/role-management.component';
+} from '../../manager/role-management/role-management.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RoleManagementService {
+export class RoleService {
   private MANAGER_URL = SERVER_URL + '/manager';
   private ADMIN_URL = SERVER_URL + '/admin';
 

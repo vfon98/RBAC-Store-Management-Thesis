@@ -1,6 +1,6 @@
-import { CustomerService } from './../../service/customer.service';
 import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { IOrder } from 'src/app/core/models';
+import { CustomerService } from 'src/app/core/http';
 
 @Component({
   selector: 'app-shopping-order',

@@ -1,8 +1,8 @@
-import { PermissionService } from './../../../service/permission.service';
+import { PermissionService } from '../../../core/http/permission.service';
 import { ConfirmModalService } from './../../../service/confirm-modal.service';
 import { UserService } from 'src/app/core/auth/user.service';
 import { Location } from '@angular/common';
-import { RoleManagementService } from './../../../service/role-management.service';
+import { RoleService } from '../../../core/http/role-management.service';
 import {
   IResource,
   IPermissionChoose,
@@ -32,7 +32,7 @@ export class RoleTableComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private roleManagementService: RoleManagementService,
+    private roleService: RoleService,
     private notiSerive: NotificationService,
     private userService: UserService,
     private confirmService: ConfirmModalService,
@@ -80,7 +80,7 @@ export class RoleTableComponent implements OnInit {
   }
 
   findAllResources(): void {
-    this.roleManagementService.findAllResources().subscribe((resources) => {
+    this.roleService.findAllResources().subscribe((resources) => {
       this.filterResourceForAdmin(resources);
 
       // Only activate on update | prevent error on empty resource

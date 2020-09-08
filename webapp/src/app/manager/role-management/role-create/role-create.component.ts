@@ -2,7 +2,7 @@ import { NotificationService } from 'src/app/layouts/notification/notification.s
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { IRoleBody } from '../role-management.component';
-import { RoleManagementService } from '../../../service/role-management.service';
+import { RoleService } from '../../../core/http/role-management.service';
 
 @Component({
   selector: 'app-role-create',
@@ -12,7 +12,7 @@ import { RoleManagementService } from '../../../service/role-management.service'
 export class RoleCreateComponent implements OnInit {
   constructor(
     private location: Location,
-    private roleManagementService: RoleManagementService,
+    private roleService: RoleService,
     private notiSerive: NotificationService
   ) {}
 
@@ -23,7 +23,7 @@ export class RoleCreateComponent implements OnInit {
   }
 
   handleSubmit(body: IRoleBody): void {
-    this.roleManagementService.createAdminRole(body).subscribe((role) => {
+    this.roleService.createAdminRole(body).subscribe((role) => {
       this.notiSerive.showSuccess('Role created successfully!');
       this.back();
     });
