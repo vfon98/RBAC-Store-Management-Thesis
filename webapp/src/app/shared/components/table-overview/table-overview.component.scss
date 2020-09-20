@@ -1,0 +1,63 @@
+$bg-color: #5580AA;
+$title-color: #98D9F1;
+$content-color: #F9FAFC;
+$border-color: #6389B0;
+$name-color: #485057;
+$date-color: #80868C;
+
+.jumbotron {
+  padding: 2rem 1rem;
+}
+
+.name {
+  color: $name-color;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.date {
+  color: $name-color;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.bg-overview {
+  background: $bg-color;
+}
+
+.row > .col {
+  padding: 20px;
+  padding-right: 0;
+
+  &:not(:last-child) {
+    border-right: 2px solid $border-color;
+  }
+}
+
+.title {
+  color: $title-color;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+.content {
+  color: $content-color;
+  font-size: 2rem;
+}
+
+.extra {
+  color: $title-color;
+  font-weight: 600;
+  font-size: .8rem;
+}
+
+.border-color {
+  color: $border-color;
+}
+
+.between {
+  border: 2px solid $border-color;
+  border-top: none;
+  border-bottom: none;
+}

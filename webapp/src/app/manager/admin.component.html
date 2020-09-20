@@ -10,7 +10,7 @@
         </div>
         {{ user.name }}
       </div>
-      <hr />
+      <hr/>
       <div class="sidebar-items">
         <div
           *ngIf="canShow('store')"
@@ -43,7 +43,7 @@
           <div><i class="fas fa-2x fa-key"></i></div>
           Role Management
         </div>
-        <!-- <div
+        <div
           class="management-item"
           routerLinkActive="active"
           routerLink="product-management"
@@ -58,11 +58,12 @@
         >
           <div><i class="fas fa-2x fa-tags"></i></div>
           Category Management
-        </div> -->
+        </div>
       </div>
     </div>
 
-    <div class="p-2 p-md-3 content-wrapper col">
+    <div class="p-2 p-md-3 content-wrapper col admin-wrapper">
+      <app-table-overview></app-table-overview>
       <router-outlet></router-outlet>
     </div>
   </div>
