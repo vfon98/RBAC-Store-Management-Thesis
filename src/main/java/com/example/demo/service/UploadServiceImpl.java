@@ -25,6 +25,7 @@ public class UploadServiceImpl implements UploadService {
         try {
             File uploadedFile = convertMultipartToFile(file);
             Map mapResponse = cloudinaryConfig.uploader().upload(uploadedFile, Uploader.OPTIONS);
+            uploadedFile.delete();
             ObjectMapper om = new ObjectMapper();
             om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return om.convertValue(mapResponse, CloudinaryResponse.class);
@@ -37,6 +38,7 @@ public class UploadServiceImpl implements UploadService {
         try {
             File uploadedFile = convertMultipartToFile(file);
             Map mapResponse = cloudinaryConfig.uploader().upload(uploadedFile, Uploader.OPTIONS);
+            uploadedFile.delete();
             return (String) mapResponse.get("url");
         } catch (IOException e) {
             throw new RuntimeException(e);
