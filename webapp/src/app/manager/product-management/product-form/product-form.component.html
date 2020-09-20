@@ -22,6 +22,11 @@
       </option>
     </select>
   </div>
+  <div class="form-group">
+    <label>Image:</label>
+    <input type="file" accept="image/*" formControlName="file" class="form-control" />
+    <div *ngIf="productForm.get('file').invalid" class="error">File is required</div>
+  </div>
   <div class="text-right">
     <button class="btn btn-primary mr-2" type="submit"><i class="fas fa-save"></i>Save</button>
     <button class="btn btn-danger" type="button" (click)='onCancel.emit()'><i class="fas fa-times"></i>Cancel</button>
