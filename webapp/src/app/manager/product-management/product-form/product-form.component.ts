@@ -4,6 +4,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ICategory } from 'src/app/core/models';
 import { CategoryService } from 'src/app/core/http/category.service';
+import {NzUploadFile} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-product-form',
@@ -16,6 +17,7 @@ export class ProductFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
 
   categories: ICategory[] = [];
+  fileList: NzUploadFile[] = [];
 
   productForm = this.formBuilder.group({
     name: [null, [Validators.required, Validators.minLength(4)]],
@@ -57,4 +59,10 @@ export class ProductFormComponent implements OnInit {
     }
     this.notiService.showWaring('Invalid form. Please check again!');
   }
+
+  beforeUpload = (file: NzUploadFile): boolean => {
+    this.fileList = this.fileList.concat(file);
+    this.productForm.patchValue({ file });
+    return false;
+  };
 }

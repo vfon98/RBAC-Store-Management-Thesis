@@ -19,7 +19,7 @@ export class ProductModalService {
     focus: true,
     show: false,
     ignoreBackdropClick: false,
-    class: '',
+    class: 'modal-dialog modal-dialog-scrollable',
     containerClass: '',
     animated: true,
     data: {},

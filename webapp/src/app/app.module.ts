@@ -67,6 +67,16 @@ import { ProductImportModalComponent } from './modal/product-import-modal/produc
 import { LoginComponent } from './account/login/login.component';
 import { ProductAddModalComponent } from './modal/product-add-modal/product-add-modal.component';
 import { CategoryAddModalComponent } from './modal/category-add-modal/category-add-modal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import {NzButtonModule, NzUploadModule} from "ng-zorro-antd";
+import {NzIconModule} from "ng-zorro-antd/icon";
+
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -141,9 +151,13 @@ import { CategoryAddModalComponent } from './modal/category-add-modal/category-a
     ToastModule.forRoot(),
     ToastrModule.forRoot(),
     MDBBootstrapModulesPro.forRoot(),
+    HttpClientModule,
+    NzButtonModule,
+    NzUploadModule,
+    NzIconModule
   ],
   entryComponents: [LoginModalComponent],
-  providers: [MDBSpinningPreloader],
+  providers: [MDBSpinningPreloader, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [ContentComponent],
 })
 export class AppModule {}
