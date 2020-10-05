@@ -72,9 +72,8 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import {NzButtonModule, NzUploadModule} from "ng-zorro-antd";
-import {NzIconModule} from "ng-zorro-antd/icon";
-
+import { NzButtonModule, NzUploadModule } from 'ng-zorro-antd';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(en);
 
@@ -132,7 +131,30 @@ registerLocaleData(en);
     ProductAddModalComponent,
     CategoryAddModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, NgbModule, FormsModule, ReactiveFormsModule, UserManagementModule, StoreManagementModule, RoleManagementModule, ProductManagementModule, CategoryManagementModule, DashboardModule, ManagementModule, BrowserAnimationsModule, ToastModule.forRoot(), ToastrModule.forRoot(), MDBBootstrapModulesPro.forRoot(), HttpClientModule, NzButtonModule, NzUploadModule, NzIconModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    UserManagementModule,
+    StoreManagementModule,
+    RoleManagementModule,
+    ProductManagementModule,
+    CategoryManagementModule,
+    DashboardModule,
+    ManagementModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
+    ToastrModule.forRoot(),
+    MDBBootstrapModulesPro.forRoot(),
+    HttpClientModule,
+    NzButtonModule,
+    NzUploadModule,
+    NzIconModule,
+    SharedModule,
+  ],
   entryComponents: [LoginModalComponent],
   providers: [MDBSpinningPreloader, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [ContentComponent],
