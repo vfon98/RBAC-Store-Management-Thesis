@@ -1,3 +1,4 @@
+import { selectUser } from './../../store/selectors/user.selector';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -6,6 +7,7 @@ import { UserService } from 'src/app/core/auth/user.service';
 import { MDBModalRef, MDBModalService } from 'ng-uikit-pro-standard';
 import { LoginModalComponent } from '../../modal/login-modal/login-modal.component';
 import { filter } from 'rxjs/operators';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +25,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private modalService: MDBModalService,
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private store$: Store
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +51,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (value) => (this.name = value?.name),
       (err) => console.log(err)
     );
+    this.store$.pipe(select(selectUser)).subscribe(data => {
+      console.log('FromNg', data)
+    })
   }
 
   isLogin(): boolean {

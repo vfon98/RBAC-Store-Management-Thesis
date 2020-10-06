@@ -5,6 +5,11 @@ import { SERVER_URL } from '../constants/api.constants';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { IGrantedPermisson, IUser, IUpdatePass, UserType } from '../models';
+import { Store } from '@ngrx/store';
+import {
+  LoginSuccess,
+  LoginSuccessClass,
+} from 'src/app/store/actions/user.action';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +20,7 @@ export class UserService {
   private currentUserSubject: BehaviorSubject<IUser>;
   currentUser$: Observable<IUser>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store: Store) {
     this.currentUserSubject = new BehaviorSubject<IUser>(null);
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
@@ -23,6 +28,7 @@ export class UserService {
   fetchUserInfo(): Observable<IUser> {
     return this.http.get<IUser>(this.REQUEST_URL).pipe(
       map((user) => {
+        this.store.dispatch(new LoginSuccessClass({ user }));
         this.currentUserSubject.next(user);
         return user;
       }),
