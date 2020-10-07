@@ -1,38 +1,39 @@
-<div class="card">
-  <div class="card-header font-weight-bold text-dark bg-blue">
-    Product Management
-  </div>
-  <div class="card-body">
-    <div class="d-flex justify-content-end">
-      <a routerLink="new" class="btn btn-primary rounded text-light mb-2"><i class="fas fa-gift"></i>Create a new product</a>
-    </div>
-    <table class="table shadow table-hover table-responsive-lg">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col" class="text-center">Quantity</th>
-        <th scope="col">Category</th>
-        <th scope="col">Created at</th>
-        <th scope="col" class="text-center">Action</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products; index as i">
-          <th scope="row">{{ i + 1}}</th>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price | usd }}</td>
-          <td class="text-center">{{ product.quantity }}</td>
-          <td>{{ getCategories(product) }}</td>
-          <td>{{ product.createdAt | date:"short" }}</td>
-          <td class="text-center">
-            <button class="btn btn-action mr-1" (click)="showDetailsModal(product.id)"><i class="far fa-eye mr-0"></i></button>
-            <button class="btn btn-action mr-1" (click)="showUpdateModal(product.id)"><i class="fas fa-edit mr-0"></i></button>
-            <button class="btn btn-action mr-1" (click)="deleteProduct(product.id)"><i class="fas fa-trash-alt"></i></button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="d-flex justify-content-end">
+  <a routerLink="new" class="btn btn-primary rounded text-light mb-2">
+    <i class="fas fa-gift"></i>Create a new product
+  </a>
 </div>
+<table class="table shadow table-hover table-responsive-lg">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col" class="text-center">Quantity</th>
+      <th scope="col">Category</th>
+      <th scope="col">Created at</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | usd }}</td>
+      <td class="text-center">{{ product.quantity }}</td>
+      <td>{{ getCategories(product) }}</td>
+      <td>{{ product.createdAt | date: "short" }}</td>
+      <td class="text-center">
+        <button class="btn btn-action mr-1" (click)="showDetailsModal(product.id)">
+          <i class="far fa-eye mr-0"></i>
+        </button>
+        <button class="btn btn-action mr-1" (click)="showUpdateModal(product.id)">
+          <i class="fas fa-edit mr-0"></i>
+        </button>
+        <button class="btn btn-action mr-1" (click)="deleteProduct(product.id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

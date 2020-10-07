@@ -1,9 +1,15 @@
+@import '../src/assets/sass/mixins';
+
 /*@import "~ng-zorro-antd/style/index.min.css";*/
 /*@import "~ng-zorro-antd/button/style/index.min.css";*/
 /* You can add global styles to this file, and also import other style files */
 .fas,
 .far {
   margin-right: 4px;
+}
+
+table {
+  @include card-shadow-standout;
 }
 
 table td,

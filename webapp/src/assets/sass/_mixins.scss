@@ -3,3 +3,7 @@
 @mixin card-shadow {
   box-shadow: $card-shadow;
 }
+
+@mixin card-shadow-standout {
+  box-shadow: -10px -7px 15px rgba(57, 98, 254, 0.02), 0 3px 6px rgba(117, 108, 254, 0.12);
+}

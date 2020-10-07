@@ -1,3 +1,4 @@
+import { StoreManagementComponent } from './store-management/store-management.component';
 import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,13 @@ const routes: Routes = [
           import('./role-management/role-management.module').then(
             (m) => m.RoleManagementModule
           ),
+      },
+      {
+        path: 'region-management',
+        loadChildren: () =>
+          import('./region-management/region-management.module').then(
+            (m) => m.RegionManagementModule
+          )
       },
       {
         path: 'store-management',

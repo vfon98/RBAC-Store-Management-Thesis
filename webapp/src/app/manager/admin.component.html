@@ -16,6 +16,19 @@
           *ngIf="canShow('store')"
           class="management-item"
           routerLinkActive="active"
+          routerLink="region-management"
+        >
+          <div>
+            <div>
+              <i class="fas fa-map-marked-alt fa-2x"></i>
+            </div>
+            Region Management
+          </div>
+        </div>
+        <div
+          *ngIf="canShow('store')"
+          class="management-item"
+          routerLinkActive="active"
           routerLink="store-management"
         >
           <div>

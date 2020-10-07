@@ -1,3 +1,5 @@
+@import '../../../../assets/sass/variables';
+
 $bg-color: #5580AA;
 $title-color: #98D9F1;
 $content-color: #F9FAFC;
@@ -7,12 +9,17 @@ $date-color: #80868C;
 
 .jumbotron {
   padding: 2rem 1rem;
+  margin-bottom: 24px;
+}
+
+.header {
+  margin-bottom: 24px;
 }
 
 .name {
   color: $name-color;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: $fz-24;
 }
 
 .date {
@@ -60,4 +67,8 @@ $date-color: #80868C;
   border: 2px solid $border-color;
   border-top: none;
   border-bottom: none;
+}
+
+hr {
+  margin-bottom: 24px;
 }
