@@ -1,0 +1,52 @@
+// FONT SIZE
+$fz-14: 14px;
+$fz-16: 16px;
+$fz-18: 18px;
+$fz-24: 24px;
+
+// COLOR
+$c-blue: #007bff;
+$c-indigo: #6610f2;
+$c-purple: #6f42c1;
+$c-pink: #e83e8c;
+$c-red: #dc3545;
+$c-orange: #fd7e14;
+$c-yellow: #ffc107;
+$c-green: #28a745;
+$c-teal: #20c997;
+$c-cyan: #17a2b8;
+$c-white: #fff;
+$c-gray: #6c757d;
+$c-gray-dark: #343a40;
+$c-primary: #007bff;
+$c-secondary: #6c757d;
+$c-success: #28a745;
+$c-info: #17a2b8;
+$c-warning: #ffc107;
+$c-danger: #dc3545;
+$c-light: #f8f9fa;
+$c-dark: #343a40;
+
+// CHART COLOR
+$chart-purple: #7934f3;
+$chart-blue: #3b5998;
+$chart-cyan: #55acee;
+$chart-blood: #e52d27;
+$chart-orange: #ff5722;
+$chart-green: #02ba5a;
+
+// GRADIENT
+$gradient-blue: linear-gradient(45deg, #6a11cb , #2575fc);
+$gradient-orange: linear-gradient(45deg, #fc4a1a, #f7b733);
+$gradient-green: linear-gradient(45deg, #00b09b, #96c93d);
+$gradient-red: linear-gradient(45deg, #ee0979, #ff6a00);
+
+// BREAKPOINT
+$bp-xs: 0;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// SHADOW
+$card-shadow: 0 5px 15px rgba(57, 98, 254, 0.02), 0 3px 6px rgba(117, 108, 254, 0.12);

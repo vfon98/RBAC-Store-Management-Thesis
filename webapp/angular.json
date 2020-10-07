@@ -134,5 +134,10 @@
   "defaultProject": "webapp",
   "cli": {
     "analytics": "e6331e2e-9cb0-4396-b6b5-730db55da671"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
