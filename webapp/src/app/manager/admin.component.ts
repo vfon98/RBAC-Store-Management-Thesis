@@ -6,7 +6,7 @@ import { IUser, IGrantedPermisson } from '../core/models/user.model';
 @Component({
   selector: 'app-home',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css'],
+  styleUrls: ['./admin.component.css', './sidenav.scss'],
 })
 export class AdminComponent implements OnInit {
   user: IUser = null;
