@@ -77,14 +77,14 @@
     <div class="sidebar">
       <nav id="sidebarMenu" class="sidebar d-md-block bg-sidebar text-white collapse" data-simplebar>
         <div class="sidebar-inner px-4 pt-3">
-          <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
-            <div class="d-flex align-items-center">
-              <div class="user-avatar lg-avatar mr-4">
-                <img src="@@path/assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+          <div class="user-card d-md-none d-flex align-items-center justify-content-between justify-content-md-center pb-4">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="user-avatar lg-avatar mr-4" style="width: 60px;">
+                <img src="assets/img/admin.png" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
               </div>
               <div class="d-block">
-                <h2 class="h6">Hi, Jane</h2>
-                <a href="@@path/pages/examples/sign-in.html" class="btn btn-secondary text-dark btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                <h2 class="h6">Hi, Admin</h2>
+                <a class="btn btn-secondary text-dark btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
               </div>
             </div>
             <div class="collapse-close d-md-none">
@@ -94,42 +94,72 @@
             </div>
           </div>
           <ul class="nav flex-column">
-            <li class="nav-item active">
-              <a href="@@path/pages/dashboard/dashboard.html" class="nav-link">
-                <span class="sidebar-icon"><span class="fas fa-chart-pie"></span></span>
-                <span>Overview</span>
+            <li class="nav-item" routerLinkActive="active" routerLink="./" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link">
+                <span class="sidebar-icon"><span class="fas fa-chart-pie fa-fw"></span></span>
+                <span>Dashboard</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="@@path/pages/transactions.html" class="nav-link">
-                  <span class="sidebar-icon"><span class="fas fa-hand-holding-usd"></span></span>
-                  <span>Transactions</span>
+            <!-- <li class="nav-item">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-tachometer-alt fa-fw"></span></span>
+                  <span>Information</span>
+              </a>
+            </li> -->
+            <li class="nav-item" routerLinkActive="active" routerLink="store-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-store fa-fw"></span></span>
+                  <span>Store Management</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="@@path/pages/settings.html" class="nav-link">
-                  <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
-                  <span>Settings</span>
+            <li class="nav-item" routerLinkActive="active" routerLink="region-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-map-marked-alt fa-fw"></span></span>
+                  <span>Region Management</span>
               </a>
             </li>
-            <li class="nav-item">
-              <span class="nav-link @@if (context.page !== 'datatables' && context.page !== 'tables') { collapsed } d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-app">
+            <li class="nav-item" routerLinkActive="active" routerLink="user-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-users fa-fw"></span></span>
+                  <span>Staff Management</span>
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" routerLink="role-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-key fa-fw"></span></span>
+                  <span>Role Management</span>
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" routerLink="product-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-hamburger fa-fw"></span></span>
+                  <span>Product Management</span>
+              </a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" routerLink="category-management">
+              <a class="nav-link">
+                  <span class="sidebar-icon"><span class="fas fa-hashtag fa-fw"></span></span>
+                  <span>Category Management</span>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+              <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-app">
                 <span>
-                  <span class="sidebar-icon"><span class="fas fa-table"></span></span> 
+                  <span class="sidebar-icon"><span class="fas fa-table fa-fw"></span></span> 
                   Tables
                 </span>
                 <span class="link-arrow"><span class="fas fa-chevron-right"></span></span> 
               </span>
               <div class="multi-level collapse @@if (context.page === 'datatables' || context.page === 'tables') { show }" role="list" id="submenu-app" aria-expanded="false">
                   <ul class="flex-column nav">
-                      <li class="nav-item"><a class="nav-link" href="@@path/pages/tables/bootstrap-tables.html"><span>Bootstrap Tables</span></a></li>
+                      <li class="nav-item"><a class="nav-link"><span>Bootstrap Tables</span></a></li>
                   </ul>
               </div>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <span class="nav-link @@if (context.page_group !== 'page_examples') { collapsed } d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-pages">
                 <span>
-                  <span class="sidebar-icon"><span class="far fa-file-alt"></span></span> 
+                  <span class="sidebar-icon"><span class="far fa-file-alt fa-fw"></span></span> 
                   Page examples
                 </span>
                 <span class="link-arrow"><span class="fas fa-chevron-right"></span></span> 
@@ -145,8 +175,8 @@
                       <li class="nav-item"><a class="nav-link" href="@@path/pages/examples/500.html"><span>500 Server Error</span></a></li>
                   </ul>
               </div>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <!-- <li class="nav-item">
               <span class="nav-link @@if (context.page_group !== 'components') { collapsed } d-flex justify-content-between align-items-center" data-toggle="collapse" data-target="#submenu-components">
                 <span>
                   <span class="sidebar-icon"><span class="fas fa-box-open"></span></span> 
@@ -163,34 +193,24 @@
                       <li class="nav-item @@if (context.page === 'typography') { active }"><a class="nav-link" href="@@path/pages/components/typography.html"><span>Typography</span></a></li>
                   </ul>
               </div>
-            </li>
+            </li> -->
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
-            <li class="nav-item">
-              <a href="@@path/index.html" class="nav-link d-flex align-items-center">
-                <span class="sidebar-icon">
-                  <img src="@@path/assets/img/brand/light.svg" height="20" width="20" alt="Volt Logo">
-                </span>
-                <span class="mt-1">Volt Overview</span>
+            <!-- <li class="nav-item">
+              <a class="nav-link d-flex align-items-center">
+                <span class="sidebar-icon"><span class="fas fa-headset"></span></span>
+                <span>Support</span>
+              </a>
+            </li> -->
+            <li class="nav-item" routerLink="/account/settings">
+              <a class="nav-link d-flex align-items-center">
+                <span class="sidebar-icon"><span class="fas fa-user-cog"></span></span>
+                <span>Account Settings</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/" target="_blank" class="nav-link d-flex align-items-center">
-                <span class="sidebar-icon"><span class="fas fa-book"></span></span>
-                <span>Quick Start</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard" target="_blank" class="nav-link d-flex align-items-center">
-                <span class="sidebar-icon"><span class="fas fa-rocket"></span></span>
-                <span>Upgrade to Pro</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://themesberg.com" target="_blank" class="nav-link d-flex align-items-center">
-                <span class="sidebar-icon">
-                  <img src="@@path/assets/img/themesberg.svg" height="20" width="20" alt="Themesberg Logo">
-                </span>
-                <span>Themesberg</span>
+            <li class="nav-item" (click)="logout()">
+              <a class="nav-link d-flex align-items-center">
+                <span class="sidebar-icon"><span class="fas fa-power-off"></span></span>
+                <span>Logout</span>
               </a>
             </li>
           </ul>

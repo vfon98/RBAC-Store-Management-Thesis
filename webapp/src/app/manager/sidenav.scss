@@ -151,3 +151,7 @@ $border-radius: .5rem;
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+li.nav-item {
+	outline: none;
+}

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoginModalService } from '../service/login-modal.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/auth/user.service';
@@ -15,7 +16,8 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private loginModal: LoginModalService
+    private loginModal: LoginModalService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +44,9 @@ export class AdminComponent implements OnInit {
 
   toggleSidebar(): void {
     this.navbarShown = !this.navbarShown;
+  }
+
+  logout(): void {
+    this.authService.logoutUser().subscribe();
   }
 }
