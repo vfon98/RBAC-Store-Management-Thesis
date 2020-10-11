@@ -77,14 +77,17 @@
     <div class="sidebar">
       <nav id="sidebarMenu" class="sidebar d-md-block bg-sidebar text-white collapse" data-simplebar>
         <div class="sidebar-inner px-3 pt-3">
-          <div class="user-card d-md-none d-flex align-items-center justify-content-between justify-content-md-center pb-4">
+          <div class="user-card d-flex align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center justify-content-between">
               <div class="user-avatar lg-avatar mr-4" style="width: 60px;">
                 <img src="assets/img/admin.png" class="card-img-top rounded-circle border-white" alt="Bonnie Green">
               </div>
               <div class="d-block">
                 <h2 class="h6">Hi, Admin</h2>
-                <a class="btn btn-secondary text-dark btn-xs"><span class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                <button nz-button nzSize="small" nzType="primary" [nzGhost]="true">
+                  <span class="fas fa-sign-out-alt"></span>
+                  Sign out
+                </button>
               </div>
             </div>
             <div class="collapse-close d-md-none">
