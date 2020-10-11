@@ -9,7 +9,7 @@ import {
   IResource,
   IRole,
   IRoleBody,
-} from '../../manager/role-management/role-management.component';
+} from '../../admin/role-management/role-management.component';
 
 @Injectable({
   providedIn: 'root',

@@ -1,23 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { TableOverviewModel } from '../../../core/models/table-overview.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table-overview',
   templateUrl: './table-overview.component.html',
-  styleUrls: ['./table-overview.component.scss']
+  styleUrls: ['./table-overview.component.scss'],
 })
 export class TableOverviewComponent implements OnInit {
+  @Input()
+  figures: TableOverviewModel[];
 
   date = new Date();
-  figures: { title: string, number: number, extra?: any }[] = [
-    { title: 'Total records', number: 35, extra: 'up to date' },
-    { title: 'Total revenue', number: 70, extra: null },
-    { title: 'Total records', number: 35, extra: '+1 today' }
-  ];
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    if (!this.figures) {
+      this.figures = [
+        { title: 'Total records', number: 35, extra: 'up to date' },
+        { title: 'Total revenue', number: 70, extra: null },
+        { title: 'Total records', number: 35, extra: '+1 today' },
+      ];
+    }
   }
-
 }

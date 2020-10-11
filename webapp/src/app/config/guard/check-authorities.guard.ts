@@ -10,6 +10,8 @@ import {
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/core/auth/user.service';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { selectUser } from 'src/app/store/selectors/user.selector';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,8 @@ export class CheckAuthoritiesGuard implements CanActivate {
   constructor(
     private userService: UserService,
     private router: Router,
-    private notiService: NotificationService
+    private notiService: NotificationService,
+    private store$: Store
   ) {}
 
   canActivate(
@@ -31,6 +34,12 @@ export class CheckAuthoritiesGuard implements CanActivate {
     | UrlTree {
     const currentUser = this.userService.getCurrentUser();
     const requiredRole: string[] = next.data.role;
+
+    if (!currentUser) return true;
+
+    this.store$.pipe(select(selectUser)).subscribe(user => {
+      console.log('user', user)
+    })
 
     // Check current user type
     if (currentUser && requiredRole.includes(currentUser.type)) {

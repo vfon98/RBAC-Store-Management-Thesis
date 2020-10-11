@@ -2,7 +2,7 @@ import { NotificationService } from './../../layouts/notification/notification.s
 import { RoleService } from '../../core/http/role-management.service';
 import { RoleModalService } from './../../service/role-modal.service';
 import { Component, OnInit } from '@angular/core';
-import { IRoleBody } from 'src/app/manager/role-management/role-management.component';
+import { IRoleBody } from 'src/app/admin/role-management/role-management.component';
 
 @Component({
   selector: 'app-role-add-modal',

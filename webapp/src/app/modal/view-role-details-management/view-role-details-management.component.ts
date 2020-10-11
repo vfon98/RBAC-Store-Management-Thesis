@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IRole } from "../../manager/role-management/role-management.component";
+import { IRole } from "../../admin/role-management/role-management.component";
 
 @Component({
   selector: 'app-view-role-details-management',

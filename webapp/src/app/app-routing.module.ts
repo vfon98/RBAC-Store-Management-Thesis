@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [CheckAuthoritiesGuard],
     loadChildren: () =>
-      import('./manager/manager-routing.module').then(
+      import('./admin/admin-routing.module').then(
         (m) => m.ManagerRoutingModule
       ),
     data: {

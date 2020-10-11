@@ -1,4 +1,4 @@
-import { IRole } from './../manager/role-management/role-management.component';
+import { IRole } from './../admin/role-management/role-management.component';
 import { RoleUpdateModalComponent } from './../modal/role-update-modal/role-update-modal.component';
 import { RoleAddModalComponent } from '../modal/role-add-modal/role-add-modal.component';
 import { MDBModalRef, MDBModalService } from 'ng-uikit-pro-standard';

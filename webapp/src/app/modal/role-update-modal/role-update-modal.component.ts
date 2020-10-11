@@ -1,7 +1,7 @@
 import { MDBModalService, MDBModalRef } from 'ng-uikit-pro-standard';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { RoleService } from '../../core/http/role-management.service';
-import { IRole } from './../../manager/role-management/role-management.component';
+import { IRole } from './../../admin/role-management/role-management.component';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

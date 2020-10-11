@@ -1,12 +1,22 @@
-<div class="d-flex justify-content-end">
-  <a routerLink="new" class="btn btn-primary rounded text-light mb-2">
-    <i class="fas fa-gift"></i>Create a new product
-  </a>
+<app-table-overview></app-table-overview>
+
+<div class="d-flex justify-content-start">
+  <button routerLink="new" class="btn-create" nz-button nzType="primary" nzShape="round">
+    <div class="fas fa-plus"></div>
+    Add a new product
+  </button>
 </div>
-<table class="table shadow table-hover table-responsive-lg">
+<nz-table
+  #productTable
+  class="shadow admin-table"
+  [nzData]="products"
+  [nzShowSizeChanger]="true"
+  nzSize="small"
+>
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th class="img-col text-center" scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col" class="text-center">Quantity</th>
@@ -16,8 +26,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products; index as i">
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let product of productTable.data; index as i">
+      <td>{{ i + 1 }}</td>
+      <td class="img-col text-center">
+        <img src="//placehold.it/100" alt="Product image">
+      </td>
       <td>{{ product.name }}</td>
       <td>{{ product.price | usd }}</td>
       <td class="text-center">{{ product.quantity }}</td>
@@ -36,4 +49,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</nz-table>

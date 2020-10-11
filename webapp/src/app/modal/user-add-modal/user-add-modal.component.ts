@@ -1,7 +1,7 @@
 import { NotificationService } from './../../layouts/notification/notification.service';
 import { StoreService, StaffService } from  'src/app/core/http';
 import { UserModalService } from './../../service/user-modal.service';
-import { FormType } from '../../manager/user-management/user-add/user-form.component';
+import { FormType } from '../../admin/user-management/user-add/user-form.component';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/core/models/user.model';
 

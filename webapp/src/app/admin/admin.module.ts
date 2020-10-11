@@ -4,10 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
 import { SharedModule } from "../shared/shared.module";
-import { RegionManagementComponent } from './region-management/region-management.component';
 
 @NgModule({
-  declarations: [RegionManagementComponent],
+  declarations: [],
   imports: [
     CommonModule,
     SharedModule,
