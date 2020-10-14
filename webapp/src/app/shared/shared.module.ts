@@ -10,27 +10,39 @@ import {
   NzUploadModule,
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
+import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
+import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admin/form-add-wrapper-admin.component';
 
 @NgModule({
-  declarations: [UsdPipe, TableOverviewComponent],
+  declarations: [
+    UsdPipe,
+    TableOverviewComponent,
+    BackButtonAdminComponent,
+    FormAddWrapperAdminComponent,
+  ],
   imports: [
     CommonModule,
+    // NgZorro Modules
     NzUploadModule,
     NzButtonModule,
     NzIconModule,
     NzTagModule,
     NzTableModule,
-    NzAvatarModule
+    NzAvatarModule,
   ],
   exports: [
     UsdPipe,
+    // NgZorro Modules
     NzUploadModule,
     NzButtonModule,
     NzIconModule,
-    TableOverviewComponent,
     NzTagModule,
     NzTableModule,
-    NzAvatarModule
+    NzAvatarModule,
+    // Shared Components
+    TableOverviewComponent,
+    BackButtonAdminComponent,
+    FormAddWrapperAdminComponent,
   ],
 })
 export class SharedModule {}

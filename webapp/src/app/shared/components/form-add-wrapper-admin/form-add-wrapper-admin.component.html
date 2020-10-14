@@ -1,4 +1,4 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <app-back-button-admin></app-back-button-admin>
     <h3 class="form-add-title">Add a new Store</h3>
@@ -6,14 +6,14 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-body">
-            <app-store-form (onSubmit)="handleSubmit($event)" (onCancel)="back()"></app-store-form>
+
+            <!-- CONTENT REPLACE HERE -->
+            <ng-content></ng-content>
+            <!-- END -->
+
           </div>
         </div>
       </div>
     </div>
   </div>
-</div> -->
-
-<app-form-add-wrapper-admin>
-  <app-store-form (onSubmit)="handleSubmit($event)" (onCancel)="back()"></app-store-form>
-</app-form-add-wrapper-admin>
+</div>

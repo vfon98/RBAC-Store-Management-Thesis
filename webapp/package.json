@@ -6,6 +6,7 @@
     "start": "ng serve",
     "dev": "ng serve -o",
     "hmr": "ng serve --configuration hmr -o",
+    "hmr --no-open": "ng serve --configuration hmr",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

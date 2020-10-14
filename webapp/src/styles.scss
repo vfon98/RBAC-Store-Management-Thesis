@@ -143,6 +143,15 @@ html {
       }
     }
   }
+
+  .card {
+    border: 1px solid #a8e7ff;
+    border-radius: 0.4rem;
+  }
+
+  a:not([href]) {
+    color: #1890ff;
+  }
 }
 
 [nz-button].btn-create {

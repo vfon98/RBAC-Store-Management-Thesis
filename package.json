@@ -9,7 +9,8 @@
     "ng": "cd webapp && ng",
     "start": "npm start --prefix webapp",
     "dev": "npm run dev --prefix webapp",
-    "hmr": "npm run hmr --prefix webapp"
+    "hmr": "npm run hmr --prefix webapp",
+    "hmr --no-open": "npm run hmr --prefix webapp --no-open"
   },
   "repository": {
     "type": "git",
