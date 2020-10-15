@@ -2,16 +2,11 @@
   <div class="d-flex w-100 justify-content-end">
     <div class="form-group mx-sm-3 my-2">
       <label for="inputRoleName" class="sr-only">Role Name</label>
-      <input
-        type="text" class="form-control" id="inputRoleName"
-        placeholder="Type in role name"
-        required minlength="3"
+      <input type="text" class="form-control" id="inputRoleName" placeholder="Type in role name" required minlength="3"
         [(ngModel)]="roleName" />
     </div>
-    <button type="submit" class="btn my-2 mr-5"
-      [ngClass]="isUpdateMode() ? 'btn-danger' : 'btn-primary'"
-      (click)="submitForm()"
-    >
+    <button type="submit" class="btn my-2 mr-5" [ngClass]="isUpdateMode() ? 'btn-danger' : 'btn-primary'"
+      (click)="submitForm()">
       {{ isUpdateMode() ? 'Update' : 'Create' }}
     </button>
   </div>
@@ -19,55 +14,45 @@
 <!-- </form> -->
 <div class="row warp-table">
   <table class="table table-sm table-striped mx-auto table-responsive-sm">
-    <caption class="text-primary">
-      <input type="checkbox"/>
-      <span class="text-info ml-2 small font-italic">* Grantable permissions</span><br />
-
-      <input type="checkbox" disabled />
-      <span class="text-warning ml-2 small font-italic">* Ungrantable permissions</span><br />
-
-      <input type="checkbox" disabled checked />
-      <span class="text-secondary ml-2 small font-italic">* Permissions granted by others</span>
-    </caption>
     <thead>
-    <tr class="d-flex">
-      <th class="col-md-6 pl-md-2">#<span class="d-none d-sm-inline"> Resource Name</span></th>
-      <th class="text-center col-sm-2 col-md-1">Create</th>
-      <th class="text-center col-sm-2 col-md-1">Read</th>
-      <th class="text-center col-sm-2 col-md-1">Update</th>
-      <th class="text-center col-sm-2 col-md-1">Delete</th>
-      <th class="text-center col-md-2 px-0">
-        <span class="d-none d-sm-inline">All</span>
-        <i
-          class="far fa-trash-alt ml-2 remove-all-checked"
-          title="remove all checked"
-          (click)="removeAllChecked()"></i>
-      </th>
-    </tr>
+      <tr class="d-flex">
+        <th class="col-md-6 pl-md-2">#<span class="d-none d-sm-inline"> Resource Name</span></th>
+        <th class="text-center col-sm-2 col-md-1">Create</th>
+        <th class="text-center col-sm-2 col-md-1">Read</th>
+        <th class="text-center col-sm-2 col-md-1">Update</th>
+        <th class="text-center col-sm-2 col-md-1">Delete</th>
+        <th class="text-center col-md-2 px-0">
+          <span class="d-none d-sm-inline">All</span>
+          <i class="far fa-trash-alt ml-2 remove-all-checked" title="remove all checked"
+            (click)="removeAllChecked()"></i>
+        </th>
+      </tr>
     </thead>
     <tbody>
-    <tr class="d-flex" *ngFor="let resource of resources">
-      <td class="col-md-6 pl-md-2">{{ resource.name | titlecase }} Management</td>
-      <td class="text-center col-sm-2 col-md-1" *ngFor="let permission of resource.permissions">
-        <input
-          type="checkbox"
-          class="form-check-input ml-0"
-          [(ngModel)]="permission.choose"
-          (change)="onChangeButtonCheckPermission(permission, resource)"
-          [disabled]="!canGrantPermission(permission)"
-        />
-      </td>
-      <!-- CHECK ALL CHECKBOX HERE -->
-      <td class="text-center col-md-2 px-0">
-        <input
-          type="checkbox" class="form-check-input ml-0"
-          [(ngModel)]="resource.isCheckAllPermissions"
-          [disabled]="resource.isCheckAllDisabled"
-          (change)="onChangeButtonCheckAllPermissions(resource.name)"
-        />
-      </td>
-    </tr>
+      <tr class="d-flex" *ngFor="let resource of resources">
+        <td class="col-md-6 pl-md-2">{{ resource.name | titlecase }} Management</td>
+        <td class="text-center col-sm-2 col-md-1" *ngFor="let permission of resource.permissions">
+          <input type="checkbox" class="form-check-input ml-0" [(ngModel)]="permission.choose"
+            (change)="onChangeButtonCheckPermission(permission, resource)"
+            [disabled]="!canGrantPermission(permission)" />
+        </td>
+        <!-- CHECK ALL CHECKBOX HERE -->
+        <td class="text-center col-md-2 px-0">
+          <input type="checkbox" class="form-check-input ml-0" [(ngModel)]="resource.isCheckAllPermissions"
+            [disabled]="resource.isCheckAllDisabled" (change)="onChangeButtonCheckAllPermissions(resource.name)" />
+        </td>
+      </tr>
 
     </tbody>
   </table>
+</div>
+<div class="text-left pl-3">
+  <input type="checkbox" />
+  <span class="text-info ml-2 small font-italic">* Grantable permissions</span><br />
+
+  <input type="checkbox" disabled />
+  <span class="text-warning ml-2 small font-italic">* Ungrantable permissions</span><br />
+
+  <input type="checkbox" disabled checked />
+  <span class="text-secondary ml-2 small font-italic">* Permissions granted by others</span>
 </div>

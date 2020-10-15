@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RoleCreateComponent } from './role-create/role-create.component';
-import {FormsModule} from "@angular/forms";
 import { RoleTableComponent } from './role-table/role-table.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [RoleCreateComponent, RoleTableComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       {path: '', component: RoleManagementComponent},
       {path: 'create', component: RoleCreateComponent}
     ]),
-    FormsModule,
   ],
   exports: [RoleTableComponent]
 })

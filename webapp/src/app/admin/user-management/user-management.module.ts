@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { UserManagementComponent } from './user-management.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [UserAddComponent, UserFormComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       { path: '', component: UserManagementComponent },
       { path: 'new', component: UserAddComponent },

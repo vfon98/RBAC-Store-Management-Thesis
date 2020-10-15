@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RegionManagementComponent } from './region-management.component';
 import { RegionAddComponent } from './region-add/region-add.component';
 import { RegionFormComponent } from './region-form/region-form.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RegionFormComponent } from './region-form/region-form.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       { path: '', component: RegionManagementComponent },
       { path: 'new', component: RegionAddComponent },

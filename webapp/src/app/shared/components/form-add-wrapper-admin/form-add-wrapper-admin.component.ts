@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-add-wrapper-admin',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-add-wrapper-admin.component.css']
 })
 export class FormAddWrapperAdminComponent implements OnInit {
+  @Input()
+  title = 'Default title';
 
   constructor() { }
 

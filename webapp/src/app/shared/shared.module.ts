@@ -12,6 +12,7 @@ import {
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
 import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admin/form-add-wrapper-admin.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admi
   ],
   imports: [
     CommonModule,
+    FormsModule,
     // NgZorro Modules
     NzUploadModule,
     NzButtonModule,
@@ -32,6 +34,7 @@ import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admi
   ],
   exports: [
     UsdPipe,
+    FormsModule,
     // NgZorro Modules
     NzUploadModule,
     NzButtonModule,

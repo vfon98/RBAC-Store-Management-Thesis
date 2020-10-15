@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 import { CategoryManagementComponent } from './category-management.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryAddComponent } from './category-add/category-add.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [CategoryFormComponent, CategoryAddComponent],
   imports: [
     CommonModule,
-
+    SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       {
