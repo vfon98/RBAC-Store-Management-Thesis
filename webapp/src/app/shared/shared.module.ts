@@ -12,7 +12,8 @@ import {
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
 import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admin/form-add-wrapper-admin.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalUpdateWrapperAdminComponent } from './components/modal-update-wrapper-admin/modal-update-wrapper-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,12 @@ import { FormsModule } from '@angular/forms';
     TableOverviewComponent,
     BackButtonAdminComponent,
     FormAddWrapperAdminComponent,
+    ModalUpdateWrapperAdminComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     // NgZorro Modules
     NzUploadModule,
     NzButtonModule,
@@ -35,6 +38,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
     UsdPipe,
     FormsModule,
+    ReactiveFormsModule,
     // NgZorro Modules
     NzUploadModule,
     NzButtonModule,

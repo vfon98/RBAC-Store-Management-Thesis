@@ -12,4 +12,7 @@ export class RegionUpdateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hideModal(): void {
+
+  }
 }

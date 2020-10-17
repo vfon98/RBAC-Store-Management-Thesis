@@ -21,5 +21,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
       { path: 'new', component: RegionAddComponent },
     ]),
   ],
+  exports: [RegionFormComponent]
 })
 export class RegionManagementModule {}

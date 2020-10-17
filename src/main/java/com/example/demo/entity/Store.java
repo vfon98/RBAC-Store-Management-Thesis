@@ -3,13 +3,14 @@ package com.example.demo.entity;
 import com.example.demo.form.StoreForm;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -48,6 +49,11 @@ public class Store  {
     @JsonIgnore
     @OneToMany(mappedBy = "store", cascade = CascadeType.REMOVE)
     private List<Staff> staff;
+
+
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
     public enum Status {
         Open, Closed
