@@ -11,6 +11,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Category Name</th>
+      <th scope="col">Description</th>
       <th scope="col">Created at</th>
       <th scope="col" class="text-center">Action</th>
     </tr>
@@ -19,14 +20,14 @@
     <tr *ngFor="let category of categories; index as i">
       <th scope="row">{{ i + 1}}</th>
       <td>{{ category.name }}</td>
+      <td>{{ category.description }}</td>
       <td>{{ category.createdAt | date:"short" }}</td>
       <td class="text-center">
-        <button class="btn btn-action mr-1" (click)="showDetailsModal(category.id)"><i
-            class="far fa-eye mr-0"></i></button>
-        <button class="btn btn-action mr-1" (click)="showUpdateModal(category.id)"><i
-            class="fas fa-edit mr-0"></i></button>
-        <button class="btn btn-action mr-1" (click)="deleteCategory(category.id)"><i
-            class="fas fa-trash-alt"></i></button>
+        <app-action-buttons-admin
+          (onDetail)="showDetailsModal(category.id)"
+          (onUpdate)="showUpdateModal(category.id)"
+          (onDelete)="deleteCategory(category.id)"
+        ></app-action-buttons-admin>
       </td>
     </tr>
   </tbody>

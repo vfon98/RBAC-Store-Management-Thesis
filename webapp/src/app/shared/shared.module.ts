@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import {
   NzAvatarModule,
   NzButtonModule,
-  NzIconModule,
+  NzIconModule, NzPopconfirmModule,
   NzTableModule,
   NzTagModule,
+  NzToolTipModule,
   NzUploadModule,
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
 import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admin/form-add-wrapper-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalUpdateWrapperAdminComponent } from './components/modal-update-wrapper-admin/modal-update-wrapper-admin.component';
+import { ModalWrapperAdminComponent } from './components/modal-wrapper-admin/modal-wrapper-admin.component';
+import { ActionButtonsAdminComponent } from './components/action-buttons-admin/action-buttons-admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ModalUpdateWrapperAdminComponent } from './components/modal-update-wrap
     TableOverviewComponent,
     BackButtonAdminComponent,
     FormAddWrapperAdminComponent,
-    ModalUpdateWrapperAdminComponent,
+    ModalWrapperAdminComponent,
+    ActionButtonsAdminComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,8 @@ import { ModalUpdateWrapperAdminComponent } from './components/modal-update-wrap
     NzTagModule,
     NzTableModule,
     NzAvatarModule,
+    NzToolTipModule,
+    NzPopconfirmModule,
   ],
   exports: [
     UsdPipe,
@@ -46,10 +51,14 @@ import { ModalUpdateWrapperAdminComponent } from './components/modal-update-wrap
     NzTagModule,
     NzTableModule,
     NzAvatarModule,
+    NzToolTipModule,
+    NzPopconfirmModule,
     // Shared Components
     TableOverviewComponent,
     BackButtonAdminComponent,
+    ModalWrapperAdminComponent,
     FormAddWrapperAdminComponent,
+    ActionButtonsAdminComponent,
   ],
 })
 export class SharedModule {}

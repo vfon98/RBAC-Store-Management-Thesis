@@ -1,0 +1,30 @@
+@import "src/assets/sass/variables";
+
+.far, .fas {
+  margin: 0;
+  transform: translateY(-4%);
+}
+
+.action-buttons-wrapper {
+  color: $c-white !important;
+  $bdrs-number: 4px;
+  opacity: .9;
+
+  .btn-detail {
+    color: inherit;
+    background: linear-gradient(#66ADD1, #067ab4);
+    //border-radius: $bdrs-number 0 0 $bdrs-number;
+  }
+
+  .btn-edit {
+    color: inherit;
+    background: linear-gradient(#FFBE5F, #FF9800);
+  }
+
+  .btn-delete {
+    color: inherit;
+    background: linear-gradient(#FD8788, #DF2029);
+    //border-radius: 0 $bdrs-number $bdrs-number 0;
+  }
+
+}

@@ -16,3 +16,4 @@ export {
   IShoppingProduct,
 } from './customer.model';
 export { IPaymentInfo } from './payment.model';
+export { IRegion, IRegionBody } from "./region.model";

@@ -51,6 +51,7 @@ public class Store  {
     private List<Staff> staff;
 
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "region_id")
     private Region region;

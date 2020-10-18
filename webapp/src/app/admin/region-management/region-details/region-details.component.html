@@ -1,0 +1,29 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Category Information</h5>
+    <button type="button" class="close" (click)="hideModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-star"></i>
+        {{ region?.name }}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div><b>Description: </b>{{ region?.description }}</div>
+        </li>
+      </ul>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div><b>Number of store: </b>{{ region?.stores.length }}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+  </div>
+</div>

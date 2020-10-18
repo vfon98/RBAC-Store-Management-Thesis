@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IRegion } from 'src/app/core/models';
 
 @Component({
   selector: 'app-region-form',
@@ -7,6 +8,12 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./region-form.component.css'],
 })
 export class RegionFormComponent implements OnInit {
+  @Input()
+  region: IRegion;
+  
+  @Output()
+  onSubmit = new EventEmitter<FormGroup>();
+
   regionForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     description: [''],
@@ -14,9 +21,13 @@ export class RegionFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.region) {
+      this.regionForm.patchValue({
+        name: this.region.name,
+        description: this.region.description
+      })
+    }
+  }
 
-  emitSubmitEvent(): void {}
-
-  onCancel(): void {}
 }

@@ -6,12 +6,14 @@ import { RegionManagementComponent } from './region-management.component';
 import { RegionAddComponent } from './region-add/region-add.component';
 import { RegionFormComponent } from './region-form/region-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RegionDetailsComponent } from './region-details/region-details.component';
 
 @NgModule({
   declarations: [
     RegionAddComponent,
     RegionFormComponent,
     RegionUpdateComponent,
+    RegionDetailsComponent,
   ],
   imports: [
     CommonModule,

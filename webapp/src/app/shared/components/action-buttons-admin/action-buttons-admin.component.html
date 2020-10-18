@@ -1,0 +1,33 @@
+<nz-button-group class="action-buttons-wrapper" nzSize="default">
+
+  <button
+    class="btn-detail"
+    nz-button nzType="default"
+    nz-tooltip nzTooltipTitle="Detail"
+    (click)="onDetail.emit()"
+  >
+<!--    <i class="far fa-eye"></i>-->
+    <i nz-icon nzType="eye" nzTheme="fill"></i>
+  </button>
+
+  <button
+    class="btn-edit"
+    nz-button nzType="default"
+    nz-tooltip nzTooltipTitle="Edit"
+    (click)="onUpdate.emit()"
+  >
+    <i nz-icon nzType="edit" nzTheme="outline"></i>
+  </button>
+
+  <button
+    class="btn-delete"
+    nz-button nzType="default"
+    nz-tooltip nzTooltipTitle="Delete"
+    nz-popconfirm nzPopconfirmTitle="Are you sure to delete this item?"
+    (nzOnConfirm)="onDelete.emit()"
+  >
+    <i class="far fa-trash-alt" style="font-size: 14px;"></i>
+<!--    <i nz-icon nzType="delete" nzTheme="outline"></i>-->
+  </button>
+
+</nz-button-group>

@@ -12,10 +12,24 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Region name</th>
-      <th scope="col">Number of store</th>
+      <th scope="col">Description</th>
+      <th scope="col" class="text-center">Number of store</th>
       <th scope="col" class="text-center">Action</th>
     </tr>
   </thead>
   <tbody>
+  <tr *ngFor="let region of regions; index as i">
+    <td>{{ i + 1 }}</td>
+    <td>{{ region.name }}</td>
+    <td>{{ region.description || '-' }}</td>
+    <td class="text-center">{{ region?.stores?.length || 0 }}</td>
+    <td class="text-center">
+      <app-action-buttons-admin
+        (onDetail)="showDetailsModal(region.id)"
+        (onUpdate)="showUpdateModal(region.id)"
+        (onDelete)="deleteRegion(region.id)"
+      ></app-action-buttons-admin>
+    </td>
+  </tr>
   </tbody>
 </table>

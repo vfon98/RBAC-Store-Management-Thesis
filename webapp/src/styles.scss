@@ -13,12 +13,9 @@ table {
   @include card-shadow-standout;
 }
 
-table td,
-table td *,
-table th,
-table th * {
+table tbody td,
+table tbody th {
   vertical-align: middle !important;
-  padding: 0.4rem;
 }
 
 .error {

@@ -39,7 +39,7 @@ public class RegionServiceImpl implements RegionService {
     @Override
     public Region deleteRegion(Integer regionId) {
         Region region = findById(regionId);
-        regionRepository.deleteById(regionId);
+        regionRepository.delete(region);
         return region;
     }
 
