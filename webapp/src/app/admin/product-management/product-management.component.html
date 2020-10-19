@@ -11,7 +11,6 @@
   class="shadow admin-table"
   [nzData]="products"
   [nzShowSizeChanger]="true"
-  nzSize="small"
 >
   <thead>
     <tr>
@@ -29,7 +28,7 @@
     <tr *ngFor="let product of productTable.data; index as i">
       <td>{{ i + 1 }}</td>
       <td class="img-col text-center">
-        <img src="//placehold.it/100" alt="Product image">
+        <img class="img-fluid my-2" src="//placehold.it/100" alt="Product image">
       </td>
       <td>{{ product.name }}</td>
       <td>{{ product.price | usd }}</td>

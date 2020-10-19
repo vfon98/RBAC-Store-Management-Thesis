@@ -7,7 +7,11 @@
   </button>
 </div>
 
-<table class="table shadow table-hover table-responsive-lg">
+<nz-table
+  #regionTable
+  [nzData]="regions"
+  [nzShowSizeChanger]="true"
+>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -18,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let region of regions; index as i">
+  <tr *ngFor="let region of regionTable.data; index as i">
     <td>{{ i + 1 }}</td>
     <td>{{ region.name }}</td>
     <td>{{ region.description || '-' }}</td>
@@ -32,4 +36,4 @@
     </td>
   </tr>
   </tbody>
-</table>
+</nz-table>

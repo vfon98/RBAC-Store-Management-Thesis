@@ -12,8 +12,8 @@
           <a routerLink="/shopping/checkout">Checkout</a>
         </li>
         <li>
-          <!-- <a (click)="openLoginModal()"> -->
-          <a (click)="login()">
+          <a (click)="openLoginModal()">
+          <!-- <a (click)="login()"> -->
             <i class="far fa-user fa-lg mr-2"></i>
             {{ username || "Login" }}
             <i *ngIf="isLogin()" class="fas fa-caret-down ml-1 mr-0"></i>

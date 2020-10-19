@@ -6,7 +6,11 @@
     Add a new staff
   </button>
 </div>
-<table class="table shadow table-hover table-responsive-lg">
+<nz-table
+  #staffTable
+  [nzData]="users"
+  [nzShowSizeChanger]="true"
+>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -19,8 +23,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users; index as i">
-      <th scope="row">{{ i + 1}}</th>
+    <tr *ngFor="let user of staffTable.data; index as i">
+      <td>{{ i + 1}}</td>
       <td>{{ user.name }}</td>
       <td>{{ user.username }}</td>
       <td class="light-bold text-muted">{{ printRoles(user) }}</td>
@@ -38,4 +42,4 @@
       </td>
     </tr>
   </tbody>
-</table>
+</nz-table>
