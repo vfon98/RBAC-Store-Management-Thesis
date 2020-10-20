@@ -4,6 +4,7 @@ import { ProductModalService } from './../../service/product-modal.service';
 import { NotificationService } from './../../layouts/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/core/models';
+import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-product-management',
@@ -12,6 +13,7 @@ import { IProduct } from 'src/app/core/models';
 })
 export class ProductManagementComponent implements OnInit {
   products: IProduct[] = [];
+  figures: ITableOverviewModel[] = [];
 
   constructor(
     private productService: ProductService,
@@ -31,7 +33,30 @@ export class ProductManagementComponent implements OnInit {
   fetchProducts(): void {
     this.productService.fetchProducts().subscribe((products) => {
       this.products = products;
+      this.initializeTableOverview(products);
     });
+  }
+
+  initializeTableOverview(products: IProduct[]): void {
+    this.figures = [
+      {
+        title: 'Total products',
+        number: products.length,
+        extra: '+3 last week',
+      },
+      {
+        title: 'Category in use',
+        number: new Set(
+          ...products.map((p) => p.categories[0].name)
+        ).size,
+        extra: 'up to date',
+      },
+      {
+        title: 'Total quantity',
+        number: products.reduce((total, p) => total + p.quantity, 0),
+        extra: '+3 last week',
+      },
+    ];
   }
 
   showDetailsModal(id: number): void {

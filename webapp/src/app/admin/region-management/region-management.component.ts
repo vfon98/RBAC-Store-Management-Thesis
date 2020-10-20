@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegionService } from "../../core/http";
 import { IRegion } from "../../core/models";
 import { NotificationService } from "../../layouts/notification/notification.service";
+import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-region-management',
@@ -11,6 +12,7 @@ import { NotificationService } from "../../layouts/notification/notification.ser
 })
 export class RegionManagementComponent implements OnInit {
   regions: IRegion[] = [];
+  figures: ITableOverviewModel[];
 
   constructor(
     private regionService: RegionService,
@@ -28,7 +30,16 @@ export class RegionManagementComponent implements OnInit {
   fetchRegions(): void {
     this.regionService.fetchRegions().subscribe(regions => {
       this.regions = regions;
+      this.initializeTableOverview(regions);
     })
+  }
+
+  initializeTableOverview(regions: IRegion[]): void {
+    this.figures = [
+      { title: 'Total regions', number: regions.length, extra: '+1 last month'},
+      { title: 'Total stores', number: regions.reduce((total, r) => total + r.stores.length, 0)},
+      { title: 'Total regions', number: regions.length, extra: '+1 last month'},
+    ]
   }
 
   showDetailsModal(regionId: number): void {

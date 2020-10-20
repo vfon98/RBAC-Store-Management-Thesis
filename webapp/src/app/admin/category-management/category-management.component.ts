@@ -4,6 +4,7 @@ import { CategoryModalService } from '../../service/category-modal.service';
 import { NotificationService } from '../../layouts/notification/notification.service';
 import { ConfirmModalService } from '../../service/confirm-modal.service';
 import { ICategory } from 'src/app/core/models';
+import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-category-management',
@@ -12,6 +13,7 @@ import { ICategory } from 'src/app/core/models';
 })
 export class CategoryManagementComponent implements OnInit {
   categories: ICategory[] = [];
+  figures: ITableOverviewModel[] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -31,7 +33,28 @@ export class CategoryManagementComponent implements OnInit {
   fetchCategories(): void {
     this.categoryService.fetchCategories().subscribe((categories) => {
       this.categories = categories;
+      this.initializeTableOverview(categories);
     });
+  }
+
+  initializeTableOverview(categories: ICategory[]): void {
+    this.figures = [
+      {
+        title: 'Total categories',
+        number: categories.length,
+        extra: '+2 last week',
+      },
+      {
+        title: 'In use',
+        number: categories.length,
+        extra: 'up to date',
+      },
+      {
+        title: 'Orphan',
+        number: categories.length,
+        extra: 'up to date',
+      },
+    ];
   }
 
   showDetailsModal(id: number): void {

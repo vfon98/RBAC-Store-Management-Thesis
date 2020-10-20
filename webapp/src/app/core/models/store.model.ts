@@ -25,6 +25,6 @@ export type IStore = {
 };
 
 export enum StatusType {
-  Closed,
-  Open,
+  Closed = 'Closed',
+  Open = 'Open',
 }

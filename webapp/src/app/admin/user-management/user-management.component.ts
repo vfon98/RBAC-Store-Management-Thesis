@@ -4,6 +4,7 @@ import { UserModalService } from '../../service/user-modal.service';
 import { NotificationService } from '../../layouts/notification/notification.service';
 import { IUser } from 'src/app/core/models/user.model';
 import { StaffService } from 'src/app/core/http';
+import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-user-management',
@@ -12,6 +13,7 @@ import { StaffService } from 'src/app/core/http';
 })
 export class UserManagementComponent implements OnInit {
   users: IUser[] = [];
+  figures: ITableOverviewModel[] = [];
 
   constructor(
     private userService: StaffService,
@@ -33,11 +35,27 @@ export class UserManagementComponent implements OnInit {
       // users.sort((a, b) => a?.storeName.localeCompare(b?.storeName));
       // users.reverse();
       this.users = users;
+      this.initializeTableOverview(users);
     });
   }
 
+  initializeTableOverview(users: IUser[]): void {
+    this.figures = [
+      { title: 'Total staffs', number: users.length, extra: '+2 last week' },
+      {
+        title: 'Editable',
+        number: users.filter((u) => u.allowUpdate).length,
+      },
+      {
+        title: 'Deletable',
+        number: users.filter((u) => u.allowDelete).length,
+        extra: 'up to date',
+      },
+    ];
+  }
+
   printRoles(user: IUser): string {
-    return user.roles.map(r => r.name).join(', ');
+    return user.roles.map((r) => r.name).join(', ');
   }
 
   deleteUser(id: number): void {

@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewRoleDetailsManagementComponent } from '../../modal/view-role-details-management/view-role-details-management.component';
 import { UserService } from '../../core/auth/user.service';
 import { IUser } from 'src/app/core/models/user.model';
+import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-role-management',
@@ -17,6 +18,7 @@ import { IUser } from 'src/app/core/models/user.model';
 export class RoleManagementComponent implements OnInit {
   roles: IRole[];
   currentUser: IUser;
+  figures: ITableOverviewModel[] = [];
 
   constructor(
     private roleService: RoleService,
@@ -39,7 +41,23 @@ export class RoleManagementComponent implements OnInit {
   fetchRoles(): void {
     this.roleService.findAllAdminRoles().subscribe((roles) => {
       this.roles = roles;
+      this.initializeTableOverview(roles);
     });
+  }
+
+  initializeTableOverview(roles: IRole[]): void {
+    this.figures = [
+      { title: 'Total roles', number: roles.length, extra: '+2 last week' },
+      {
+        title: 'Editable',
+        number: roles.filter((u) => u.allowUpdate).length,
+      },
+      {
+        title: 'Deletable',
+        number: roles.filter((u) => u.allowDelete).length,
+        extra: 'up to date',
+      },
+    ];
   }
 
   viewRoleDetails(role: IRole): void {

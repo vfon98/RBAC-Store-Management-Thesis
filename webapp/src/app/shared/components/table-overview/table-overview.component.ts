@@ -1,4 +1,4 @@
-import { TableOverviewModel } from '../../../core/models/table-overview.model';
+import { ITableOverviewModel } from '../../../core/models/table-overview.model';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableOverviewComponent implements OnInit {
   @Input()
-  figures: TableOverviewModel[];
+  figures: ITableOverviewModel[];
 
   date = new Date();
 
