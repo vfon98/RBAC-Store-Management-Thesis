@@ -27,10 +27,10 @@
             class="nav-link"
             routerLink="products"
             routerLinkActive="active"
-            ><i class="fas fa-hamburger"></i> Products</a
+            ><i class="fas fa-warehouse"></i> Inventory</a
           >
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             *ngIf="canShow('category')"
             class="nav-link"
@@ -38,7 +38,7 @@
             routerLinkActive="active"
             ><i class="fas fa-tag"></i> Categories</a
           >
-        </li>
+        </li> -->
         <li class="nav-item">
           <a
             *ngIf="canShow('staff')"
@@ -65,7 +65,27 @@
             class="nav-link"
             routerLink="orders"
             routerLinkActive="active"
-            ><i class="fas fa-boxes"></i> Orders</a
+            ><i class="fas fa-truck-moving"></i> Orders</a
+          >
+        </li>
+        <li class="nav-item">
+          <!-- *ngIf="canShow('order')" -->
+          <a
+            *ngIf="canShow('order')"
+            class="nav-link"
+            routerLink="invoices"
+            routerLinkActive="active"
+            ><i class="fas fa-file-invoice-dollar"></i> Invoice</a
+          >
+        </li>
+        <li class="nav-item">
+          <!-- *ngIf="canShow('statistic')" -->
+          <a
+            *ngIf="canShow('order')"
+            class="nav-link"
+            routerLink="statistics"
+            routerLinkActive="active"
+            ><i class="fas fa-chart-line"></i> Statistic</a
           >
         </li>
 
