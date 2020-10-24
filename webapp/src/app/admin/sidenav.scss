@@ -195,9 +195,14 @@ a.nav-link {
 
   .link-arrow {
     font-size: $font-size-sm;
+    
+    span.fas.fa-chevron-right {
+      position: relative;
+      right: -10px;
+    }
   }
 
-  &[data-toggle="collapse"][aria-expanded="true"] .link-arrow {
+  &[data-toggle="collapse"][aria-expanded="true"] .link-arrow span.fas.fa-chevron-right {
     @include transform(rotate(90deg));
     transition: $transition-base;
   }

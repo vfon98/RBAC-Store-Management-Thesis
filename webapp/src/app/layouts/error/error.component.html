@@ -1,15 +1,7 @@
-<div>
-  <div class="row">
-      <!-- <div class="col-md-4">
-          <span class="img-fluid rounded"></span>
-      </div> -->
-
-      <div class="col-md-8 offset-md-2">
-          <!-- <h1 class="text-center">Error Page!</h1> -->
-
-          <div *ngIf="errorMessage">
-              <div class="alert alert-danger h1 text-center">{{ errorMessage }}</div>
-          </div>
-      </div>
-  </div>
-</div>
+<nz-result [nzStatus]="nzStatus" [nzTitle]="nzTitle" [nzSubTitle]="nzSubTitle">
+    <div nz-result-extra>
+        <button nz-button nzType="primary" (click)="goBack()">
+            <i nz-icon nzType="arrow-left" nzTheme="outline"></i>Go Back
+        </button>
+    </div>
+</nz-result>

@@ -72,7 +72,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NzButtonModule, NzUploadModule } from 'ng-zorro-antd';
+import { NzButtonModule, NzResultModule, NzUploadModule } from 'ng-zorro-antd';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RegionManagementComponent } from './admin/region-management/region-management.component';
 
@@ -157,6 +157,7 @@ registerLocaleData(en);
     NzButtonModule,
     NzUploadModule,
     NzIconModule,
+    NzResultModule,
     SharedModule,
   ],
   entryComponents: [LoginModalComponent],

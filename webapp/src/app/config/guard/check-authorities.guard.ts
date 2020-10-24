@@ -12,6 +12,8 @@ import { UserService } from 'src/app/core/auth/user.service';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { selectUser } from 'src/app/store/selectors/user.selector';
+import { SessionStorageService } from 'src/app/service/session-storage.service';
+import { IUser } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,8 @@ export class CheckAuthoritiesGuard implements CanActivate {
     private userService: UserService,
     private router: Router,
     private notiService: NotificationService,
-    private store$: Store
+    private store$: Store,
+    private sessionService: SessionStorageService
   ) {}
 
   canActivate(
@@ -32,10 +35,9 @@ export class CheckAuthoritiesGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const currentUser = this.userService.getCurrentUser();
+    // const currentUser = this.userService.getCurrentUser();
+    const currentUser: IUser = this.sessionService.getUserSession();
     const requiredRole: string[] = next.data.role;
-
-    if (!currentUser) return true;
 
     this.store$.pipe(select(selectUser)).subscribe(user => {
       console.log('user', user)

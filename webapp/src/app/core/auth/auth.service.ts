@@ -1,3 +1,4 @@
+import { SessionStorageService } from '../../service/session-storage.service';
 import { UserService } from './user.service';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { CartService } from '../http/cart.service';
@@ -23,7 +24,8 @@ export class AuthService {
     private router: Router,
     private userService: UserService,
     private cartService: CartService,
-    private notiService: NotificationService
+    private notiService: NotificationService,
+    private sessionService: SessionStorageService
   ) {}
 
   loginUser(username: string, password: string): Observable<unknown> {
@@ -42,6 +44,7 @@ export class AuthService {
       this.router.navigate(['/account/login']);
       this.userService.removeCurrentUser();
       this.cartService.clearLocalCart();
+      this.sessionService.removeUserSession();
       observer.next();
     });
   }
@@ -54,6 +57,7 @@ export class AuthService {
       // Do after fetched info
       this.navigateUser(user);
       this.cartService.fetchCart();
+      this.sessionService.setUserSession(user);
     });
   }
 

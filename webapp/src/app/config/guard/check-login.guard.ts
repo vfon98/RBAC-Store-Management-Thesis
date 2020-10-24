@@ -9,6 +9,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SessionStorageService } from 'src/app/service/session-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class CheckLoginGuard implements CanActivate {
   constructor(
     private userService: UserService,
     private notiService: NotificationService,
-    private loginModalService: LoginModalService
+    private loginModalService: LoginModalService,
+    private sessionService: SessionStorageService
   ) {}
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -27,10 +29,12 @@ export class CheckLoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const currentUser = this.userService.getCurrentUser();
-    if (currentUser) {
-      return true;
-    }
+    // const currentUser = this.userService.getCurrentUser();
+    // if (currentUser) {
+    //   return true;
+    // }
+    if (this.sessionService.isLogin()) return true;
+
     this.loginModalService.show();
     this.notiService.showWaring('Please login to continue!');
     return false;

@@ -27,15 +27,15 @@
             </li>
             <hr />
             <!-- JUST FOR TESTING -->
-            <!-- <li *ngIf="isAdmin() || isStaff()">
+            <li *ngIf="isAdmin() || isStaff()">
               <a routerLink="/admin">Admin Dashboard</a>
             </li>
             <li *ngIf="isManager() || isAdmin()">
               <a routerLink="/my-store">Store Management</a>
-            </li> -->
+            </li>
             <!-- JUST FOR TESTING -->
-            <!-- <li><a routerLink="/shopping/cart">Shopping Cart</a></li> -->
-            <!-- <li><a routerLink="/shopping/checkout">Checkout</a></li> -->
+            <li><a routerLink="/shopping/cart">Shopping Cart</a></li>
+            <li><a routerLink="/shopping/checkout">Checkout</a></li>
             <hr />
             <li (click)="logout()"><a>Logout</a></li>
           </ul>

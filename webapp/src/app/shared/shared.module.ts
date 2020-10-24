@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import {
   NzAvatarModule,
   NzButtonModule,
+  NzCardModule,
   NzIconModule, NzPopconfirmModule,
+  NzStatisticModule,
   NzTableModule,
   NzTagModule,
   NzToolTipModule,
@@ -39,6 +41,8 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
     NzAvatarModule,
     NzToolTipModule,
     NzPopconfirmModule,
+    NzStatisticModule,
+    NzCardModule,
   ],
   exports: [
     UsdPipe,
@@ -53,6 +57,8 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
     NzAvatarModule,
     NzToolTipModule,
     NzPopconfirmModule,
+    NzStatisticModule,
+    NzCardModule,
     // Shared Components
     TableOverviewComponent,
     BackButtonAdminComponent,

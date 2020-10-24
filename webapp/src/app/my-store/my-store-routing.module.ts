@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CheckLoginGuard } from '../config/guard/check-login.guard';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'manage/:id',
+    canActivate: [CheckLoginGuard],
     loadChildren: () =>
       import('./management/management.module').then((m) => m.ManagementModule),
   },
