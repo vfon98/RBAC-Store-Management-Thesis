@@ -1,0 +1,15 @@
+<div class="row mb-3">
+  <div class="col" *ngFor="let statistic of statistics">
+    <nz-card>
+      <nz-statistic
+        [nzValue]="(statistic.value || 0 | number: '1.0-2')!"
+        [nzTitle]="statistic.title || 'Default title'"
+        [nzPrefix]="prefixTplOne"
+        [nzSuffix]="statistic.suffix"
+        [nzValueStyle]="{ color: statistic.valueColor || '#3F8600' }"
+      >
+      </nz-statistic>
+      <ng-template #prefixTplOne><i nz-icon nzType="arrow-up"></i></ng-template>
+    </nz-card>
+  </div>
+</div>

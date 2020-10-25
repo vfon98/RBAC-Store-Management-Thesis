@@ -4,6 +4,7 @@ import { ConfirmModalService } from './../../../service/confirm-modal.service';
 import { Component, OnInit } from '@angular/core';
 import { IOrder } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/http';
+import { IManagerTableStatistic } from '../shared-table-statistic/shared-table-statistic.component';
 
 @Component({
   selector: 'app-store-orders',
@@ -11,6 +12,7 @@ import { CustomerService } from 'src/app/core/http';
   styleUrls: ['./store-orders.component.css'],
 })
 export class StoreOrdersComponent implements OnInit {
+  statistics: IManagerTableStatistic[];
   orders: IOrder[] = [];
   storeId: number;
 
@@ -22,18 +24,31 @@ export class StoreOrdersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe(params => {
+    this.route.parent.params.subscribe((params) => {
       this.storeId = +params.id;
-    })
+    });
     this.fetchOrders();
   }
 
+  initializeStatistics(): void {
+    this.statistics = [
+      { title: 'Total', value: this.orders.length },
+      {
+        title: 'Shipping',
+        value: this.orders.filter((o) => o.status === 'Shipping').length,
+      },
+      {
+        title: 'Shipped',
+        value: this.orders.filter((o) => o.status === 'Shipped').length,
+      },
+    ];
+  }
+
   fetchOrders(): void {
-    this.customerService
-      .fetchOrdersByStore()
-      .subscribe((orders) => {
-        this.orders = orders;
-      });
+    this.customerService.fetchOrdersByStore().subscribe((orders) => {
+      this.orders = orders;
+      this.initializeStatistics();
+    });
   }
 
   isShipping(order: IOrder): boolean {

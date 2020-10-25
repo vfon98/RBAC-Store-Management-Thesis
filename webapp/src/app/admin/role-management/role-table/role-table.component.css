@@ -2,16 +2,29 @@
   border-color: #a0d3f6;
 }
 table {
-  width: 95%;
+  /* width: 95%; */
 }
 .warp-table {
-  justify-content: center;
+  margin: 0 16px;
 }
 input[type="checkbox"] {
-  -ms-transform: scale(1.5); /* IE */
-  -moz-transform: scale(1.5); /* FF */
-  -webkit-transform: scale(1.5); /* Safari and Chrome */
-  -o-transform: scale(1.5); /* Opera */
+  -ms-transform: scale(1.8); /* IE */
+  -moz-transform: scale(1.8); /* FF */
+  -webkit-transform: scale(1.8); /* Safari and Chrome */
+  -o-transform: scale(1.8); /* Opera */
+  transform: scale(1.8);
+}
+
+.custom-checkbox {
+  margin-right: 4px;
+  position: relative;
+  bottom: -1px;
+  cursor: pointer;
+}
+
+.label-checkbox {
+  cursor: pointer;
+  transform: translateY(25%);
 }
 
 .remove-all-checked:hover {
@@ -23,8 +36,17 @@ input[type="checkbox"] {
   padding: 0 12px;
 }
 
+table thead th {
+  font-size: .9rem;
+}
+
+table tbody td {
+  font-size: .9rem;
+  padding: 16px 0;
+}
+
 @media only screen and (max-width: 1450px) {
   table th {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
 }

@@ -12,6 +12,7 @@ import { StoreStatisticsComponent } from './store-statistics/store-statistics.co
 import { StoreRolesComponent } from './store-roles/store-roles.component';
 import { StoreCategoriesComponent } from './store-categories/store-categories.component';
 import { StoreInvoicesComponent } from './store-invoices/store-invoices.component';
+import { SharedTableStatisticComponent } from './shared-table-statistic/shared-table-statistic.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StoreInvoicesComponent } from './store-invoices/store-invoices.componen
     StoreRolesComponent,
     StoreCategoriesComponent,
     StoreInvoicesComponent,
+    SharedTableStatisticComponent,
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,10 @@
 /*@import "~ng-zorro-antd/style/index.min.css";*/
 /*@import "~ng-zorro-antd/button/style/index.min.css";*/
 /* You can add global styles to this file, and also import other style files */
+html {
+  scroll-behavior: smooth;
+}
+
 .fas,
 .far {
   margin-right: 4px;
@@ -181,4 +185,8 @@ nz-table {
 .admin-table {
   border-radius: 8px !important;
   overflow: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

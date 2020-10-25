@@ -93,7 +93,8 @@ export class RoleTableComponent implements OnInit {
 
   filterResourceForAdmin(resources: IResource[]): void {
     if (!this.userService.isAdmin()) return;
-    const lockedResources = ['product', 'category', 'order'];
+    // const lockedResources = ['product', 'category', 'order'];
+    const lockedResources = ['order'];
     this.resources = resources.filter(r => !lockedResources.includes(r.name));
   }
 
