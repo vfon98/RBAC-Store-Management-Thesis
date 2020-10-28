@@ -9,6 +9,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.net.PortUnreachableException;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -48,6 +49,13 @@ public class Product {
             joinColumns = @JoinColumn(name = "id_product"),
             inverseJoinColumns = @JoinColumn(name = "id_category"))
     private Set<Category> categories;
+
+    @ManyToMany
+    @JoinTable(
+            name = "product_image",
+            joinColumns = @JoinColumn(name = "id_product"),
+            inverseJoinColumns = @JoinColumn(name ="id_image"))
+    private Collection<Image> images;
 
     public static Product updateData(Product product, ProductForm productForm, Set<Category> categorySet) {
         product.setName(productForm.getName());

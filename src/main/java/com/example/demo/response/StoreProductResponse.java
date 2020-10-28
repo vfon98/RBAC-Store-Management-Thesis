@@ -18,7 +18,8 @@ public class StoreProductResponse extends Product {
                 product.getStore(),
                 product.getCreatedAt(),
                 null,
-                product.getCategories()
+                product.getCategories(),
+                product.getImages()
         );
         this.storeProductQuantity = storeProductQuantity;
     }

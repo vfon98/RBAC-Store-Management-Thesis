@@ -1,3 +1,4 @@
+import { AgmCoreModule } from '@agm/core';
 import { UsdPipe } from './pipes/usd.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -43,6 +44,7 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
     NzPopconfirmModule,
     NzStatisticModule,
     NzCardModule,
+    AgmCoreModule
   ],
   exports: [
     UsdPipe,

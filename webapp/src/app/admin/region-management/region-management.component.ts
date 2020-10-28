@@ -1,5 +1,5 @@
 import { RegionModalService } from '../../service/region-modal.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RegionService } from "../../core/http";
 import { IRegion } from "../../core/models";
 import { NotificationService } from "../../layouts/notification/notification.service";
@@ -14,6 +14,9 @@ export class RegionManagementComponent implements OnInit {
   regions: IRegion[] = [];
   figures: ITableOverviewModel[];
 
+  @ViewChild("agmSearchBox")
+  input: any;
+
   constructor(
     private regionService: RegionService,
     private notiService: NotificationService,
@@ -25,6 +28,8 @@ export class RegionManagementComponent implements OnInit {
     this.regionService.refreshListener.subscribe(() => {
       this.fetchRegions();
     })
+
+    const searchBox = new google.maps.places.SearchBox(this.input);
   }
 
   fetchRegions(): void {

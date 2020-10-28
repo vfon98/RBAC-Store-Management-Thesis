@@ -14,7 +14,7 @@ import rootReducer, { metaReducers } from '../store/reducers';
     CommonModule,
     HttpClientModule,
     StoreModule.forRoot(rootReducer, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     {

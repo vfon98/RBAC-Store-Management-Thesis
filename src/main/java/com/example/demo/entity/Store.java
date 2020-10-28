@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,6 +37,12 @@ public class Store  {
     private Status status;
 
     private Date createdAt;
+
+    @ColumnDefault("0")
+    private Double longitude = 0.0;
+
+    @ColumnDefault("0")
+    private Double latitude = 0.0;
 
     @JsonIgnore
     @OneToMany(mappedBy = "store")

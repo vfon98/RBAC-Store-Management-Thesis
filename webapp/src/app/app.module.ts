@@ -75,6 +75,8 @@ import en from '@angular/common/locales/en';
 import { NzButtonModule, NzResultModule, NzUploadModule } from 'ng-zorro-antd';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RegionManagementComponent } from './admin/region-management/region-management.component';
+import {} from 'googlemaps';
+import { AgmCoreModule } from '@agm/core'
 
 registerLocaleData(en);
 
@@ -159,6 +161,10 @@ registerLocaleData(en);
     NzIconModule,
     NzResultModule,
     SharedModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
+      libraries: ['places', 'geometry']
+    })
   ],
   entryComponents: [LoginModalComponent],
   providers: [MDBSpinningPreloader, { provide: NZ_I18N, useValue: en_US }],

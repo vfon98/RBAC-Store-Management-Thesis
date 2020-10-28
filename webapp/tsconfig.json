@@ -21,7 +21,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "allowJs": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "types": ["googlemaps"]
   },
   "paths": {
     "app/*": ["src/app/*"]

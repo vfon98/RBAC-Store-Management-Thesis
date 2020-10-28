@@ -23,6 +23,6 @@ import { RegionDetailsComponent } from './region-details/region-details.componen
       { path: 'new', component: RegionAddComponent },
     ]),
   ],
-  exports: [RegionFormComponent]
+  exports: []
 })
 export class RegionManagementModule {}
