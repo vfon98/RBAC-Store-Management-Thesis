@@ -9,10 +9,12 @@ import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -50,17 +52,23 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAuthority(\"" + ProductPermission.CREATE + "\")")
-    public ResponseEntity<Product> save(@Valid @RequestBody ProductForm productForm) {
-        Product product = productService.save(productForm);
+    public ResponseEntity<Product> save(
+            @Valid @RequestBody ProductForm productForm,
+            @RequestParam("image") MultipartFile image) {
+        Product product = productService.save(productForm, image);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PutMapping("{productId}")
     @PreAuthorize("hasAuthority(\"" + ProductPermission.UPDATE + "\")")
-    public ResponseEntity<Product> update(@PathVariable Integer productId, @Valid @RequestBody ProductForm productForm) {
-        Product product = productService.update(productId, productForm);
+    public ResponseEntity<Product> update(
+            @PathVariable Integer productId,
+            @Valid @ModelAttribute ProductForm productForm,
+            @RequestParam(value = "image", required = false) MultipartFile image
+    ) {
+        Product product = productService.update(productId, productForm, image);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 

@@ -7,6 +7,7 @@ import com.example.demo.form.ProductForm;
 import com.example.demo.response.PageableProductResponse;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,11 +27,11 @@ public interface ProductService {
 
     Product findById(Integer id);
 
-    Product save(ProductForm productForm);
+    Product save(ProductForm productForm, MultipartFile image);
 
     Product save(Product product);
 
-    Product update(Integer id, ProductForm productForm);
+    Product update(Integer id, ProductForm productForm, MultipartFile image);
 
     Integer delete(Integer id);
 

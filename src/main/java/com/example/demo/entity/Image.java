@@ -37,6 +37,6 @@ public class Image {
 
     private String signature;
 
-    private Date created_at;
+    private String created_at;
 
 }

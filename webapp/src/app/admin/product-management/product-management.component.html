@@ -28,7 +28,10 @@
     <tr *ngFor="let product of productTable.data; index as i">
       <td>{{ i + 1 }}</td>
       <td class="img-col text-center">
-        <img class="img-fluid my-2" src="//placehold.it/100" alt="Product image">
+        <img
+          class="img-fluid my-2"
+          [src]="product?.images[0]?.secureUrl || '//placehold.it/100'"
+          alt="Product image">
       </td>
       <td>{{ product.name }}</td>
       <td>{{ product.price | usd }}</td>

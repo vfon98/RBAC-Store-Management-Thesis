@@ -24,7 +24,7 @@ export class ProductFormComponent implements OnInit {
     price: [1, [Validators.required, Validators.min(0)]],
     quantity: [1, [Validators.min(0), Validators.max(1000)]],
     categories: [[]],
-    file: [null]
+    image: [null]
   });
 
   constructor(
@@ -60,9 +60,9 @@ export class ProductFormComponent implements OnInit {
     this.notiService.showWaring('Invalid form. Please check again!');
   }
 
-  beforeUpload = (file: NzUploadFile): boolean => {
-    this.fileList = this.fileList.concat(file);
-    this.productForm.patchValue({ file });
+  beforeUpload = (image: NzUploadFile): boolean => {
+    this.fileList = this.fileList.concat(image);
+    this.productForm.patchValue({ image });
     return false;
   };
 }

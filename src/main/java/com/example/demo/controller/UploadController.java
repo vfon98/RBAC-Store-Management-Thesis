@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Image;
 import com.example.demo.response.CloudinaryResponse;
 import com.example.demo.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class UploadController {
     private UploadService uploadService;
 
     @PostMapping("/upload")
-    public ResponseEntity<CloudinaryResponse> uploadFile(@RequestParam("file") MultipartFile file) {
-        CloudinaryResponse response = uploadService.uploadFile(file);
+    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
+        Image response = uploadService.uploadFile(file);
         return ResponseEntity.ok(response);
     }
 }

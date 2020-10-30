@@ -23,5 +23,6 @@ export interface IProductBody {
   price: number;
   quantity?: number;
   storeId?: number;
-  categories: number[]
+  categories: number[];
+  image: File
 }

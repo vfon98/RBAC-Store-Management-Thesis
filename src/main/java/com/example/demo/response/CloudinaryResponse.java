@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CloudinaryResponse {
 
+    private String original_filename;
     private String public_id;
     private String asset_id;
     private Integer version;
@@ -20,7 +21,7 @@ public class CloudinaryResponse {
     private String format;
     private String resource_type;
     private String created_at;
-    private Double bytes;
+    private Long bytes;
     private String type;
     private String url;
     private String secure_url;

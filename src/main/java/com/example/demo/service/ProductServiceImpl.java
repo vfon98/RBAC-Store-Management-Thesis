@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
@@ -21,28 +23,25 @@ import java.util.Set;
 @Service(value = "productService")
 public class ProductServiceImpl implements ProductService {
 
+    @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
     private SecurityUtil securityUtil;
+
+    @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
     private StoreRepository storeRepository;
 
     @Autowired
-    public ProductServiceImpl(
-            ProductRepository productRepository,
-            SecurityUtil securityUtil,
-            CategoryRepository categoryRepository,
-            StoreRepository storeRepository
-    ) {
-
-        this.productRepository = productRepository;
-        this.securityUtil = securityUtil;
-        this.categoryRepository = categoryRepository;
-        this.storeRepository = storeRepository;
-    }
+    private UploadService uploadService;
 
     @Override
     public List<Product> findAll() {
-        return productRepository.findAll();
+        Sort sort = Sort.by("createdAt").descending();
+        return productRepository.findAll(sort);
     }
 
     @Override
@@ -73,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public PageableProductResponse findAll(Integer page, Integer size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by("createdAt").descending());
         Page<Product> products = productRepository.findAll(pageRequest);
         return PageableProductResponse.build(products);
     }
@@ -85,14 +84,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product save(ProductForm productForm) {
+    public Product save(ProductForm productForm, MultipartFile image) {
         Staff createByStaff = securityUtil.getCurrentStaff();
         Set<Category> categories = categoryRepository.findAllByIdIsIn(productForm.getCategories());
-        Store store = storeRepository.findById(productForm.getStoreId())
-                .orElseThrow(() -> new StoreNotFoundException(productForm.getStoreId()));
+//        Store store = storeRepository.findById(productForm.getStoreId())
+//                .orElseThrow(() -> new StoreNotFoundException(productForm.getStoreId()));
+        Image savedImage = uploadService.uploadFile(image);
 
         return productRepository.save(
-                ProductForm.buildProduct(productForm, store, createByStaff, categories));
+                ProductForm.buildProduct(productForm, null, createByStaff, categories, savedImage));
     }
 
     @Override
@@ -100,12 +100,13 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
-    @Override
-    public Product update(Integer id, ProductForm productForm) {
+    public Product update(Integer id, ProductForm productForm, MultipartFile image) {
         Product product = findById(id);
         Set<Category> categories = categoryRepository.findAllByIdIsIn(productForm.getCategories());
+
+        Image savedImage = uploadService.uploadFile(image);
         return productRepository.save(
-                Product.updateData(product, productForm, categories));
+                Product.updateData(product, productForm, categories, savedImage));
     }
 
     @Override

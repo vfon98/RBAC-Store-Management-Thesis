@@ -11,10 +11,12 @@ import com.example.demo.security.SecurityUtil;
 import com.example.demo.security.constants.*;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.Collections;
@@ -210,16 +212,22 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @Override
     @PostMapping("products")
     @PreAuthorize("hasAuthority(\"" + ProductPermission.CREATE + "\")")
-    public Product createProduct(@Valid @RequestBody ProductForm productForm) {
-        return productService.save(productForm);
+    public Product createProduct(
+            @Valid @ModelAttribute ProductForm productForm,
+            @RequestParam("image") MultipartFile image) {
+        return productService.save(productForm, image);
     }
 
     @Override
-    @PutMapping("products/{id}")
+    @PutMapping(value = "products/{id}",
+        consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PreAuthorize("hasAuthority(\"" + ProductPermission.UPDATE + "\")")
-    public Product updateProduct(@PathVariable Integer id, @Valid @RequestBody ProductForm productForm) {
+    public Product updateProduct(
+            @PathVariable Integer id,
+            @Valid @ModelAttribute ProductForm productForm,
+            @RequestParam(value = "image", required = false) MultipartFile image) {
         Product product = findProductById(id);
-        return productService.update(product.getId(), productForm);
+        return productService.update(product.getId(), productForm, image);
     }
 
     @Override
@@ -227,10 +235,10 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @PreAuthorize("hasAuthority(\"" + ProductPermission.READ + "\")")
     public Product findProductById(@PathVariable Integer id) {
         Product product = productService.findById(id);
-        Staff currentStaff = securityUtil.getCurrentStaff();
-        if (!product.getStore().equals(currentStaff.getStore())) {
-            throw new ProductNotFoundException(id);
-        }
+//        Staff currentStaff = securityUtil.getCurrentStaff();
+//        if (!product.getStore().equals(currentStaff.getStore())) {
+//            throw new ProductNotFoundException(id);
+//        }
         return product;
     }
 

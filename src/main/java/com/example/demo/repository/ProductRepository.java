@@ -5,6 +5,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.entity.Store;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,9 @@ import java.util.Set;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+    @Override
+    List<Product> findAll(Sort sort);
 
     @Override
     @EntityGraph(value = "graph.Product.categories")

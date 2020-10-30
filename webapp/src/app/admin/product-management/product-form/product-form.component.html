@@ -19,7 +19,7 @@
     <nz-upload [nzBeforeUpload]="beforeUpload" [(nzFileList)]="fileList">
       <button nz-button type="button"><i nz-icon nzType="upload"></i>Click to Upload</button>
     </nz-upload>
-    <div *ngIf="productForm.get('file').invalid" class="error">File is required</div>
+    <div *ngIf="productForm.get('image').invalid" class="error">File is required</div>
   </div>
   <div class="form-group">
     <label>Choose category:</label>
