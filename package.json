@@ -25,6 +25,7 @@
   "homepage": "https://github.com/ytbhoanghai/training-project#readme",
   "dependencies": {
     "@angular/animations": "^10.0.5",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.0.0"
   },
   "devDependencies": {}

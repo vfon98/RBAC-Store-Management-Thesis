@@ -106,7 +106,6 @@ export class RoleTableComponent implements OnInit {
     return resources;
   }
 
-  // TODO: Make it runs properly tomorrow
   checkGrantedPermmisonsOnUpdate(resources: IResource[]): IResource[] {
     // Exit on CREATE mode
     if (!this.role || !this.isUpdateMode()) return resources;

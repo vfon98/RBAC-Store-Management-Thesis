@@ -29,6 +29,10 @@ public class UploadServiceImpl implements UploadService {
 
 
     public Image uploadFile(MultipartFile file) {
+        if (file == null) {
+            return null;
+        }
+
         try {
             File uploadedFile = convertMultipartToFile(file);
             Map mapResponse = cloudinaryConfig.uploader().upload(uploadedFile, Uploader.OPTIONS);

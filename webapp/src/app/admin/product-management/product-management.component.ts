@@ -25,8 +25,9 @@ export class ProductManagementComponent implements OnInit {
   ngOnInit(): void {
     this.fetchProducts();
     this.productService.updateObservable$.subscribe((product: IProduct) => {
-      const index: number = this.products.findIndex((p) => p.id === product.id);
-      this.products[index] = product;
+      // const index: number = this.products.findIndex((p) => p.id === product.id);
+      // this.products[index] = product;
+      this.fetchProducts();
     });
   }
 

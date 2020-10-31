@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from '../config/interceptor/request.interceptor';
@@ -7,12 +7,15 @@ import { ResponseInterceptor } from '../config/interceptor/response.interceptor'
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import rootReducer, { metaReducers } from '../store/reducers';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     HttpClientModule,
+    NgxSpinnerModule,
     StoreModule.forRoot(rootReducer, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
@@ -28,6 +31,7 @@ import rootReducer, { metaReducers } from '../store/reducers';
       multi: true
     }
   ],
-  exports: []
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [],
 })
 export class CoreModule { }
