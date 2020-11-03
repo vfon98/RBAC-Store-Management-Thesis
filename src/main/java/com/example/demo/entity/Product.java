@@ -5,8 +5,10 @@ import com.example.demo.service.CategoryService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -32,6 +34,9 @@ public class Product {
 
     private BigDecimal price;
 
+    @ColumnDefault("0")
+    private Integer discountPercent;
+
     private Integer quantity;
 
     @JsonIgnore
@@ -44,8 +49,6 @@ public class Product {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     private Staff createdBy;
 
     @ManyToMany

@@ -1,7 +1,6 @@
 import { ITableOverviewModel } from './../../core/models/table-overview.model';
 import { StoreService } from 'src/app/core/http';
 import { NotificationService } from './../../layouts/notification/notification.service';
-import { MDBModalRef } from 'ng-uikit-pro-standard';
 import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { StoreModalService } from './../../service/store-modal.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,14 +13,13 @@ import { IStore } from 'src/app/core/models';
 })
 export class StoreManagementComponent implements OnInit {
   stores: IStore[] = [];
-  confirmModalRef: MDBModalRef;
   figures: ITableOverviewModel[] = [];
 
   constructor(
     private storeService: StoreService,
     private storeModalService: StoreModalService,
     private confirmService: ConfirmModalService,
-    private notiService: NotificationService
+    private notiService: NotificationService,
   ) {}
 
   ngOnInit(): void {

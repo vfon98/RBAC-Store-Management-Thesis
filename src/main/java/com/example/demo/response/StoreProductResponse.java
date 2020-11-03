@@ -14,6 +14,7 @@ public class StoreProductResponse extends Product {
                 product.getId(),
                 product.getName(),
                 product.getPrice(),
+                0,
                 product.getQuantity(),
                 product.getStore(),
                 product.getCreatedAt(),

@@ -1,6 +1,16 @@
-<div class="btn d-flex align-items-center">
-  <div class="spinner-border text-warning" role="status"></div>
-  <div class="text-warning ml-2">
-    Loading
-  </div>
-</div>
+<!--<div class="btn d-flex align-items-center">-->
+<!--  <div class="spinner-border text-warning" role="status"></div>-->
+<!--  <div class="text-warning ml-2">-->
+<!--    Loading-->
+<!--  </div>-->
+<!--</div>-->
+
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="medium"
+  color="#ff5500"
+  type="square-loader"
+  [fullScreen]="true"
+>
+  <p style="color: white" > Please wait... </p>
+</ngx-spinner>

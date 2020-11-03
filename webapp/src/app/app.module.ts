@@ -14,9 +14,11 @@ import { ProductManagementModule } from './admin/product-management/product-mana
 import { RoleManagementModule } from './admin/role-management/role-management.module';
 import { StoreManagementModule } from './admin/store-management/store-management.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
-import { MDBBootstrapModule, MDBBootstrapModulePro, MDBBootstrapModulesPro, ToastModule } from 'ng-uikit-pro-standard';
+import {
+  MDBBootstrapModule, MDBBootstrapModulePro, MDBBootstrapModulesPro, ToastModule
+} from 'ng-uikit-pro-standard';
 import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -77,95 +79,17 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RegionManagementComponent } from './admin/region-management/region-management.component';
 import {} from 'googlemaps';
 import { AgmCoreModule } from '@agm/core'
+import { NgxSpinnerModule } from "ngx-spinner";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    ContentComponent,
-    FooterComponent,
-    ErrorComponent,
-    UserManagementComponent,
-    RoleManagementComponent,
-    StoreManagementComponent,
-    ProductManagementComponent,
-    CategoryManagementComponent,
-    RegionManagementComponent,
-    HomeComponent,
-    LoginModalComponent,
-    ViewRoleDetailsManagementComponent,
-    ConfirmModalComponent,
-    UserDetailsModalComponent,
-    UserUpdateModalComponent,
-    RoleUpdateModalComponent,
-    StoreUpdateModalComponent,
-    StoreDetailsModalComponent,
-    ProductDetailsComponent,
-    ProductUpdateComponent,
-    CategoryDetailsComponent,
-    CategoryUpdateComponent,
-    DashboardComponent,
-    ManagementComponent,
-    ShoppingComponent,
-    ShoppingCategoryComponent,
-    ProductCardComponent,
-    ShoppingCartComponent,
-    ShoppingStoreComponent,
-    CartDetailComponent,
-    ProductsListComponent,
-    CartCheckoutComponent,
-    CartDetailItemComponent,
-    StripeFormComponent,
-    UserCheckoutFormComponent,
-    PaymentModalComponent,
-    ShoppingOrderComponent,
-    PaginationComponent,
-    RegisterFormComponent,
-    ShoppingOrderComponent,
-    SettingsComponent,
-    LoadingComponent,
-    ShoppingDetailsComponent,
-    AdminComponent,
-    AdminDashboardComponent,
-    ProductImportModalComponent,
-    UserAddModalComponent,
-    RoleAddModalComponent,
-    LoginComponent,
-    ProductAddModalComponent,
-    CategoryAddModalComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
-    UserManagementModule,
-    StoreManagementModule,
-    RoleManagementModule,
-    ProductManagementModule,
-    CategoryManagementModule,
-    DashboardModule,
-    ManagementModule,
-    BrowserAnimationsModule,
-    ToastModule.forRoot(),
-    ToastrModule.forRoot(),
-    MDBBootstrapModule,
-    MDBBootstrapModulePro,
-    MDBBootstrapModulesPro.forRoot(),
-    HttpClientModule,
-    NzButtonModule,
-    NzUploadModule,
-    NzIconModule,
-    NzResultModule,
-    SharedModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
-      libraries: ['places', 'geometry']
-    })
-  ],
+  declarations: [HeaderComponent, ContentComponent, FooterComponent, ErrorComponent, UserManagementComponent, RoleManagementComponent, StoreManagementComponent, ProductManagementComponent, CategoryManagementComponent, RegionManagementComponent, HomeComponent, LoginModalComponent, ViewRoleDetailsManagementComponent, ConfirmModalComponent, UserDetailsModalComponent, UserUpdateModalComponent, RoleUpdateModalComponent, StoreUpdateModalComponent, StoreDetailsModalComponent, ProductDetailsComponent, ProductUpdateComponent, CategoryDetailsComponent, CategoryUpdateComponent, DashboardComponent, ManagementComponent, ShoppingComponent, ShoppingCategoryComponent, ProductCardComponent, ShoppingCartComponent, ShoppingStoreComponent, CartDetailComponent, ProductsListComponent, CartCheckoutComponent, CartDetailItemComponent, StripeFormComponent, UserCheckoutFormComponent, PaymentModalComponent, ShoppingOrderComponent, PaginationComponent, RegisterFormComponent, ShoppingOrderComponent, SettingsComponent, LoadingComponent, ShoppingDetailsComponent, AdminComponent, AdminDashboardComponent, ProductImportModalComponent, UserAddModalComponent, RoleAddModalComponent, LoginComponent, ProductAddModalComponent, CategoryAddModalComponent,],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, NgbModule, FormsModule, ReactiveFormsModule, UserManagementModule, StoreManagementModule, RoleManagementModule, ProductManagementModule, CategoryManagementModule, DashboardModule, ManagementModule, BrowserAnimationsModule, ToastModule.forRoot(), ToastrModule.forRoot(), MDBBootstrapModule, MDBBootstrapModulePro, MDBBootstrapModulesPro.forRoot(), HttpClientModule, NzButtonModule, NzUploadModule, NzIconModule, NzResultModule, SharedModule, AgmCoreModule.forRoot({
+    apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
+    libraries: ['places', 'geometry']
+  }), NgxSpinnerModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [LoginModalComponent],
   providers: [MDBSpinningPreloader, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [ContentComponent],
