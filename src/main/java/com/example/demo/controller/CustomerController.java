@@ -85,7 +85,8 @@ public class CustomerController {
 
     @GetMapping(value = "stores/{storeId}/categories/{categoryId}/products")
     public ResponseEntity<PageableProductResponse> findProductsByStoreAndCategory(
-            @PathVariable Integer storeId, @PathVariable Integer categoryId,
+//            @PathVariable Integer storeId,
+            @PathVariable Integer categoryId,
             @RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "6") Integer size,
             @RequestParam(name = "search", required = false, defaultValue = "") String keyword
@@ -95,7 +96,7 @@ public class CustomerController {
         Pageable pageable = PageRequest.of(page - 1, size, sort);
 
         PageableProductResponse responses =
-                customerService.searchProducts(storeId, categoryId, pageable, keyword.trim());
+                customerService.searchProducts(null, categoryId, pageable, keyword.trim());
         /* customerService.findProductsByStoreAndCategory(storeId, categoryId, pageable); */
         return ResponseEntity.ok(responses);
     }

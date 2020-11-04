@@ -25,6 +25,11 @@ public interface ProductService {
 
     PageableProductResponse findAll(Integer page, Integer size);
 
+    PageableProductResponse findAll(Pageable pageable);
+
+    //    THESIS
+    PageableProductResponse findAllByCategoryAndKeywordSearch(Category category, String keyword, Pageable pageable);
+
     Product findById(Integer id);
 
     Product save(ProductForm productForm, MultipartFile image);

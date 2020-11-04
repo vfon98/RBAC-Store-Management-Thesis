@@ -78,6 +78,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public PageableProductResponse findAll(Pageable pageable) {
+        Page<Product> products = productRepository.findAll(pageable);
+        return PageableProductResponse.build(products);
+    }
+
+    @Override
+    public PageableProductResponse findAllByCategoryAndKeywordSearch(Category category, String keyword, Pageable pageable) {
+        Page<Product> products =
+                productRepository.findAllByCategoriesAndAndNameContains(category, keyword, pageable);
+        return PageableProductResponse.build(products);
+    }
+
+    @Override
     public Product findById(Integer id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException(id));

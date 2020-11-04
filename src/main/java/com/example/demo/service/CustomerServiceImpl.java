@@ -205,16 +205,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public PageableProductResponse searchProducts(
             Integer storeId, Integer categoryId, Pageable pageable, String keyword) {
-        Store store = storeService.findById(storeId);
+//        Store store = storeService.findById(storeId);
 
-        PageableProductResponse response = null;
+        PageableProductResponse response;
         if (categoryId == -1) {
             response =
-                    productService.findAllByStoreAndNameMatches(store, keyword, pageable);
+//                    productService.findAllByStoreAndNameMatches(store, keyword, pageable);
+                    productService.findAll(pageable);
         } else {
             Category category = categoryService.findById(categoryId);
             response =
-                    productService.findAllByStoreAndCategoriesIsContainingAndNameMatchesRegex(store, category, keyword, pageable);
+//                    productService.findAllByStoreAndCategoriesIsContainingAndNameMatchesRegex(store, category, keyword, pageable);
+                    productService.findAllByCategoryAndKeywordSearch(category, keyword, pageable);
         }
 
         return response;

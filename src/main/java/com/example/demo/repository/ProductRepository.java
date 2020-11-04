@@ -38,4 +38,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findAllByStoreAndCategoriesIsContaining(Store store, Category category, Pageable pageable);
 
+    Page<Product> findAllByCategoriesAndAndNameContains(Category category, String keyword, Pageable pageable);
 }

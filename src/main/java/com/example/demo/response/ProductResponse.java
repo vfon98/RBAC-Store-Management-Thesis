@@ -39,7 +39,9 @@ public class ProductResponse {
                 .quantity(product.getQuantity())
                 .categoryNames(categoryNames)
                 .createdAt(product.getCreatedAt())
-                .storeName(product.getStore().getName()).build();
+//                .storeName(product.getStore().getName())
+                .storeName(null)
+                .build();
     }
 
     public static ProductResponse build(StoreProduct storeProduct, String storeName) {
