@@ -16,6 +16,7 @@ export interface IProduct {
   productId?: number;
   cartItemId?: number;
   storeId?: number;
+  imageUrl?: string;
 }
 
 export interface IProductBody {

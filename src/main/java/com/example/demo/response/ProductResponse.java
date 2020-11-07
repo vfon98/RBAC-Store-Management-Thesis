@@ -1,6 +1,7 @@
 package com.example.demo.response;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Image;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.StoreProduct;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
@@ -26,11 +28,18 @@ public class ProductResponse {
     private List<String> categoryNames;
     private Date createdAt;
     private String storeName;
+    private String imageUrl;
 
     public static ProductResponse build(Product product) {
         List<String> categoryNames = product.getCategories().stream()
                 .map(Category::getName)
                 .collect(Collectors.toList());
+
+        String imageUrl = new String();
+        Optional<Image> optionalImage = product.getImages().stream().findFirst();
+        if (optionalImage.isPresent()) {
+            imageUrl = optionalImage.get().getSecureUrl();
+        }
 
         return ProductResponse.builder()
                 .id(product.getId())
@@ -41,6 +50,7 @@ public class ProductResponse {
                 .createdAt(product.getCreatedAt())
 //                .storeName(product.getStore().getName())
                 .storeName(null)
+                .imageUrl(imageUrl)
                 .build();
     }
 

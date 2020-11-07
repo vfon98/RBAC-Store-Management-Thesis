@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css'],
+  styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit, OnDestroy {
   @Input() product: IProduct;
@@ -25,12 +25,13 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     private shoppingModalService: ShoppingModalService,
     private notiService: NotificationService,
     private route: ActivatedRoute
-  ) {}
-
+  ) {
+  }
+  
   ngOnInit(): void {
     this.addFieldsToProduct();
     this.checkOutOfStock();
-    this.imgUrl = `https://picsum.photos/id/${this.randomImgId()}/400`;
+    this.imgUrl = this.product?.imageUrl || `https://picsum.photos/id/${this.randomImgId()}/400`;
     this.listener = this.cartService.outStockListener$.subscribe((id) => {
       if (id === this.product.id && !this.isSoldOut()) {
         this.isOutOfStock = true;

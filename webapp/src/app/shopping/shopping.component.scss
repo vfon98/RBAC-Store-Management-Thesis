@@ -60,3 +60,20 @@ hr {
 #content {
   min-height: 70vh !important;
 }
+
+.icon-voice-search {
+  position: absolute;
+  font-size: 1.2rem;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  margin-right: 8px;
+  z-index: 1;
+  transition: all .1s;
+
+  &:hover {
+    font-size: 1.3rem;
+    margin-right: 7px;
+  }
+}
