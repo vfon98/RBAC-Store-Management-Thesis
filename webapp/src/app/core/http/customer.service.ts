@@ -6,7 +6,7 @@ import {
   IMergeCartBody,
   IOrder,
   IMessageResponse,
-  IPaymentInfo,
+  IPaymentInfo, IProduct,
 } from 'src/app/core/models';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -33,6 +33,10 @@ export class CustomerService {
       this.REQUEST_URL + `stores/${storeId}/categories/${categoryId}/products`,
       { params: { page: String(page), size: String(size), search: search } }
     );
+  }
+
+  fetchProductDetails(productId: number): Observable<IProduct> {
+    return this.http.get<IProduct>(this.REQUEST_URL + `products/${productId}`);
   }
 
   getMyCart(): Observable<ICart> {

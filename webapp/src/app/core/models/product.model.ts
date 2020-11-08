@@ -1,4 +1,5 @@
 import { ICategory } from './category.model';
+import {IImage} from "./image.model";
 
 export interface IProduct {
   id: number;
@@ -12,6 +13,7 @@ export interface IProduct {
   createdAt?: number;
   categories?: ICategory[],
   categoryNames?: string[],
+  images?: IImage[],
   imgUrl?: string;
   productId?: number;
   cartItemId?: number;

@@ -203,6 +203,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Product getProductDetails(Integer productId) {
+        return productService.findById(productId);
+    }
+
+    @Override
     public PageableProductResponse searchProducts(
             Integer storeId, Integer categoryId, Pageable pageable, String keyword) {
 //        Store store = storeService.findById(storeId);

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Order;
+import com.example.demo.entity.Product;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
@@ -99,6 +100,12 @@ public class CustomerController {
                 customerService.searchProducts(null, categoryId, pageable, keyword.trim());
         /* customerService.findProductsByStoreAndCategory(storeId, categoryId, pageable); */
         return ResponseEntity.ok(responses);
+    }
+
+    @GetMapping(value = "/products/{productId}")
+    public ResponseEntity<Product> getProductDetails(@PathVariable Integer productId) {
+        return ResponseEntity.ok(
+                customerService.getProductDetails(productId));
     }
 
     @Deprecated

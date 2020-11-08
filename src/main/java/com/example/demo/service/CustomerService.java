@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Order;
+import com.example.demo.entity.Product;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
@@ -29,6 +30,8 @@ public interface CustomerService {
     List<Integer> mergeCart(List<CartItemMergeForm> cartItemMergeForms) throws JsonProcessingException;
 
     List<ProductResponse> findProductsByStoreAndCategory(Integer storeId, Integer CategoryId);
+
+    Product getProductDetails(Integer productId);
 
     PageableProductResponse searchProducts(Integer storeId, Integer categoryId, Pageable pageable, String keyword);
 

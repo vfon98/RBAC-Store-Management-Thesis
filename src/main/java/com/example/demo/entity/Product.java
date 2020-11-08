@@ -39,6 +39,8 @@ public class Product {
 
     private Integer quantity;
 
+    private String description;
+
     @JsonIgnore
     @OneToOne
     @JoinColumn(name = "id_store")
