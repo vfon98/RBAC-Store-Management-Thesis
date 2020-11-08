@@ -25,6 +25,8 @@ public class ProductForm {
 
     private Integer quantity;
 
+    private Integer discount;
+
     private Integer storeId;
 
     Set<Integer> categories;

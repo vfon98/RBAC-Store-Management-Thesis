@@ -18,7 +18,8 @@
       <th class="img-col text-center" scope="col">Image</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
-      <th scope="col" class="text-center">Quantity</th>
+      <th scope="col" class="text-center">Discount</th>
+<!--      <th scope="col" class="text-center">Quantity</th>-->
       <th scope="col">Category</th>
       <th scope="col">Created at</th>
       <th scope="col" class="text-center">Action</th>
@@ -35,7 +36,13 @@
       </td>
       <td>{{ product.name }}</td>
       <td>{{ product.price | usd }}</td>
-      <td class="text-center">{{ product.quantity }}</td>
+      <td class="text-center">
+        <span *ngIf="product.discountPercent; else emptyBlock">
+          {{ product.discountPercent }}%
+        </span>
+        <ng-template #emptyBlock><span class="empty-slash">-</span></ng-template>
+      </td>
+<!--      <td class="text-center">{{ product.quantity }}</td>-->
       <td>{{ getCategories(product) }}</td>
       <td>{{ product.createdAt | date: "short" }}</td>
       <td class="text-center">

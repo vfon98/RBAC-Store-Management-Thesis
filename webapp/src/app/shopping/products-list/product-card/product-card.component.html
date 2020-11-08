@@ -1,11 +1,14 @@
-<div class="product-item border rounded" (click)="showProductModal()">
+<div
+  class="product-item border rounded"
+  [routerLink]="['/shopping', 'products', product.id, 'details']"
+>
   <div class="pi-pic">
 
     <img [src]="imgUrl" class="product-img" />
     <img *ngIf="isOutOfStock" src="assets/img/out-of-stock.png" class="out-of-stock" />
     <img *ngIf="isSoldOut()" src="assets/img/sold-out.png" alt="Sold out" class="sold-out">
 
-    <!-- <div class="sale pp-sale">Sale</div> -->
+    <div *ngIf="product.discountPercent" class="sale pp-sale text-center">Sale {{ product.discountPercent }}%</div>
     <div class="icon">
       <i class="fas fa-cart-plus"></i>
       <!-- <i class="far fa-star"></i> -->
@@ -13,7 +16,7 @@
     </div>
 
     <ul>
-      <li class="w-icon active">
+      <li class="w-icon active" (click)="showProductModal()">
         <a><i class="fas fa-info mr-0"></i></a>
       </li>
       <li class="quick-view hover-shadow">
@@ -33,9 +36,13 @@
       <h5 class="product-name">{{ product.name }}</h5>
     </a>
     <div class="product-price">
-      {{ product.price | usd }}
-      <!-- <span>$35.00</span> -->
+      {{ product.price - (product.price * product.discountPercent / 100) | usd }}
+      <span *ngIf="product.discountPercent">{{ product.price | usd }}</span>
     </div>
   </div>
   <div class="text-muted small text-center mb-2"><i class="far fa-gem"></i>{{ product.storeName }}</div>
+
+  <div class="text-center px-2 mb-2 btn-details">
+    <button class="btn btn-block btn-outline-warning font-weight-bold">SEE DETAIL</button>
+  </div>
 </div>

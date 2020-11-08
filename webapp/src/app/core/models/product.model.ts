@@ -17,6 +17,7 @@ export interface IProduct {
   cartItemId?: number;
   storeId?: number;
   imageUrl?: string;
+  discountPercent?: number;
 }
 
 export interface IProductBody {

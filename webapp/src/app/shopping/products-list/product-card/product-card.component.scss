@@ -17,8 +17,24 @@ a {
   margin: 0 8px;
 }
 
+.btn-details {
+  display: none;
+}
+
 .product-item {
   cursor: pointer;
+  transition: all .2s ease-in-out;
+  position: relative;
+  top: 0;
+
+  &:hover {
+    top: -2px;
+    box-shadow: 0 3px 0 rgb(84 94 111 / 20%);
+
+    //.btn-details {
+    //  display: block;
+    //}
+  }
 }
 
 .product-name {
@@ -47,5 +63,8 @@ a {
 
 .product-img {
   max-height: 238px;
-  border-bottom: 1px solid #dee2e6!important;
+  border-bottom: 1px solid #dee2e6 !important;
+  width: 235px;
+  height: 235px;
 }
+

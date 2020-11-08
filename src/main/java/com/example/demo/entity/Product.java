@@ -74,6 +74,7 @@ public class Product {
 
         product.setName(productForm.getName());
         product.setPrice(productForm.getPrice());
+        product.setDiscountPercent(productForm.getDiscount());
         product.setCategories(categorySet);
         product.setQuantity(productForm.getQuantity());
         if (image != null) {

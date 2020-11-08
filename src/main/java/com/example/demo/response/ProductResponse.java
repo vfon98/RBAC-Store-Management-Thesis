@@ -24,6 +24,7 @@ public class ProductResponse {
     private Integer id;
     private String name;
     private BigDecimal price;
+    private Integer discountPercent;
     private Integer quantity;
     private List<String> categoryNames;
     private Date createdAt;
@@ -45,6 +46,7 @@ public class ProductResponse {
                 .id(product.getId())
                 .name(product.getName())
                 .price(product.getPrice())
+                .discountPercent(product.getDiscountPercent())
                 .quantity(product.getQuantity())
                 .categoryNames(categoryNames)
                 .createdAt(product.getCreatedAt())
