@@ -9,7 +9,7 @@ import {NzUploadFile} from "ng-zorro-antd";
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css'],
+  styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit {
   @Input() product: IProduct;
@@ -22,10 +22,11 @@ export class ProductFormComponent implements OnInit {
   productForm = this.formBuilder.group({
     name: [null, [Validators.required, Validators.minLength(4)]],
     price: [1, [Validators.required, Validators.min(0)]],
-    quantity: [1, [Validators.min(0), Validators.max(1000)]],
+    // quantity: [1, [Validators.min(0), Validators.max(1000)]],
     discount: [0, [Validators.min(0), Validators.max(99)]],
     categories: [[]],
-    image: [null]
+    image: [null],
+    description: [null]
   });
 
   constructor(

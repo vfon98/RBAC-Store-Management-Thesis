@@ -79,6 +79,7 @@ public class Product {
         product.setDiscountPercent(productForm.getDiscount());
         product.setCategories(categorySet);
         product.setQuantity(productForm.getQuantity());
+        product.setDescription(productForm.getDescription());
         if (image != null) {
             List images = new ArrayList();
             images.add(image);

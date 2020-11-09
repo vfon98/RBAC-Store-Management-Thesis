@@ -4,12 +4,10 @@ import com.example.demo.entity.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +25,8 @@ public class ProductForm {
 
     private Integer discount;
 
+    private String description;
+
     private Integer storeId;
 
     Set<Integer> categories;
@@ -42,6 +42,7 @@ public class ProductForm {
                 .name(productForm.getName())
                 .price(productForm.getPrice())
                 .quantity(productForm.getQuantity())
+                .description(productForm.getDescription())
                 .store(store)
                 .images(List.of(savedImage))
                 .createdAt(new Date())

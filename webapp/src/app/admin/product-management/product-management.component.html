@@ -21,6 +21,7 @@
       <th scope="col" class="text-center">Discount</th>
 <!--      <th scope="col" class="text-center">Quantity</th>-->
       <th scope="col">Category</th>
+      <th class="text-center" scope="col">Description</th>
       <th scope="col">Created at</th>
       <th scope="col" class="text-center">Action</th>
     </tr>
@@ -40,10 +41,14 @@
         <span *ngIf="product.discountPercent; else emptyBlock">
           {{ product.discountPercent }}%
         </span>
-        <ng-template #emptyBlock><span class="empty-slash">-</span></ng-template>
       </td>
 <!--      <td class="text-center">{{ product.quantity }}</td>-->
       <td>{{ getCategories(product) }}</td>
+      <td class="text-center">
+        <span *ngIf="product.description; else emptyBlock">
+          {{ product.description }}
+        </span>
+      </td>
       <td>{{ product.createdAt | date: "short" }}</td>
       <td class="text-center">
         <app-action-buttons-admin
@@ -55,3 +60,5 @@
     </tr>
   </tbody>
 </nz-table>
+
+<ng-template #emptyBlock><span class="empty-slash">-</span></ng-template>

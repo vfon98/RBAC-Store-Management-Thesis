@@ -20,6 +20,7 @@ export interface IProduct {
   storeId?: number;
   imageUrl?: string;
   discountPercent?: number;
+  description?: string;
 }
 
 export interface IProductBody {
