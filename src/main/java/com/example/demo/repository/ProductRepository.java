@@ -32,11 +32,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findAllByStore(Store store);
 
+    Page<Product> findAllByNameContains(String term, Pageable pageable);
+
     Page<Product> findAllByStoreAndNameContains(Store store, String term, Pageable pageable);
 
     Page<Product> findAllByStoreAndCategoriesIsContainingAndNameContains(Store store, Category category, String term, Pageable pageable);
 
     Page<Product> findAllByStoreAndCategoriesIsContaining(Store store, Category category, Pageable pageable);
 
-    Page<Product> findAllByCategoriesAndAndNameContains(Category category, String keyword, Pageable pageable);
+    Page<Product> findAllByCategoriesAndNameContains(Category category, String keyword, Pageable pageable);
 }

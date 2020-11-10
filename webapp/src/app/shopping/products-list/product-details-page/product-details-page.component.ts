@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {CustomerService} from "../../../core/http";
-import {IProduct} from "../../../core/models";
+import {CartService, CustomerService} from "../../../core/http";
+import {ICartItem, IProduct} from "../../../core/models";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ShoppingModalService} from "../../../service/shopping-modal.service";
 
 @Component({
   selector: 'app-product-details-page',
@@ -11,13 +12,18 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ProductDetailsPageComponent implements OnInit {
   product: IProduct;
 
+  quantity = 1;
+  addedQuantity = 0;
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
+    this.findAddedQuantity();
     this.route.params.subscribe(params => {
       this.fetchProductDetails(params.productId);
     })
@@ -31,6 +37,33 @@ export class ProductDetailsPageComponent implements OnInit {
         console.error("Error", err);
         this.router.navigate(['/shopping']);
       });
+  }
+
+  findAddedQuantity(): void {
+    const items: ICartItem[] = this.cartService.getCart().items;
+    const addedItem = items.find(item => item.productId === this.product.id);
+    if (addedItem) {
+      this.addedQuantity = addedItem.quantity;
+    }
+  }
+
+  incQuantity(): void {
+    if (this.quantity >= this.product.quantity - this.addedQuantity) return;
+    this.quantity = +this.quantity + 1;
+  }
+
+  desQuantity(): void {
+    if (this.quantity <= 1) return;
+    this.quantity = +this.quantity - 1;
+  }
+
+  addToCart(): void {
+    this.cartService.addItem(this.product, this.quantity);
+  }
+
+  addToCartAndCheckout(): void {
+    this.addToCart();
+    this.router.navigate(['/shopping', 'cart']);
   }
 }
 

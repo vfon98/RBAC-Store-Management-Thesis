@@ -25,7 +25,9 @@ public interface ProductService {
 
     PageableProductResponse findAll(Integer page, Integer size);
 
-    PageableProductResponse findAll(Pageable pageable);
+//    PageableProductResponse findAll(Pageable pageable);
+
+    PageableProductResponse findAll(String term, Pageable pageable);
 
     //    THESIS
     PageableProductResponse findAllByCategoryAndKeywordSearch(Category category, String keyword, Pageable pageable);

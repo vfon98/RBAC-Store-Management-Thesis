@@ -10,7 +10,8 @@ import { finalize } from "rxjs/operators";
 export class LoaderInterceptor implements HttpInterceptor {
 
   timer: number;
-  timeout = 100;
+  // timeout = 100;
+  timeout = 0;
 
   constructor(private loaderService: LoaderService ) {
     if (location.pathname.startsWith('/admin')) {

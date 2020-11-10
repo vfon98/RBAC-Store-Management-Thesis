@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.entity.*;
 import com.example.demo.exception.ProductNotFoundException;
-import com.example.demo.exception.StoreNotFoundException;
 import com.example.demo.form.ProductForm;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
@@ -78,15 +77,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public PageableProductResponse findAll(Pageable pageable) {
-        Page<Product> products = productRepository.findAll(pageable);
+    public PageableProductResponse findAll(String keyword, Pageable pageable) {
+        Page<Product> products = productRepository.findAllByNameContains(keyword, pageable);
         return PageableProductResponse.build(products);
     }
 
     @Override
     public PageableProductResponse findAllByCategoryAndKeywordSearch(Category category, String keyword, Pageable pageable) {
         Page<Product> products =
-                productRepository.findAllByCategoriesAndAndNameContains(category, keyword, pageable);
+                productRepository.findAllByCategoriesAndNameContains(category, keyword, pageable);
         return PageableProductResponse.build(products);
     }
 

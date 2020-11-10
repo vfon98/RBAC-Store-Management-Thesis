@@ -216,7 +216,7 @@ public class CustomerServiceImpl implements CustomerService {
         if (categoryId == -1) {
             response =
 //                    productService.findAllByStoreAndNameMatches(store, keyword, pageable);
-                    productService.findAll(pageable);
+                    productService.findAll(keyword, pageable);
         } else {
             Category category = categoryService.findById(categoryId);
             response =

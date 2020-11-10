@@ -98,7 +98,7 @@ public class CustomerController {
 
         PageableProductResponse responses =
                 customerService.searchProducts(null, categoryId, pageable, keyword.trim());
-        /* customerService.findProductsByStoreAndCategory(storeId, categoryId, pageable); */
+//        customerService.findProductsByStoreAndCategory(storeId, categoryId, pageable);
         return ResponseEntity.ok(responses);
     }
 

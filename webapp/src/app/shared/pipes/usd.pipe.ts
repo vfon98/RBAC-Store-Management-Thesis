@@ -8,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class UsdPipe extends CurrencyPipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): string {
-    return super.transform(value, 'USD', true, '1.0-2');
+    return super.transform(value, 'USD', 'symbol-narrow', '1.0-2');
   }
 
 }

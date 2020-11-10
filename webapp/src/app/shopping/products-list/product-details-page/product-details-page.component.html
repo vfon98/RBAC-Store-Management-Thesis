@@ -13,12 +13,12 @@
     <h3>{{ product.name }}</h3>
   </div>
   <div class="row">
-    <div class="col-4 border">
+    <div class="col-4">
       <div class="container">
         <img [src]="product?.images[0]?.secureUrl || 'https://placehold.it/500'" alt="" class="img-fluid">
       </div>
     </div>
-    <div class="col-4 border">
+    <div class="col-4">
       <div class="price">
         {{ product.price - (product.price * product.discountPercent / 100) | usd }}
         <span class="price-without-discount">{{ product.price | usd }}</span>
@@ -69,12 +69,10 @@
       </div>
 
     </div>
-    <div class="col-4 border">
-      In-stock stores
-
-      <div class="div-store-map border" style="height: 300px">
-        map here
-      </div>
+    <div class="col-4">
+      <nz-card nzType="inner" nzTitle="Available Stores">
+        <a>Inner Card Content</a>
+      </nz-card>
     </div>
   </div>
 
@@ -82,10 +80,7 @@
     <h5>Product Description</h5>
   </div>
   <div class="row">
-    Lorem ipsum dolor sit amet, consectetur adipisicing
-    elit. Animi at suscipit
-    tempore. Maxime, officia, pariatur? Aut commodi dolorem eligendi excepturi
-    fuga hic id, iusto libero, quis repellat sunt totam unde!
+    {{ product.description }}
   </div>
 </div>
 
