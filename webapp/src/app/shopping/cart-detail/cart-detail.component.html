@@ -37,6 +37,9 @@
                 [item]="item"
                 (onItemChanged)="handleItemChanged($event)"
               ></tr>
+              <tr *ngIf="!cart?.items.length">
+                <td class="text-center text-danger font-weight-bold font-italic py-3" colspan="6">Your cart is empty!</td>
+              </tr>
             </tbody>
           </table>
         </div>

@@ -2,14 +2,15 @@ import { ProductService } from './../../core/http/product.service';
 import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { ProductModalService } from './../../service/product-modal.service';
 import { NotificationService } from './../../layouts/notification/notification.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { IProduct } from 'src/app/core/models';
 import { ITableOverviewModel } from 'src/app/core/models/table-overview.model';
 
 @Component({
   selector: 'app-product-management',
   templateUrl: './product-management.component.html',
-  styleUrls: ['./product-management.component.css'],
+  styleUrls: ['./product-management.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductManagementComponent implements OnInit {
   products: IProduct[] = [];
@@ -20,7 +21,8 @@ export class ProductManagementComponent implements OnInit {
     private notiService: NotificationService,
     private productModalService: ProductModalService,
     private confirmService: ConfirmModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.fetchProducts();

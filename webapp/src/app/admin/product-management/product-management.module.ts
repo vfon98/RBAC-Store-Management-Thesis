@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import {SharedModule} from "../../shared/shared.module";
+import {QuillModule} from "ngx-quill";
+import {quillConfig} from "../../config/quill.config";
 
 @NgModule({
   declarations: [ProductAddComponent, ProductFormComponent],
@@ -14,9 +16,12 @@ import {SharedModule} from "../../shared/shared.module";
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild([
-      { path: '', component: ProductManagementComponent },
-      { path: 'new', component: ProductAddComponent },
+      {path: '', component: ProductManagementComponent},
+      {path: 'new', component: ProductAddComponent},
     ]),
+    QuillModule.forRoot({
+      modules: quillConfig
+    }),
   ],
   exports: [ProductAddComponent, ProductFormComponent],
 })

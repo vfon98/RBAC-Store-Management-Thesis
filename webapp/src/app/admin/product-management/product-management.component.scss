@@ -1,0 +1,22 @@
+.img-col {
+  max-width: 50px;
+  max-height: 50px;
+  padding: 0 !important;
+}
+
+.product-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  * {
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: inherit;
+  }
+
+  img, video {
+    display: none;
+  }
+}

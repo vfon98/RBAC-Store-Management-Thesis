@@ -40,7 +40,7 @@ export class CheckAuthoritiesGuard implements CanActivate {
     const requiredRole: string[] = next.data.role;
 
     this.store$.pipe(select(selectUser)).subscribe(user => {
-      console.log('user', user)
+      // console.log('user', user)
     })
 
     // Check current user type

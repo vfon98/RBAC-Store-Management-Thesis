@@ -30,6 +30,9 @@
               ></i>
             </td>
           </tr>
+          <tr *ngIf="!cart.items.length">
+            <td colspan="5">Your cart is empty!</td>
+          </tr>
         </tbody>
       </table>
     </div>

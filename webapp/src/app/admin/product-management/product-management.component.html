@@ -45,8 +45,12 @@
 <!--      <td class="text-center">{{ product.quantity }}</td>-->
       <td>{{ getCategories(product) }}</td>
       <td class="text-center">
-        <span *ngIf="product.description; else emptyBlock">
-          {{ product.description }}
+        <span
+          *ngIf="product.description; else emptyBlock"
+          class="product-desc"
+          [innerHTML]="product.description"
+        >
+<!--          {{ product.description }}-->
         </span>
       </td>
       <td>{{ product.createdAt | date: "short" }}</td>
