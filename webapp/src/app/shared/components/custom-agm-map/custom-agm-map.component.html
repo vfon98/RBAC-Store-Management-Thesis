@@ -1,0 +1,22 @@
+<agm-map
+  [latitude]="latitude"
+  [longitude]="longitude"
+  [zoom]="zoom"
+  [ngStyle]="{
+    width: width || '100%',
+    height: height || '300px'
+  }"
+>
+  <agm-marker
+    *ngFor="let marker of markers"
+    [latitude]="marker.latitude"
+    [longitude]="marker.longitude"
+    [opacity]="0.95"
+    [title]="marker.label"
+    animation="DROP"
+  ></agm-marker>
+</agm-map>
+<!--    [label]="{-->
+<!--      text: marker.label,-->
+<!--      color: '#000'-->
+<!--    }"-->

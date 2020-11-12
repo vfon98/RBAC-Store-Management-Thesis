@@ -18,6 +18,8 @@ export type IStore = {
   id: number;
   name: string;
   address: string;
+  latitude?: number;
+  longitude?: number;
   email: string;
   phone: string;
   status: StatusType;

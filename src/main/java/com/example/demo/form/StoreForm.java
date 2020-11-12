@@ -1,5 +1,6 @@
 package com.example.demo.form;
 
+import com.example.demo.entity.Region;
 import com.example.demo.entity.Staff;
 import com.example.demo.entity.Store;
 import com.example.demo.entity.Store.Status;
@@ -25,6 +26,10 @@ public class StoreForm {
 
     private String address;
 
+    private Double latitude;
+
+    private Double longitude;
+
     @Email
     private String email;
 
@@ -33,13 +38,18 @@ public class StoreForm {
 
     private Status status;
 
-    public static Store buildStore(StoreForm storeForm, Staff createdBy) {
+    private Integer regionId;
+
+    public static Store buildStore(StoreForm storeForm, Staff createdBy, Region region) {
         return Store.builder()
                 .name(storeForm.getName())
                 .address(storeForm.getAddress())
+                .latitude(storeForm.getLatitude())
+                .longitude(storeForm.getLongitude())
                 .email(storeForm.getEmail())
                 .phone(storeForm.getPhone())
                 .status(storeForm.getStatus())
+                .region(region)
                 .createdBy(createdBy)
                 .createdAt(new Date()).build();
     }

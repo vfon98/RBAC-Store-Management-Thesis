@@ -1,0 +1,26 @@
+.marker {
+  color: white;
+  background-color: black;
+  border: solid 1px black;
+  font-weight: 900;
+  padding: 4px;
+  top: -8px;
+}
+
+.marker::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  border: solid 8px transparent;
+  border-top-color: black;
+}
+
+.labels {
+  border: 1px solid green !important;
+}
+
+.pac-container {
+  z-index: 2000 !important;
+}

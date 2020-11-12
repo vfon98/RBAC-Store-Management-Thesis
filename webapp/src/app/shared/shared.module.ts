@@ -19,6 +19,8 @@ import { FormAddWrapperAdminComponent } from './components/form-add-wrapper-admi
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalWrapperAdminComponent } from './components/modal-wrapper-admin/modal-wrapper-admin.component';
 import { ActionButtonsAdminComponent } from './components/action-buttons-admin/action-buttons-admin.component';
+import { CustomAgmMapComponent } from './components/custom-agm-map/custom-agm-map.component';
+import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/custom-agm-searchbox.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
     FormAddWrapperAdminComponent,
     ModalWrapperAdminComponent,
     ActionButtonsAdminComponent,
+    CustomAgmMapComponent,
+    CustomAgmSearchboxComponent,
   ],
   imports: [
     CommonModule,
@@ -67,6 +71,9 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
     ModalWrapperAdminComponent,
     FormAddWrapperAdminComponent,
     ActionButtonsAdminComponent,
+    // Google Maps
+    CustomAgmMapComponent,
+    CustomAgmSearchboxComponent
   ],
 })
 export class SharedModule {}

@@ -18,3 +18,4 @@ export {
 export { IPaymentInfo } from './payment.model';
 export { IRegion, IRegionBody } from "./region.model";
 export { IImage } from "./image.model";
+export { IAgmMarker } from "./agm-marker.model";

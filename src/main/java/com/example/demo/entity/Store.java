@@ -70,6 +70,8 @@ public class Store  {
     public static Store updateData(Store store, StoreForm storeForm) {
         store.setName(storeForm.getName());
         store.setAddress(storeForm.getAddress());
+        store.setLatitude(storeForm.getLatitude());
+        store.setLongitude(storeForm.getLongitude());
         store.setPhone(storeForm.getPhone());
         store.setEmail(storeForm.getEmail());
         store.setStatus(storeForm.getStatus());

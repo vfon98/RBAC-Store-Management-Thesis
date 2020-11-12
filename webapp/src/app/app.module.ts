@@ -94,7 +94,7 @@ registerLocaleData(en);
       apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
       libraries: ['places', 'geometry']
     }),
-    // NgxSpinnerModule, QuillModule.forRoot()
+    NgxSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [LoginModalComponent],

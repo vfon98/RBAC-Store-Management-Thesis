@@ -4,7 +4,7 @@ import { NotificationService } from './../../layouts/notification/notification.s
 import { ConfirmModalService } from './../../service/confirm-modal.service';
 import { StoreModalService } from './../../service/store-modal.service';
 import { Component, OnInit } from '@angular/core';
-import { IStore } from 'src/app/core/models';
+import { IAgmMarker, IStore } from 'src/app/core/models';
 
 @Component({
   selector: 'app-store-management',
@@ -14,6 +14,7 @@ import { IStore } from 'src/app/core/models';
 export class StoreManagementComponent implements OnInit {
   stores: IStore[] = [];
   figures: ITableOverviewModel[] = [];
+  agmMarkers: IAgmMarker[] = [];
 
   constructor(
     private storeService: StoreService,
@@ -27,6 +28,7 @@ export class StoreManagementComponent implements OnInit {
     this.storeService.updateObservable$.subscribe((store: IStore) => {
       const index: number = this.stores.findIndex((s) => s.id === store.id);
       this.stores[index] = store;
+      this.fetchStores();
     });
   }
 
@@ -34,6 +36,7 @@ export class StoreManagementComponent implements OnInit {
     this.storeService.fetchStores().subscribe((stores) => {
       this.stores = stores;
       this.initializeTableOverview(stores);
+      this.initializeAgmMarkers(stores);
     });
   }
 
@@ -50,6 +53,14 @@ export class StoreManagementComponent implements OnInit {
         extra: 'up to date',
       },
     ];
+  }
+
+  initializeAgmMarkers(stores: IStore[] = []): void {
+    this.agmMarkers = this.stores.map(store => ({
+      latitude: store.latitude,
+      longitude: store.longitude,
+      label: store.name
+    }))
   }
 
   showDetailsModal(id: number): void {

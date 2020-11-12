@@ -16,7 +16,6 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,12 +30,14 @@ public class StoreServiceImpl implements StoreService {
     private StaffService staffService;
     private SecurityUtil securityUtil;
     private CategoryRepository categoryRepository;
+    private RegionService regionService;
 
     @Autowired
     public StoreServiceImpl(
             StoreRepository storeRepository,
             ProductRepository productRepository,
             RoleRepository roleRepository,
+            RegionService regionService,
             StoreProductService storeProductService,
             StaffService staffService,
             SecurityUtil securityUtil,
@@ -48,6 +49,7 @@ public class StoreServiceImpl implements StoreService {
         this.staffService = staffService;
         this.securityUtil = securityUtil;
         this.categoryRepository = categoryRepository;
+        this.regionService = regionService;
     }
 
     @Override
@@ -78,7 +80,8 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public Store save(StoreForm storeForm) {
         Staff staff = securityUtil.getCurrentStaff();
-        return storeRepository.save(StoreForm.buildStore(storeForm, staff));
+        Region region = regionService.findById(storeForm.getRegionId());
+        return storeRepository.save(StoreForm.buildStore(storeForm, staff, region));
     }
 
     @Override
@@ -164,12 +167,12 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public Store update(Integer id, StoreForm storeForm) {
         Store store = findById(id);
-        store.setName(storeForm.getName());
-        store.setAddress(storeForm.getAddress());
-        store.setPhone(storeForm.getPhone());
-        store.setStatus(storeForm.getStatus());
+//        store.setName(storeForm.getName());
+//        store.setAddress(storeForm.getAddress());
+//        store.setPhone(storeForm.getPhone());
+//        store.setStatus(storeForm.getStatus());
 
-        return storeRepository.save(store);
+        return storeRepository.save(Store.updateData(store, storeForm));
     }
 
     @Override

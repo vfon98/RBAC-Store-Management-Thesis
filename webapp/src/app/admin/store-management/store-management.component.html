@@ -1,5 +1,9 @@
 <app-table-overview [figures]="figures"></app-table-overview>
-<ngx-spinner></ngx-spinner>
+<!--<ngx-spinner></ngx-spinner>-->
+
+<app-custom-agm-map
+  [markers]="agmMarkers"
+></app-custom-agm-map>
 
 <div class="d-flex justify-content-start">
   <button routerLink="new" nz-button nzType='primary' nzShape='round' class="btn-create">

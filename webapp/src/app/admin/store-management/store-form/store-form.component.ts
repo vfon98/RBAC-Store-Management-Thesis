@@ -1,10 +1,11 @@
-import { StoreService } from  'src/app/core/http';
+import { RegionService, StoreService } from 'src/app/core/http';
 import { NotificationService } from './../../../layouts/notification/notification.service';
-import { IStore } from 'src/app/core/models';
+import { IRegion, IStore } from 'src/app/core/models';
 import { Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { IUser } from 'src/app/core/models/user.model';
+import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-store-form',
@@ -21,11 +22,15 @@ export class StoreFormComponent implements OnInit {
   statusList: string[] = [];
   managers: IUser[] = [];
   staffs: IUser[] = [];
+  regions: IRegion[] = [];
 
   storeForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.email]],
     address: [''],
+    regionId: [null, [Validators.required]],
+    latitude: [null],
+    longitude: [null],
     phone: [
       '',
       [Validators.pattern(/(09|01)([0-9]{8,})\b/), Validators.maxLength(11)],
@@ -38,19 +43,27 @@ export class StoreFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private notiService: NotificationService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private regionService: RegionService
   ) {}
 
   ngOnInit(): void {
     this.fillDataToForm();
     this.fetchStoreStatus();
     // this.fetchManagerList();
+    this.fetchRegions();
   }
 
   fetchStoreStatus(): void {
     this.storeService.fetchStatusList().subscribe((statusList) => {
       this.statusList = statusList;
     });
+  }
+
+  fetchRegions(): void {
+    this.regionService.fetchRegions().subscribe(regions => {
+      this.regions = regions;
+    })
   }
 
   fetchManagerList(): void {
@@ -106,5 +119,16 @@ export class StoreFormComponent implements OnInit {
     this.storeForm.patchValue({
       selectStaffId: this.staffs[0]?.id,
     });
+  }
+
+  handleGeolocationChanged(places: PlaceResult[]): void {
+    if (!places || !places.length) return;
+    const place: PlaceResult = places[0];
+
+    this.storeForm.patchValue({
+      address: place.formatted_address,
+      latitude: place.geometry.location.lat(),
+      longitude: place.geometry.location.lng()
+    })
   }
 }

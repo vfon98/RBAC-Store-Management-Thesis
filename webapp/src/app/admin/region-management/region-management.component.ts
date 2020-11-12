@@ -1,5 +1,5 @@
 import { RegionModalService } from '../../service/region-modal.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RegionService } from "../../core/http";
 import { IRegion } from "../../core/models";
 import { NotificationService } from "../../layouts/notification/notification.service";
