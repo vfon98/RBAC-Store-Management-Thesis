@@ -1,4 +1,4 @@
-export const options = {
+export const DEFAULT_OPTIONS = {
   backdrop: true,
   keyboard: true,
   focus: true,

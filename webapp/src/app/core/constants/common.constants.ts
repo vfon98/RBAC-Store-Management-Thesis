@@ -19,4 +19,9 @@ export enum AgmZoom {
   BUILDINGS = 20
 }
 
+export enum LANGUAGE_CODE {
+  EN = 'en-US',
+  VN = 'vi-VN'
+}
+
 export default CONSTANTS;

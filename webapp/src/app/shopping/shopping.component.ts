@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/auth/user.service';
 import { Subscription } from 'rxjs';
 import { IUser } from '../core/models/user.model';
+import { VoiceSearchModalService } from "../service/voice-search-modal.service";
 
 @Component({
   selector: 'app-shopping',
@@ -25,7 +26,8 @@ export class ShoppingComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private loginModal: LoginModalService,
-    private authService: AuthService
+    private authService: AuthService,
+    private voiceSearchModalService: VoiceSearchModalService
   ) {}
 
   ngOnInit(): void {
@@ -35,12 +37,19 @@ export class ShoppingComponent implements OnInit {
       this.username = user?.name;
     });
     this.kickoutMangerAndAdmin();
+    this.listenVoiceSearchResponse();
   }
 
   kickoutMangerAndAdmin(): void {
     if (this.userService.isManager() || this.userService.isAdmin()) {
       this.authService.logoutUser().subscribe();
     }
+  }
+
+  listenVoiceSearchResponse(): void {
+    this.voiceSearchModalService.confirm$.subscribe(text => {
+      console.log("LISTEN", text)
+    })
   }
 
   login(): void {
@@ -98,5 +107,9 @@ export class ShoppingComponent implements OnInit {
   backToHome(): void {
     if (location.pathname.startsWith('/shopping/store')) return;
     this.router.navigate(['/shopping']);
+  }
+
+  showVoiceSearchModal(): void {
+    this.voiceSearchModalService.show();
   }
 }

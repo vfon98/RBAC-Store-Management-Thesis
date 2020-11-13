@@ -61,7 +61,7 @@
         <div class="advanced-search">
           <button type="button" class="category-btn">All Categories</button>
           <form action="#" class="input-group" (ngSubmit)="handleSearch()">
-            
+
             <input
             type="text"
             placeholder="What do you need?"
@@ -70,7 +70,7 @@
             (input)="handleInput()"
             />
 
-            <i class="icon-voice-search" nz-icon nzType="audio"></i>
+            <i class="icon-voice-search" nz-icon nzType="audio" (click)="showVoiceSearchModal()"></i>
 
             <button type="submit"><i class="fas fa-search"></i></button>
           </form>
