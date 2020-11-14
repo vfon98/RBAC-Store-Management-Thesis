@@ -48,7 +48,8 @@ export class ShoppingComponent implements OnInit {
 
   listenVoiceSearchResponse(): void {
     this.voiceSearchModalService.confirm$.subscribe(text => {
-      console.log("LISTEN", text)
+      this.searchKeyword = text;
+      this.handleSearch();
     })
   }
 

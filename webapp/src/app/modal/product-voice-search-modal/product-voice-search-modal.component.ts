@@ -21,17 +21,19 @@ export class ProductVoiceSearchModalComponent implements OnInit, OnDestroy {
     this.voiceRecognitionService.init();
     this.voiceRecognitionService.text$.subscribe(text => {
       if (!text || this.text === text) return;
-      this.text = text.toLowerCase();
 
       if (CANCEL_COMMANDS.includes(this.text)) {
         this.hideModal();
         return this.voiceSearchModalService.emitCancel(this.text);
       }
 
-      if (CONFIRM_COMMANDS.includes(this.text)) {
+      if (CONFIRM_COMMANDS.includes(text)) {
         this.hideModal();
         return this.voiceSearchModalService.emitConfirm(this.text);
+        this.text = text.toLowerCase();
       }
+      // Check word before setting to property
+      this.text = text.toLowerCase();
     })
   }
 
