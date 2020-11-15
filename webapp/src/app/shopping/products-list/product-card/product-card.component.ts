@@ -27,11 +27,12 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
   }
-  
+
   ngOnInit(): void {
     this.addFieldsToProduct();
     this.checkOutOfStock();
-    this.imgUrl = this.product?.imageUrl || `https://picsum.photos/id/${this.randomImgId()}/400`;
+    // this.imgUrl = this.product?.imageUrl || `https://picsum.photos/id/${this.randomImgId()}/400`;
+    this.imgUrl = this.product?.imageUrl;
     this.listener = this.cartService.outStockListener$.subscribe((id) => {
       if (id === this.product.id && !this.isSoldOut()) {
         this.isOutOfStock = true;

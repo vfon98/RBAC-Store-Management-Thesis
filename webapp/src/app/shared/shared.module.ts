@@ -21,6 +21,7 @@ import { ModalWrapperAdminComponent } from './components/modal-wrapper-admin/mod
 import { ActionButtonsAdminComponent } from './components/action-buttons-admin/action-buttons-admin.component';
 import { CustomAgmMapComponent } from './components/custom-agm-map/custom-agm-map.component';
 import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/custom-agm-searchbox.component';
+import { ImageFallbackDirective } from './directives/image-fallback.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/c
     ActionButtonsAdminComponent,
     CustomAgmMapComponent,
     CustomAgmSearchboxComponent,
+    ImageFallbackDirective,
   ],
   imports: [
     CommonModule,
@@ -73,7 +75,8 @@ import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/c
     ActionButtonsAdminComponent,
     // Google Maps
     CustomAgmMapComponent,
-    CustomAgmSearchboxComponent
+    CustomAgmSearchboxComponent,
+    ImageFallbackDirective
   ],
 })
 export class SharedModule {}
