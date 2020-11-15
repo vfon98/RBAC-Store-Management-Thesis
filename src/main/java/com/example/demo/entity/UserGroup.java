@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.enums.UserGroupEnums;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,8 +23,8 @@ public class UserGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Length(min = 4)
-    private String name;
+    @Enumerated(value = EnumType.STRING)
+    private UserGroupEnums name;
 
     private Integer priority;
 

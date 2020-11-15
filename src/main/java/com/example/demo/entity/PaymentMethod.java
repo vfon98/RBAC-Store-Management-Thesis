@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.enums.PaymentMethodEnums;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,8 @@ public class PaymentMethod {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name;
+    @Enumerated(value = EnumType.STRING)
+    private PaymentMethodEnums name;
 
     @CreationTimestamp
     private Date createdAt;
