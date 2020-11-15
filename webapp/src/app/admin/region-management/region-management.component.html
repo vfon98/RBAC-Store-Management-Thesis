@@ -7,8 +7,13 @@
   </button>
 </div>
 <div class="mb-3">
-  <agm-map [latitude]="10.030259" [longitude]="105.771802"
-           style="width: 100%; height: 300px;"></agm-map>
+<!--  <agm-map [latitude]="10.030259" [longitude]="105.771802"-->
+<!--           style="width: 100%; height: 300px;"></agm-map>-->
+  <app-custom-agm-map
+    [latitude]="centerLatitude"
+    [longitude]="centerLongitude"
+    [markers]="agmMarkers"
+  ></app-custom-agm-map>
 </div>
 
 <nz-table
@@ -26,7 +31,11 @@
     </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let region of regionTable.data; index as i">
+  <tr
+    *ngFor="let region of regionTable.data; index as i"
+    (click)="setActive(i)"
+    [class.active]="currentActive === i"
+  >
     <td>{{ i + 1 }}</td>
     <td>{{ region.name }}</td>
     <td>{{ region.description || '-' }}</td>

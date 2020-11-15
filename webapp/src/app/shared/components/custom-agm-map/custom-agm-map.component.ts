@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import CONSTANTS, {
   AgmMapType,
   AgmZoom
@@ -11,9 +11,9 @@ import { NgbTypeaheadConfig } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './custom-agm-map.component.html',
   styleUrls: ['./custom-agm-map.component.css']
 })
-export class CustomAgmMapComponent implements OnInit {
-  latitude: number = CONSTANTS.DEFAULT_LATITUDE;
-  longitude: number = CONSTANTS.DEFAULT_LONGITUDE;
+export class CustomAgmMapComponent implements OnInit, OnChanges {
+  @Input() latitude;
+  @Input() longitude;
   position: any;
 
   @Input() width: number;
@@ -26,8 +26,7 @@ export class CustomAgmMapComponent implements OnInit {
   markers: IAgmMarker[] = [];
 
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     const timer = setInterval(() => {
@@ -37,6 +36,13 @@ export class CustomAgmMapComponent implements OnInit {
         clearInterval(timer);
       }
     }, 200)
+  }
+
+  ngOnChanges() {
+    if (!this.latitude || !this.longitude) {
+      this.latitude  = CONSTANTS.DEFAULT_LATITUDE;
+      this.longitude = CONSTANTS.DEFAULT_LONGITUDE;
+    }
   }
 
   getCurrentGeolocation(): void {
