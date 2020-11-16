@@ -1,6 +1,7 @@
 import { AuthService } from './../../core/auth/auth.service';
 import { MDBModalRef } from 'ng-uikit-pro-standard';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -28,8 +29,12 @@ export class LoginComponent implements OnInit {
       () => {
         // this.modalRef.hide();
       },
-      (error) => {
-        this.messageError = error.error.message;
+      (error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.messageError = 'Wrong username or password. Please try again!';
+        } else {
+          this.messageError = error.error.message;
+        }
       }
     );
   }

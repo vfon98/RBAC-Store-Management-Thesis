@@ -1,5 +1,5 @@
 <h4>Billing Details</h4>
-<div class="row">
+<div class="row mb-5">
   <div class="col-lg-12">
     <label>Full Name<span>*</span></label>
     <input type="text" id="name" name="name" [(ngModel)]="userForm.name" disabled required />
@@ -17,9 +17,18 @@
     <input type="text" id="email" name="email" [(ngModel)]="userForm.email" disabled required />
   </div>
   <div class="col-lg-6">
-    <label>Phone</label>
+    <label>Phone<span>*</span></label>
     <input type="text" name="phone" [(ngModel)]="userForm.phone" required />
   </div>
+  <div class="col-lg-12">
+    <label>Choose payment method<span>*</span></label>
+    <select name="paymentMethod" [(ngModel)]="userForm.paymentMethod" required>
+      <option value="cash">Pay when delivered</option>
+      <option value="online">Online payment</option>
+    </select>
+
+  </div>
+
 <!--  <div class="col-lg-12 py-2">-->
 <!--    <label>Credit or Debit Card<span>*</span></label>-->
     <!-- <app-stripe-form (onToken)="handleToken($event)"></app-stripe-form> -->
