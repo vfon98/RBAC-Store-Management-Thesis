@@ -20,6 +20,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Override
     List<Product> findAll(Sort sort);
 
+    List<Product> findAllByOrderByCreatedAtDesc();
+
     @Override
     @EntityGraph(value = "graph.Product.categories")
     Optional<Product> findById(Integer integer);

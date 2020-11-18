@@ -141,13 +141,15 @@ public class ProductServiceImpl implements ProductService {
     // NEW API FOR MANAGER
 
     public List<Product> findProductsForManager() {
-        List<Product> allProducts = productRepository.findAll();
+//        List<Product> allProducts = productRepository.findAll();
+        List<Product> allProducts = productRepository.findAllByOrderByCreatedAtDesc();
         Store store = securityUtil.getCurrentStaff().getStore();
 
         List<StoreProduct> storeProducts = storeProductRepository.findAllByStore(store);
-        List<Product> result = allProducts.stream().map(product -> {
+        List<Product> result = allProducts.parallelStream().map(product -> {
             return updateProductIfExisted(storeProducts, product);
         }).collect(Collectors.toList());
+
         return result;
     }
 
