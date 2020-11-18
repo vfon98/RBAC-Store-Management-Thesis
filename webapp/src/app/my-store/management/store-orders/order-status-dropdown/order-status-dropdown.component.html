@@ -1,0 +1,36 @@
+<a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+  Click me
+  <i nz-icon nzType="down"></i>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item>
+      <nz-tag nzColor="success">
+        <i nz-icon nzType="check-circle"></i>
+        <span>success</span>
+      </nz-tag>
+    </li>
+    <li nz-menu-item>
+      <nz-tag nzColor="processing">
+        <i nz-icon nzType="sync" nzSpin></i>
+        <span>processing</span>
+      </nz-tag>
+    </li>
+    <li nz-menu-divider>
+      <nz-tag [nzColor]="'magenta'">magenta</nz-tag>
+    </li>
+    <li nz-menu-item nzDisabled>disabled menu item</li>
+    <li nz-submenu nzTitle="sub menu">
+      <ul>
+        <li nz-menu-item>3rd menu item</li>
+        <li nz-menu-item>4th menu item</li>
+      </ul>
+    </li>
+    <li nz-submenu nzDisabled nzTitle="disabled sub menu">
+      <ul>
+        <li nz-menu-item>3rd menu item</li>
+        <li nz-menu-item>4th menu item</li>
+      </ul>
+    </li>
+  </ul>
+</nz-dropdown-menu>

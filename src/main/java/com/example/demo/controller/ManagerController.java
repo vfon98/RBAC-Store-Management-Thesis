@@ -246,10 +246,12 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @GetMapping("products")
     @PreAuthorize("hasAuthority(\"" + ProductPermission.READ + "\")")
     public List<Product> findAllProducts() {
-        Staff currentStaff = securityUtil.getCurrentStaff();
-        return productService.findAllByStore(currentStaff.getStore()).stream()
-                .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
-                .collect(Collectors.toList());
+        return productService.findProductsForManager();
+//        Staff currentStaff = securityUtil.getCurrentStaff();
+//        return productService.findAllByStore(currentStaff.getStore())
+//                .stream()
+//                .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
+//                .collect(Collectors.toList());
     }
 
     @Override

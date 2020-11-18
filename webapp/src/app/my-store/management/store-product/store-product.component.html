@@ -106,7 +106,7 @@
       <tr *ngFor="let product of addedProducts">
         <th scope="row">{{ product.id }}</th>
         <td>
-          <img class="product-image" src="//placehold.it/50" [alt]="product.name">
+          <img class="product-image" [src]="product?.images[0]?.url || '//placehold.it/50'" [alt]="product.name">
         </td>
         <td>{{ product.name }}</td>
         <td>{{ product.price | usd }}</td>

@@ -13,6 +13,8 @@ import { StoreRolesComponent } from './store-roles/store-roles.component';
 import { StoreCategoriesComponent } from './store-categories/store-categories.component';
 import { StoreInvoicesComponent } from './store-invoices/store-invoices.component';
 import { SharedTableStatisticComponent } from './shared-table-statistic/shared-table-statistic.component';
+import { NzDropDownModule } from "ng-zorro-antd";
+import { OrderStatusDropdownComponent } from './store-orders/order-status-dropdown/order-status-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { SharedTableStatisticComponent } from './shared-table-statistic/shared-t
     StoreCategoriesComponent,
     StoreInvoicesComponent,
     SharedTableStatisticComponent,
+    OrderStatusDropdownComponent,
   ],
   imports: [
     CommonModule,

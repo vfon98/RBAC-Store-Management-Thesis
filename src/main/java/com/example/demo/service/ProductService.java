@@ -45,4 +45,5 @@ public interface ProductService {
     void save(List<Product> products);
 
 
+    List<Product> findProductsForManager();
 }

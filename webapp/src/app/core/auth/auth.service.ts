@@ -17,7 +17,7 @@ import { JwtToken } from '../models';
   providedIn: 'root',
 })
 export class AuthService {
-  private jwtLocalStorageName = 'authenticationToken';
+  private jwtSessionStorageName = 'authenticationToken';
 
   constructor(
     private http: HttpClient,
@@ -40,7 +40,7 @@ export class AuthService {
   // Convert logout to Observable
   logoutUser(): Observable<unknown> {
     return new Observable((observer) => {
-      localStorage.removeItem(this.jwtLocalStorageName);
+      sessionStorage.removeItem(this.jwtSessionStorageName);
       this.router.navigate(['/account/login']);
       this.userService.removeCurrentUser();
       this.cartService.clearLocalCart();
@@ -51,7 +51,7 @@ export class AuthService {
 
   // Store jwt into local storage after authenticate success
   private authenticateSuccess(jwt: JwtToken) {
-    localStorage.setItem(this.jwtLocalStorageName, jwt.id_token);
+    sessionStorage.setItem(this.jwtSessionStorageName, jwt.id_token);
     this.router.navigateByUrl(location.pathname, { skipLocationChange: true });
     this.userService.fetchUserInfo().subscribe((user) => {
       // Do after fetched info
@@ -78,6 +78,6 @@ export class AuthService {
   }
 
   getAuthToken(): string {
-    return localStorage.getItem(this.jwtLocalStorageName) || '';
+    return sessionStorage.getItem(this.jwtSessionStorageName) || '';
   }
 }

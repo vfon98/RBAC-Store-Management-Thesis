@@ -5,6 +5,7 @@ import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.form.ProductForm;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.StoreProductRepository;
 import com.example.demo.repository.StoreRepository;
 import com.example.demo.response.PageableProductResponse;
 import com.example.demo.security.SecurityUtil;
@@ -18,6 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 @Service(value = "productService")
 public class ProductServiceImpl implements ProductService {
@@ -36,6 +39,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private UploadService uploadService;
+
+    @Autowired
+    private StoreProductRepository storeProductRepository;
 
     @Override
     public List<Product> findAll() {
@@ -132,4 +138,30 @@ public class ProductServiceImpl implements ProductService {
         productRepository.saveAll(products);
     }
 
+    // NEW API FOR MANAGER
+
+    public List<Product> findProductsForManager() {
+        List<Product> allProducts = productRepository.findAll();
+        Store store = securityUtil.getCurrentStaff().getStore();
+
+        List<StoreProduct> storeProducts = storeProductRepository.findAllByStore(store);
+        List<Product> result = allProducts.stream().map(product -> {
+            return updateProductIfExisted(storeProducts, product);
+        }).collect(Collectors.toList());
+        return result;
+    }
+
+    private Product updateProductIfExisted(List<StoreProduct> storeProducts, Product product) {
+        AtomicBoolean found = new AtomicBoolean(false);
+        storeProducts.stream().forEach(storeProduct -> {
+            if (storeProduct.getProduct().getId().equals(product.getId())) {
+                product.setQuantity(storeProduct.getQuantity());
+                found.set(true);
+            }
+        });
+        if (!found.get()) {
+            product.setQuantity(0);
+        }
+        return product;
+    }
 }

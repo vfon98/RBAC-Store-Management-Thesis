@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -69,16 +70,25 @@ public class StoreProductServiceImpl implements StoreProductService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException(productId));
 
-        Integer currentQuantity = product.getQuantity();
-        if (currentQuantity - quantity < 0) {
-            throw new NotEnoughQuantityException("server not enough product to provide ... ");
-        }
+//        Integer currentQuantity = product.getQuantity();
+//        if (currentQuantity - quantity < 0) {
+//            throw new NotEnoughQuantityException("server not enough product to provide ... ");
+//        }
 
         StoreProduct.StoreProductID id = new StoreProduct.StoreProductID(store.getId(), product.getId());
-        StoreProduct storeProduct = new StoreProduct(id, quantity, store, product);
+        Optional<StoreProduct> storeProductOptional = storeProductRepository.findById(id);
 
-        product.setQuantity(currentQuantity - quantity);
-        productRepository.save(product);
+        StoreProduct storeProduct = new StoreProduct();
+        if (storeProductOptional.isEmpty()) {
+            storeProduct = new StoreProduct(id, quantity, store, product); // new
+        } else  {
+            storeProduct = storeProductOptional.get();
+            int newQuantity = storeProduct.getQuantity() + quantity;
+            storeProduct.setQuantity(newQuantity); // update
+        }
+
+//        product.setQuantity(currentQuantity - quantity);
+//        productRepository.save(product);
 
         storeProductRepository.save(storeProduct);
     }

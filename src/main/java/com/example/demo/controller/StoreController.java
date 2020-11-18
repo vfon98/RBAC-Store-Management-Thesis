@@ -103,14 +103,16 @@ public class StoreController {
             @RequestParam Integer quantity,
             @RequestParam(required = false, defaultValue = "false") Boolean isImport) {
 
-        String message = "";
-        if (!isImport) {
-            storeService.addProductToStore(storeId, productId, quantity);
-            message = "Add product to store successfully!";
-        } else {
-            storeService.updateQuantityOfProductInStore(storeId, productId, quantity);
-            message = "Update quantity successfully!";
-        }
+        storeService.addProductToStore(storeId, productId, quantity);
+        String message = "Add product to store successfully!";
+//        String message = "";
+//        if (isImport) { // Revert here
+//            storeService.addProductToStore(storeId, productId, quantity);
+//            message = "Add product to store successfully!";
+//        } else {
+//            storeService.updateQuantityOfProductInStore(storeId, productId, quantity);
+//            message = "Update quantity successfully!";
+//        }
         return new ResponseEntity<>(new MessageResponse(message), HttpStatus.OK);
     }
 
