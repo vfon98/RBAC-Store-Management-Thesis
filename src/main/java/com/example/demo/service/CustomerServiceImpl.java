@@ -9,10 +9,7 @@ import com.example.demo.repository.CartItemRepository;
 import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.OrderItemRepository;
 import com.example.demo.repository.OrderRepository;
-import com.example.demo.response.CartItemResponse;
-import com.example.demo.response.CartResponse;
-import com.example.demo.response.PageableProductResponse;
-import com.example.demo.response.ProductResponse;
+import com.example.demo.response.*;
 import com.example.demo.security.SecurityUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stripe.Stripe;
@@ -204,7 +201,26 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Product getProductDetails(Integer productId) {
+//        Product product = productService.findById(productId);
+//        List<StoreProduct> storeProducts = storeProductService.findAllByProduct(product);
+//        storeProducts.stream().forEach(storeProduct -> {
+//            Store store = storeProduct.getStore();
+//            Integer id = store.getId();
+//        });
         return productService.findById(productId);
+    }
+
+    @Override
+    public List<StoreHasProductResponse> getStoreListFromProductId(Integer productId) {
+        List<StoreHasProductResponse> storeList = new ArrayList<>();
+        Product product = productService.findById(productId);
+        List<StoreProduct> storeProducts = storeProductService.findAllByProduct(product);
+        storeProducts.stream().forEach(storeProduct -> {
+            Store store= storeProduct.getStore();
+            storeList.add(new StoreHasProductResponse(store, storeProduct.getQuantity()));
+        });
+
+        return storeList;
     }
 
     @Override

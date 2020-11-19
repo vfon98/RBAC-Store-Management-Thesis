@@ -24,6 +24,7 @@ export type IStore = {
   phone: string;
   status: StatusType;
   createdAt: number;
+  quantity?: number;
 };
 
 export enum StatusType {

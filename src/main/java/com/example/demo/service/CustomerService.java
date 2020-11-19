@@ -2,13 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Product;
+import com.example.demo.entity.Store;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
-import com.example.demo.response.CartItemResponse;
-import com.example.demo.response.CartResponse;
-import com.example.demo.response.PageableProductResponse;
-import com.example.demo.response.ProductResponse;
+import com.example.demo.response.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -32,6 +30,8 @@ public interface CustomerService {
     List<ProductResponse> findProductsByStoreAndCategory(Integer storeId, Integer CategoryId);
 
     Product getProductDetails(Integer productId);
+
+    List<StoreHasProductResponse> getStoreListFromProductId(Integer productId);
 
     PageableProductResponse searchProducts(Integer storeId, Integer categoryId, Pageable pageable, String keyword);
 

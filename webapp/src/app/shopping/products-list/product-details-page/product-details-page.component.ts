@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService, CustomerService} from "../../../core/http";
-import {ICartItem, IProduct} from "../../../core/models";
+import { ICartItem, IProduct, IStore } from "../../../core/models";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ShoppingModalService} from "../../../service/shopping-modal.service";
 
@@ -11,6 +11,7 @@ import {ShoppingModalService} from "../../../service/shopping-modal.service";
 })
 export class ProductDetailsPageComponent implements OnInit {
   product: IProduct;
+  stores: IStore[] = [];
 
   quantity = 1;
   addedQuantity = 0;
@@ -26,6 +27,7 @@ export class ProductDetailsPageComponent implements OnInit {
     this.findAddedQuantity();
     this.route.params.subscribe(params => {
       this.fetchProductDetails(params.productId);
+      this.fetchStoreList(params.productId);
     })
   }
 
@@ -36,6 +38,14 @@ export class ProductDetailsPageComponent implements OnInit {
       }, err => {
         console.error("Error", err);
         this.router.navigate(['/shopping']);
+      });
+  }
+
+  fetchStoreList(productId: number): void {
+    this.customerService.fetchStoreListByProductId(productId)
+      .subscribe(stores => {
+        this.stores = stores;
+        console.log("StoreList", stores);
       });
   }
 

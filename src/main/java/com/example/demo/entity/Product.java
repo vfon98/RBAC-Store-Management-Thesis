@@ -1,19 +1,14 @@
 package com.example.demo.entity;
 
 import com.example.demo.form.ProductForm;
-import com.example.demo.service.CategoryService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.net.PortUnreachableException;
 import java.util.*;
 
 @NoArgsConstructor

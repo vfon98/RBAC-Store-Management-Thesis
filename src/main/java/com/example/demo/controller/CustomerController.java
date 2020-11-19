@@ -2,16 +2,15 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Product;
+import com.example.demo.entity.Store;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
-import com.example.demo.response.CartItemResponse;
-import com.example.demo.response.CartResponse;
-import com.example.demo.response.MessageResponse;
-import com.example.demo.response.PageableProductResponse;
+import com.example.demo.response.*;
 import com.example.demo.security.constants.StorePermission;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.OrderUpdateForm;
+import com.example.demo.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -106,6 +105,11 @@ public class CustomerController {
     public ResponseEntity<Product> getProductDetails(@PathVariable Integer productId) {
         return ResponseEntity.ok(
                 customerService.getProductDetails(productId));
+    }
+
+    @GetMapping(value = "/products/{productId}/stores")
+    public ResponseEntity<List<StoreHasProductResponse>> getStoreListByProductId(@PathVariable Integer productId) {
+        return ResponseEntity.ok(customerService.getStoreListFromProductId(productId));
     }
 
     @Deprecated

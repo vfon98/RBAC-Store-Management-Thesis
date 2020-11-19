@@ -21,7 +21,7 @@
     <div class="col-4">
       <div class="price">
         {{ product.price - (product.price * product.discountPercent / 100) | usd }}
-        <span class="price-without-discount">{{ product.price | usd }}</span>
+        <span *ngIf="product.discountPercent" class="price-without-discount">{{ product.price | usd }}</span>
       </div>
       <div>
         <i class="rate fas fa-star"></i>
@@ -71,7 +71,16 @@
     </div>
     <div class="col-4">
       <nz-card nzType="inner" nzTitle="Available Stores">
-        <a>Inner Card Content</a>
+        <div *ngFor="let store of stores" class="mb-2">
+          <div class="strong">{{ store.name }}</div>
+          <div class="small">{{ store.address }}</div>
+          <div>
+            <nz-tag nzColor="processing">
+              <i nz-icon nzType="sync" nzSpin></i>
+              <span>{{ store.quantity }} remained</span>
+            </nz-tag>
+          </div>
+        </div>
       </nz-card>
     </div>
   </div>
