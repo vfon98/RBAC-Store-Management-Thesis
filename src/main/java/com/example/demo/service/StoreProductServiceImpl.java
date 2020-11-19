@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.ImportedReceipt;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Store;
 import com.example.demo.entity.StoreProduct;
@@ -8,9 +9,11 @@ import com.example.demo.exception.NotEnoughQuantityException;
 import com.example.demo.exception.ProductNotExistsInStoreException;
 import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.exception.StoreNotFoundException;
+import com.example.demo.repository.ImportedReceiptRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.StoreProductRepository;
 import com.example.demo.repository.StoreRepository;
+import com.example.demo.security.SecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,15 +33,21 @@ public class StoreProductServiceImpl implements StoreProductService {
     private StoreProductRepository storeProductRepository;
     private StoreRepository storeRepository;
     private ProductRepository productRepository;
+    private ImportedReceiptRepository importedReceiptRepository;
+    private SecurityUtil utils;
 
     @Autowired
     public StoreProductServiceImpl(
             StoreProductRepository storeProductRepository,
             StoreRepository storeRepository,
-            ProductRepository productRepository) {
+            ProductRepository productRepository,
+            ImportedReceiptRepository importedReceiptRepository,
+            SecurityUtil utils) {
         this.storeProductRepository = storeProductRepository;
         this.storeRepository = storeRepository;
         this.productRepository = productRepository;
+        this.importedReceiptRepository = importedReceiptRepository;
+        this.utils = utils;
     }
 
 
@@ -91,6 +100,8 @@ public class StoreProductServiceImpl implements StoreProductService {
 //        productRepository.save(product);
 
         storeProductRepository.save(storeProduct);
+        importedReceiptRepository.save(
+                ImportedReceipt.buildFrom(utils.getCurrentStaff(), store, List.of(product), storeProduct.getQuantity()));
     }
 
     @Override

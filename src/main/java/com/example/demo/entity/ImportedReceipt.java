@@ -40,4 +40,13 @@ public class ImportedReceipt {
     @CreationTimestamp
     private Date createdAt;
 
+    public static ImportedReceipt buildFrom(Staff staff, Store store,
+                                            Collection<Product> products, int importedQuantity) {
+        return ImportedReceipt.builder()
+                .staff(staff)
+                .store(store)
+                .products(products)
+                .importedQuantity(importedQuantity)
+                .build();
+    }
 }
