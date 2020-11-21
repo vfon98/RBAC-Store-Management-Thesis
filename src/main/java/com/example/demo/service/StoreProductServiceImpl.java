@@ -50,6 +50,9 @@ public class StoreProductServiceImpl implements StoreProductService {
         this.utils = utils;
     }
 
+    public List<StoreProduct> findAll() {
+        return storeProductRepository.findAll();
+    }
 
     public StoreProduct findById(StoreProduct.StoreProductID id) {
         return storeProductRepository.findById(id)

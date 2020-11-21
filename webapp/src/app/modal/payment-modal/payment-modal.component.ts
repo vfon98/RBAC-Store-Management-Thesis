@@ -7,6 +7,7 @@ import { NotificationService } from 'src/app/layouts/notification/notification.s
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/core/http';
 import { IPaymentInfo } from 'src/app/core/models';
+import { ConfirmModalService } from "../../service/confirm-modal.service";
 
 @Component({
   selector: 'app-payment-modal',
@@ -23,7 +24,8 @@ export class PaymentModalComponent implements OnInit {
     private notiService: NotificationService,
     private customerService: CustomerService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private nzConfirmService: ConfirmModalService
   ) {}
 
   ngOnInit(): void {}

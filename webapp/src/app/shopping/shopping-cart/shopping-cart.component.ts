@@ -19,6 +19,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.cartService.fetchCart();
     this.listener = this.cartService.changeListener$.subscribe((cart) => {
       this.cart = Object.assign({}, this.cartService.getCart());
+      console.log(this.cart)
     });
   }
 

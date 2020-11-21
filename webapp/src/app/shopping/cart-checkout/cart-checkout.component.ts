@@ -5,6 +5,8 @@ import { UserCheckoutFormComponent } from './user-checkout-form/user-checkout-fo
 import { ICart } from 'src/app/core/models';
 import { CartService } from '../../core/http/cart.service';
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { ConfirmModalService } from "../../service/confirm-modal.service";
+import { log } from "ng-zorro-antd";
 
 @Component({
   selector: 'app-cart-checkout',
@@ -20,7 +22,8 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
   constructor(
     private cartService: CartService,
     private notiService: NotificationService,
-    private paymentModal: PaymentModalService
+    private paymentModal: PaymentModalService,
+    private nzConfirmService: ConfirmModalService
   ) {}
 
   ngOnInit(): void {
@@ -34,9 +37,18 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
     this.listener.unsubscribe();
   }
 
-  handleCheckout(): void {
-    const curentCart = this.cartService.getCart();
-    if (!curentCart.items.length) {
+  async handleCheckout(): Promise<void> {
+    const body = this.checkoutComponent.userForm;
+    if (body.paymentMethod === 'cash') {
+      try {
+        await this.nzConfirmService.showNzConfirm();
+      } catch (e) {
+        return;
+      }
+    }
+
+    const currentCart = this.cartService.getCart();
+    if (!currentCart.items.length) {
       this.notiService.showQuickWarning('Empty cart');
       return;
     }
@@ -46,7 +58,6 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const body = this.checkoutComponent.userForm;
     body.totalPrice = this.cartService.getCart().totalPrice;
     this.paymentModal.show(body);
   }

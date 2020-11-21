@@ -30,6 +30,7 @@ public class ProductResponse {
     private Date createdAt;
     private String storeName;
     private String imageUrl;
+    private boolean outStock;
 
     public static ProductResponse build(Product product) {
         List<String> categoryNames = product.getCategories().stream()

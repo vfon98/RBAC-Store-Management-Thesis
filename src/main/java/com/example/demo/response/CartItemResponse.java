@@ -1,11 +1,13 @@
 package com.example.demo.response;
 
 import com.example.demo.entity.CartItem;
+import com.example.demo.entity.Image;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class CartItemResponse {
     private BigDecimal price;
     private Integer quantity;
     private Integer productId;
+    private Collection<Image> images;
 
     public static CartItemResponse build(CartItem cartItem) {
         return new CartItemResponse(
@@ -26,7 +29,8 @@ public class CartItemResponse {
                 cartItem.getStore().getName(),
                 cartItem.getProduct().getPrice(),
                 cartItem.getQuantity(),
-                cartItem.getProduct().getId());
+                cartItem.getProduct().getId(),
+                cartItem.getProduct().getImages());
     }
 
 }

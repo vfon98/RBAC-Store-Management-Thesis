@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
+import com.example.demo.enums.OrderStatusEnum;
+import com.example.demo.enums.PaymentMethodEnums;
 import com.example.demo.form.PaymentForm;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -42,6 +45,9 @@ public class Order {
 
     private Status status;
 
+    @Enumerated(EnumType.STRING)
+    private PaymentMethodEnums paymentMethod;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
@@ -65,6 +71,8 @@ public class Order {
                 .transactionId(transactionId)
                 .staff(cart.getStaff())
                 .store(cart.getStore())
-                .status(Status.Shipping).build();
+                .status(Status.Shipping)
+                .paymentMethod(paymentForm.getPaymentMethod())
+                .build();
     }
 }

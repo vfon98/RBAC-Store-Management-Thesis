@@ -2,6 +2,7 @@ import { MDBModalRef } from 'ng-uikit-pro-standard';
 import { ConfirmModalComponent } from './../modal/confirm-modal/confirm-modal.component';
 import { MDBModalService } from 'ng-uikit-pro-standard';
 import { Injectable } from '@angular/core';
+import { NzModalService } from "ng-zorro-antd";
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,10 @@ import { Injectable } from '@angular/core';
 export class ConfirmModalService {
   modalRef: MDBModalRef;
 
-  constructor(private modalService: MDBModalService) {}
+  constructor(
+    private modalService: MDBModalService,
+    private nzModalService: NzModalService
+  ) {}
 
   show(title?: string): ConfirmModalService {
     this.modalRef = this.modalService.show(ConfirmModalComponent, {
@@ -27,6 +31,18 @@ export class ConfirmModalService {
         this.modalRef.hide();
         this.modalRef.content.action.unsubscribe();
       }
+    })
+  }
+
+  showNzConfirm(): any {
+    return new Promise((resolve, reject) => {
+      this.nzModalService.confirm({
+        nzTitle: '<i>Do you Want to delete these items?</i>',
+        nzContent: '<b>Some descriptions</b>',
+        nzOnOk: () => resolve(),
+        nzOnCancel: () => reject()
+      });
+
     })
   }
 }

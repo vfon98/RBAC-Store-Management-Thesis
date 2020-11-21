@@ -13,6 +13,7 @@ export class VoiceRecognitionService {
   stopped = false;
   public text = '';
   private tempWords;
+  private isListening = false;
 
   textSubject = new BehaviorSubject<string>(null);
   text$ = this.textSubject.asObservable();
@@ -36,12 +37,18 @@ export class VoiceRecognitionService {
       this.textSubject.next(this.text);
       console.log("TRANS", transcript);
     })
+
+    this.recognition.onstart = () => this.isListening = true;
+
+    this.recognition.onend = () => this.isListening = false;
+
+    this.recognition.onerror = () => this.isListening = false;
   }
 
   start(): void {
-    this.stopped = false;
-    console.log(this.recognition)
     this.recognition.start();
+    this.stopped = false;
+
     console.log('==== RECOGNITION STARTED ====');
 
     this.recognition.addEventListener('end', condition => {

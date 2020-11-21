@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface StoreProductService {
+    List<StoreProduct> findAll();
 
     List<StoreProduct> findAllByStore(Store store);
     

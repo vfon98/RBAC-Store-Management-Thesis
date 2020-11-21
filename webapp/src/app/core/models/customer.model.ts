@@ -1,5 +1,6 @@
 import { IProduct } from './product.model';
 import { ICategory } from './category.model';
+import { IImage } from "./image.model";
 
 export interface IPageableProduct {
   currentPage: number;
@@ -36,6 +37,7 @@ export interface ICartItem {
   productId?: number;
   storeId?: number;
   storeName?: string;
+  images?: IImage[];
 }
 
 export interface ICartItemBody {

@@ -92,3 +92,15 @@ a.primary-btn:hover {
   font-weight: 500;
   color: #6c757d;
 }
+
+i.anticon {
+  position: relative;
+  top: -2px;
+}
+
+.content ::ng-deep {
+
+  li {
+    margin-left: 18px;
+  }
+}

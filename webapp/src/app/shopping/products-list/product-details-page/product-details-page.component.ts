@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService, CustomerService} from "../../../core/http";
-import { ICartItem, IProduct, IStore } from "../../../core/models";
+import { IAgmMarker, ICartItem, IProduct, IStore } from "../../../core/models";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ShoppingModalService} from "../../../service/shopping-modal.service";
 
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.component.html',
-  styleUrls: ['./product-details-page.component.css']
+  styleUrls: ['./product-details-page.component.scss']
 })
 export class ProductDetailsPageComponent implements OnInit {
   product: IProduct;
   stores: IStore[] = [];
+  storeMarkers: IAgmMarker[] = [];
 
   quantity = 1;
   addedQuantity = 0;
@@ -46,12 +47,17 @@ export class ProductDetailsPageComponent implements OnInit {
       .subscribe(stores => {
         this.stores = stores;
         console.log("StoreList", stores);
+        this.storeMarkers = this.stores.map(store => ({
+          latitude: store.latitude,
+          longitude: store.longitude,
+          label: store.name
+        }))
       });
   }
 
   findAddedQuantity(): void {
     const items: ICartItem[] = this.cartService.getCart().items;
-    const addedItem = items.find(item => item.productId === this.product.id);
+    const addedItem = items.find(item => item.productId === this.product?.id);
     if (addedItem) {
       this.addedQuantity = addedItem.quantity;
     }

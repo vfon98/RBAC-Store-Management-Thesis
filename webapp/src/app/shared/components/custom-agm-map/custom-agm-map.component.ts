@@ -36,12 +36,23 @@ export class CustomAgmMapComponent implements OnInit, OnChanges {
         clearInterval(timer);
       }
     }, 200)
+
+    this.setDefaultLocation();
   }
 
   ngOnChanges() {
+    this.setDefaultLocation();
+  }
+
+  setDefaultLocation(): void {
     if (!this.latitude || !this.longitude) {
       this.latitude  = CONSTANTS.DEFAULT_LATITUDE;
       this.longitude = CONSTANTS.DEFAULT_LONGITUDE;
+      console.log("SET DEFAULT LOCATION FOR AGM");
+    }
+    if (this.markers?.length) {
+      this.latitude = this.markers[0].latitude;
+      this.longitude = this.markers[0].longitude;
     }
   }
 

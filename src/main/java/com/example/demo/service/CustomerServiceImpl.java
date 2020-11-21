@@ -240,6 +240,23 @@ public class CustomerServiceImpl implements CustomerService {
                     productService.findAllByCategoryAndKeywordSearch(category, keyword, pageable);
         }
 
+        response = addStockStatus(response);
+
+        return response;
+    }
+
+    private PageableProductResponse addStockStatus(PageableProductResponse response) {
+        List<StoreProduct> storeProductList = storeProductService.findAll();
+
+        // Check if StoreProduct table has this productId => inStock
+        List<ProductResponse> productResponses = response.getProducts().stream().map(product -> {
+            boolean existed = storeProductList.stream()
+                    .anyMatch(storeProduct -> storeProduct.getProduct().getId().equals(product.getId()));
+            product.setOutStock(!existed);
+            return product;
+        }).collect(Collectors.toList());
+
+        response.setProducts(productResponses);
         return response;
     }
 
@@ -274,7 +291,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(cartItem -> OrderItem.build(cartItem, order))
                 .collect(Collectors.toList());
 
-        updateProductQuantity(cartItems);
+//        updateProductQuantity(cartItems);
 
         cartItemRepository.deleteAll(cartItems);
 

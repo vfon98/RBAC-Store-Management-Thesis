@@ -9,87 +9,116 @@
     </div>
   </div>
 
-  <div class="row mt-3">
-    <h3>{{ product.name }}</h3>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <div class="container">
-        <img [src]="product?.images[0]?.secureUrl || 'https://placehold.it/500'" alt="" class="img-fluid">
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="price">
-        {{ product.price - (product.price * product.discountPercent / 100) | usd }}
-        <span *ngIf="product.discountPercent" class="price-without-discount">{{ product.price | usd }}</span>
-      </div>
-      <div>
-        <i class="rate fas fa-star"></i>
-        <i class="rate fas fa-star"></i>
-        <i class="rate fas fa-star"></i>
-        <i class="rate fas fa-star-half-alt"></i>
-        <i class="rate far fa-star"></i>
-      </div>
-      <!-- <div class="store-name"><i class="far fa-gem"></i>{{ product.storeName }}</div> -->
-      <hr />
+<!--  <div class="row mt-3">-->
+<!--    <h3>{{ product.name }}</h3>-->
+<!--  </div>-->
 
-      <div class="item mt-2">
-        <div class="item-header">ADDED</div>
-        {{ addedQuantity }} item(s)
-      </div>
-
-      <div class="mt-2 item">
-        <div class="item-header">QUANTITY</div>
-        <div class="quantity">
-          <div class="pro-qty">
-            <span class="dec qtybtn" (click)="desQuantity()">-</span>
-
-            <input
-              type="number"
-              [(ngModel)]="quantity"
-              min="1"
-              required
-            />
-
-            <span class="inc qtybtn" (click)="incQuantity()">+</span>
-          </div>
+  <div class="row mt-4">
+    <!--    RIGHT SECTION -->
+    <div class="col-lg-8 row">
+      <div class="col-6">
+        <div class="container text-center">
+          <img [src]="product?.images[0]?.secureUrl || 'https://placehold.it/500'" alt="" class="img-fluid">
         </div>
       </div>
+      <div class="col-6">
+        <div class="row col">
+          <div class="h3">{{ product.name }}</div>
+        </div>
+        <div class="price">
+          {{ product.price - (product.price * product.discountPercent / 100) | usd }}
+          <span *ngIf="product.discountPercent" class="price-without-discount">{{ product.price | usd }}</span>
+        </div>
+        <div>
+          <i class="rate fas fa-star"></i>
+          <i class="rate fas fa-star"></i>
+          <i class="rate fas fa-star"></i>
+          <i class="rate fas fa-star-half-alt"></i>
+          <i class="rate far fa-star"></i>
+        </div>
+        <!-- <div class="store-name"><i class="far fa-gem"></i>{{ product.storeName }}</div> -->
+        <hr />
 
-      <div class="select-button d-flex mt-3">
-        <a
-          class="primary-btn view-card text-light mr-1"
-          (click)="addToCart()"
-        >ADD TO CART</a>
+        <div class="item mt-2">
+          <div class="item-header">ADDED</div>
+          {{ addedQuantity }} item(s)
+        </div>
 
-        <a
-          class="primary-btn checkout-btn bg-dark text-light"
-          (click)="addToCartAndCheckout()"
-        >CHECK OUT</a>
+        <div class="mt-2 item">
+          <div class="item-header">QUANTITY</div>
+          <div class="quantity">
+            <div class="pro-qty">
+              <span class="dec qtybtn" (click)="desQuantity()">-</span>
+
+              <input
+                type="number"
+                [(ngModel)]="quantity"
+                min="1"
+                required
+              />
+
+              <span class="inc qtybtn" (click)="incQuantity()">+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="select-button d-flex mt-3">
+          <a
+            class="primary-btn view-card text-light mr-1"
+            (click)="addToCart()"
+          >ADD TO CART</a>
+
+          <a
+            class="primary-btn checkout-btn bg-dark text-light"
+            (click)="addToCartAndCheckout()"
+          >CHECK OUT</a>
+        </div>
+
       </div>
 
-    </div>
-    <div class="col-4">
-      <nz-card nzType="inner" nzTitle="Available Stores">
-        <div *ngFor="let store of stores" class="mb-2">
-          <div class="strong">{{ store.name }}</div>
-          <div class="small">{{ store.address }}</div>
+      <div class="col-12 mt-4">
+        <nz-card class="w-100">
+          <nz-card-tab>
+            <nz-tabset nzSize="large">
+              <nz-tab nzTitle="Description"></nz-tab>
+            </nz-tabset>
+          </nz-card-tab>
+
           <div>
-            <nz-tag nzColor="processing">
-              <i nz-icon nzType="sync" nzSpin></i>
-              <span>{{ store.quantity }} remained</span>
-            </nz-tag>
+            <div class="content" [innerHTML]="product.description"></div>
+            <div *ngIf="!product?.description" class="text-muted font-italic h6">No description</div>
           </div>
-        </div>
-      </nz-card>
+        </nz-card>
+      </div>
+    </div>
+
+    <!--    RIGHT SECTION -->
+    <div class="col-lg-4">
+      <div>
+        <nz-card nzType="inner" nzTitle="Available Stores">
+          <div *ngFor="let store of stores" class="mb-2">
+            <div class="strong">{{ store.name }}</div>
+            <div class="small">{{ store.address }}</div>
+            <div>
+              <nz-tag nzColor="success">
+                <i nz-icon nzType="check-circle"></i>
+                <span>{{ store.quantity }} remained</span>
+              </nz-tag>
+            </div>
+          </div>
+          <div *ngIf="!stores?.length" class="text-danger font-weight-bold mb-0">This product is currently out of stock</div>
+        </nz-card>
+      </div>
+
+      <div class="mt-4">
+        <nz-affix [nzOffsetTop]="24">
+          <app-custom-agm-map
+            [markers]="storeMarkers"
+          ></app-custom-agm-map>
+        </nz-affix>
+      </div>
     </div>
   </div>
 
-  <div class="row">
-    <h5>Product Description</h5>
-  </div>
-  <div class="row">
-    <div class="content" [innerHTML]="product.description"></div>
-  </div>
 </div>
 

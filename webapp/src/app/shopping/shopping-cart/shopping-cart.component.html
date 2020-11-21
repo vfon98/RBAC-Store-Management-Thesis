@@ -9,7 +9,8 @@
         <tbody>
           <tr *ngFor="let item of cart.items">
             <td class="si-pic">
-              <img src="https://picsum.photos/id/{{item.id}}/50" alt="" />
+<!--              <img src="https://picsum.photos/id/{{item.id}}/50" alt="" />-->
+              <img class="product-img" [src]="item?.images[0].secureUrl" alt="Cart item">
             </td>
             <td class="si-text">
               <div class="product-selected">

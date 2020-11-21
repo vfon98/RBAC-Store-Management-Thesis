@@ -12,7 +12,11 @@ import {
   NzTagModule,
   NzToolTipModule,
   NzUploadModule,
-  NzDropDownModule, NzBadgeModule
+  NzDropDownModule,
+  NzBadgeModule,
+  NzTabsModule,
+  NzAffixModule,
+  NzModalModule,
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
@@ -54,6 +58,9 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
     NzDropDownModule,
     NzBadgeModule,
     NzTagModule,
+    NzTabsModule,
+    NzAffixModule,
+    NzModalModule,
     // END NgZorro Module
     AgmCoreModule
   ],
@@ -75,6 +82,9 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
     NzDropDownModule,
     NzBadgeModule,
     NzTagModule,
+    NzTabsModule,
+    NzAffixModule,
+    NzModalModule,
     // Shared Components
     TableOverviewComponent,
     BackButtonAdminComponent,

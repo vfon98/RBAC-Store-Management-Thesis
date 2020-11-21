@@ -16,3 +16,8 @@ input[type=number] {
   font-weight: 500;
   color: #6c757d;
 }
+
+.product-img {
+  width: 100px;
+  height: 100px;
+}

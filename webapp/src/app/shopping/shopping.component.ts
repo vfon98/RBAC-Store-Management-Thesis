@@ -64,7 +64,7 @@ export class ShoppingComponent implements OnInit {
 
   handleSearch(): void {
     console.log("HERE")
-    this.router.navigate([location.pathname], {
+    this.router.navigate(['/shopping/store/-1/category/all'], {
       queryParams: { search: this.searchKeyword },
       queryParamsHandling: 'merge',
     });
