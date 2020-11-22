@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import rootReducer, { metaReducers } from '../store/reducers';
 import { LoaderInterceptor } from "../config/interceptor/loader.interceptor";
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { LoaderInterceptor } from "../config/interceptor/loader.interceptor";
     HttpClientModule,
     StoreModule.forRoot(rootReducer, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
+    NgxChartsModule
   ],
   providers: [
     {

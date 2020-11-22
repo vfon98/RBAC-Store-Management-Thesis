@@ -27,6 +27,8 @@ import { ActionButtonsAdminComponent } from './components/action-buttons-admin/a
 import { CustomAgmMapComponent } from './components/custom-agm-map/custom-agm-map.component';
 import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/custom-agm-searchbox.component';
 import { ImageFallbackDirective } from './directives/image-fallback.directive';
+import { BarChartVerticalComponent } from './charts/bar-chart-vertical/bar-chart-vertical.component';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
     CustomAgmMapComponent,
     CustomAgmSearchboxComponent,
     ImageFallbackDirective,
+    BarChartVerticalComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,8 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
     NzAffixModule,
     NzModalModule,
     // END NgZorro Module
-    AgmCoreModule
+    AgmCoreModule,
+    NgxChartsModule
   ],
   exports: [
     UsdPipe,
@@ -94,7 +98,8 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
     // Google Maps
     CustomAgmMapComponent,
     CustomAgmSearchboxComponent,
-    ImageFallbackDirective
+    ImageFallbackDirective,
+    BarChartVerticalComponent
   ],
 })
 export class SharedModule {}

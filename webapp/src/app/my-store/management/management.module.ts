@@ -15,6 +15,7 @@ import { StoreInvoicesComponent } from './store-invoices/store-invoices.componen
 import { SharedTableStatisticComponent } from './shared-table-statistic/shared-table-statistic.component';
 import { NzDropDownModule } from "ng-zorro-antd";
 import { OrderStatusDropdownComponent } from './store-orders/order-status-dropdown/order-status-dropdown.component';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -28,28 +29,29 @@ import { OrderStatusDropdownComponent } from './store-orders/order-status-dropdo
     SharedTableStatisticComponent,
     OrderStatusDropdownComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ManagementComponent,
-        children: [
-          // { path: '', pathMatch: 'full', redirectTo: 'products' },
-          { path: 'products', component: StoreProductComponent },
-          { path: 'categories', component: StoreCategoriesComponent },
-          { path: 'staffs', component: StoreStaffsComponent },
-          { path: 'roles', component: StoreRolesComponent },
-          { path: 'orders', component: StoreOrdersComponent },
-          { path: 'invoices', component: StoreInvoicesComponent },
-          { path: 'statistics', component: StoreStatisticsComponent },
-        ],
-      },
-    ]),
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        SharedModule,
+        ReactiveFormsModule,
+        RouterModule.forChild([
+            {
+                path: '',
+                component: ManagementComponent,
+                children: [
+                    // { path: '', pathMatch: 'full', redirectTo: 'products' },
+                    { path: 'products', component: StoreProductComponent },
+                    { path: 'categories', component: StoreCategoriesComponent },
+                    { path: 'staffs', component: StoreStaffsComponent },
+                    { path: 'roles', component: StoreRolesComponent },
+                    { path: 'orders', component: StoreOrdersComponent },
+                    { path: 'invoices', component: StoreInvoicesComponent },
+                    { path: 'statistics', component: StoreStatisticsComponent },
+                ],
+            },
+        ]),
+        NgxChartsModule,
+    ],
   exports: [
     StoreProductComponent,
     StoreStaffsComponent,
