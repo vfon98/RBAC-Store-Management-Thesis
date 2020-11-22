@@ -6,4 +6,5 @@ export interface IPaymentInfo {
   stripeToken?: string;
   phone: string;
   totalPrice: number;
+  paymentMethod?: string;
 }

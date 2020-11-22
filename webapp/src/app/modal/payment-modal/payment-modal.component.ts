@@ -18,6 +18,7 @@ export class PaymentModalComponent implements OnInit {
   @ViewChild(StripeFormComponent) stripeForm: StripeFormComponent;
   paymentInfo: IPaymentInfo;
   isLoading = false;
+  isPaymentOnline = true;
 
   constructor(
     private paymentModal: PaymentModalService,
@@ -28,7 +29,11 @@ export class PaymentModalComponent implements OnInit {
     private nzConfirmService: ConfirmModalService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.paymentInfo.paymentMethod === 'cash') {
+      this.isPaymentOnline = false;
+    }
+  }
 
   hideModal(): void {
     this.paymentModal.hide();
@@ -39,7 +44,7 @@ export class PaymentModalComponent implements OnInit {
   }
 
   handlePayment(): void {
-    if (!this.paymentInfo.stripeToken) {
+    if (!this.paymentInfo.stripeToken && this.paymentInfo.paymentMethod === 'online') {
       this.isLoading = true;
       this.stripeForm
         .handleCardSubmit()
@@ -51,7 +56,11 @@ export class PaymentModalComponent implements OnInit {
         });
       return;
     }
-    this.checkoutPayment();
+
+    this.hideModal();
+    this.nzConfirmService.showNzConfirm(() => {
+      this.checkoutPayment();
+    });
   }
 
   checkoutPayment(): void {

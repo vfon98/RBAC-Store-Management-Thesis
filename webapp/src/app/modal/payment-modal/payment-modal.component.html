@@ -21,11 +21,17 @@
             <th class="table-head">Phone</th>
             <td>{{ paymentInfo?.phone || "Unknown" }}</td>
           </tr>
+          <tr>
+            <th class="table-head">Payment Method</th>
+            <td>
+              {{ paymentInfo?.paymentMethod === 'cash' ? 'Pay with cash' : 'Online payment' }}
+            </td>
+          </tr>
         </tbody>
       </table>
     </mdb-card-body>
   </mdb-card>
-  <mdb-card class="mt-3">
+  <mdb-card *ngIf="paymentInfo?.paymentMethod === 'online'" class="mt-3">
     <mdb-card-body>
       <div class="card-head">PAYMENT INFORMATION</div>
 

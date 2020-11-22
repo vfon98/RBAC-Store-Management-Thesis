@@ -34,7 +34,7 @@ export class ShoppingOrderComponent implements OnInit {
   }
 
   getId(transactionId: string): string {
-    return transactionId.split('_')[1];
+    return transactionId?.split('_')[1] || 'Pay with cash';
   }
 
   isShipping(status: string): boolean {

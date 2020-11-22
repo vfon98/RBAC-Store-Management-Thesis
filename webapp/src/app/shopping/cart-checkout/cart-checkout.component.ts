@@ -39,13 +39,6 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
 
   async handleCheckout(): Promise<void> {
     const body = this.checkoutComponent.userForm;
-    if (body.paymentMethod === 'cash') {
-      try {
-        await this.nzConfirmService.showNzConfirm();
-      } catch (e) {
-        return;
-      }
-    }
 
     const currentCart = this.cartService.getCart();
     if (!currentCart.items.length) {

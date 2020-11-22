@@ -18,7 +18,7 @@ export class UserCheckoutFormComponent implements OnInit {
     phone: '0123321123',
     stripeToken: '',
     totalPrice: 0,
-    paymentMethod: 'cash'
+    paymentMethod: 'online'
   };
 
   constructor(private userService: UserService) {}

@@ -20,11 +20,11 @@
     <label>Phone<span>*</span></label>
     <input type="text" name="phone" [(ngModel)]="userForm.phone" required />
   </div>
-  <div class="col-lg-12">
+  <div class="col-lg-12 font-weight-bold">
     <label>Choose payment method<span>*</span></label>
     <select name="paymentMethod" [(ngModel)]="userForm.paymentMethod" required>
-      <option value="cash">Pay when delivered</option>
       <option value="online">Online payment</option>
+      <option value="cash">Pay when delivered</option>
     </select>
 
   </div>

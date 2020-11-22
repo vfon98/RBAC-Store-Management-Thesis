@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.*;
+import com.example.demo.enums.PaymentMethodEnums;
 import com.example.demo.exception.*;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
@@ -342,6 +343,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private Charge pay(PaymentForm paymentForm) throws StripeException {
+        if (paymentForm.getPaymentMethod().equals(PaymentMethodEnums.CASH)) {
+            return new Charge();
+        }
+
         Stripe.apiKey = stripe_api_key;
 
         Map<String, Object> params = new HashMap<>();
