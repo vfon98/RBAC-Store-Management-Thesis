@@ -64,7 +64,7 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   incQuantity(): void {
-    if (this.quantity >= this.product.quantity - this.addedQuantity) return;
+    // if (this.quantity >= this.product.quantity - this.addedQuantity) return;
     this.quantity = +this.quantity + 1;
   }
 

@@ -126,6 +126,8 @@ export class CartService {
     if (!this.userService.isLogin()) {
       product.quantity = quantity;
 
+      console.log("PRODUCT", product)
+
       this.localCartService.addItem(product);
       this.doPostAddded(product);
       return;

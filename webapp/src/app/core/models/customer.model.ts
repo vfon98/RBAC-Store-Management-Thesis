@@ -38,6 +38,7 @@ export interface ICartItem {
   storeId?: number;
   storeName?: string;
   images?: IImage[];
+  imageUrl?: string;
 }
 
 export interface ICartItemBody {

@@ -17,8 +17,9 @@
     <!--    RIGHT SECTION -->
     <div class="col-lg-8 row">
       <div class="col-6">
-        <div class="container text-center">
+        <div class="container text-center image-wrapper">
           <img [src]="product?.images[0]?.secureUrl || 'https://placehold.it/500'" alt="" class="img-fluid">
+          <img *ngIf="product.outStock" src="assets/img/sold-out.png" alt="Sold out" class="sold-out">
         </div>
       </div>
       <div class="col-6">

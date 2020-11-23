@@ -21,6 +21,7 @@ export interface IProduct {
   imageUrl?: string;
   discountPercent?: number;
   description?: string;
+  outStock?: boolean;
 }
 
 export interface IProductBody {

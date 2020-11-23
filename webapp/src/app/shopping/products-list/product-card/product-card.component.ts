@@ -66,11 +66,12 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   isSoldOut(): boolean {
-    return !this.product.quantity;
+    return this.product?.outStock;
   }
 
   addToCart(event: Event): void {
     event.stopPropagation(); // Prevent conflict with card event
+
     if (this.isSoldOut()) {
       return this.notiService.showError('Product has sold out!');
     }

@@ -15,3 +15,11 @@ a:hover {
 li:hover a {
   color: #e7ab3c !important;
 }
+
+.filter-catagories {
+  li a {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+  }
+}

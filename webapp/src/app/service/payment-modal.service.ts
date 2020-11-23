@@ -15,7 +15,7 @@ export class PaymentModalService {
     focus: true,
     show: false,
     ignoreBackdropClick: false,
-    class: 'modal-dialog-centered modal-dialog',
+    class: '',
     containerClass: '',
     animated: true,
     data: {},

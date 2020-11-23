@@ -71,7 +71,7 @@ export class AuthService {
         this.notiService.showSuccess('Logged in as Store Manager!');
         return;
       case UserType[UserType.ADMIN]:
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/charts']);
         this.notiService.showSuccess('Logged in as Admin!');
         return;
     }

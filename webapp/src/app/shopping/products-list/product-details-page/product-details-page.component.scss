@@ -104,3 +104,16 @@ i.anticon {
     margin-left: 18px;
   }
 }
+
+.image-wrapper {
+  position: relative;
+
+  .sold-out {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    padding: 5px 10px;
+    opacity: 0.7;
+  }
+}
+

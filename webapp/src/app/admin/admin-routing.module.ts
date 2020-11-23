@@ -3,6 +3,7 @@ import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminChartsComponent } from "./admin-charts/admin-charts.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: AdminDashboardComponent
+      },
+      {
+        path: 'charts',
+        component: AdminChartsComponent
       },
       {
         path: 'user-management',

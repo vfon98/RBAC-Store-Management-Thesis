@@ -6,7 +6,7 @@ import { CategoryService } from 'src/app/core/http/category.service';
 @Component({
   selector: 'app-shopping-category',
   templateUrl: './shopping-category.component.html',
-  styleUrls: ['./shopping-category.component.css'],
+  styleUrls: ['./shopping-category.component.scss'],
 })
 export class ShoppingCategoryComponent implements OnInit {
   categories: ICategory[] = [];
