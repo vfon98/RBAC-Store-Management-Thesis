@@ -13,8 +13,12 @@ export class ChartService {
 
   constructor(private http: HttpClient) { }
 
-  fetchTopSaleProductsByStoreId(storeId?: number): Observable<ITopSaleResponse[]> {
+  fetchTopSaleProducts(): Observable<ITopSaleResponse[]> {
     return this.http.get<ITopSaleResponse[]>(this.REQUEST_URL + "products/top-sale");
+  }
+
+  fetchTopSaleProductsByStoreId(storeId: string | number): Observable<ITopSaleResponse[]> {
+    return this.http.get<ITopSaleResponse[]>(this.REQUEST_URL + `products/top-sale/stores/${storeId}`)
   }
 
 }

@@ -17,7 +17,7 @@ export class AdminChartsComponent implements OnInit {
   }
 
   fetchTopSaleProductsData(): void {
-    this.chartService.fetchTopSaleProductsByStoreId().subscribe(topSales => {
+    this.chartService.fetchTopSaleProducts().subscribe(topSales => {
       this.topSaleData = topSales.map(topSale => ({
         name: topSale.productName,
         value: topSale.total

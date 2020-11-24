@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ChartService {
     List<TopSaleProductsResponse> getTopSaleProducts();
+
+    List<TopSaleProductsResponse> getTopSaleProductsByStoreId(Integer storeId);
 }
