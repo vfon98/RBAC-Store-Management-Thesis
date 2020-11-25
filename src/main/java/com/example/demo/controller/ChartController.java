@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.OrderItem;
+import com.example.demo.response.StoreRevenueResponse;
 import com.example.demo.response.TopSaleProductsResponse;
 import com.example.demo.service.ChartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,12 @@ public class ChartController {
         List<TopSaleProductsResponse> topSale = chartService.getTopSaleProductsByStoreId(storeId);
 
         return ResponseEntity.ok(topSale);
+    }
+
+    @GetMapping("/admin/stores/total-revenue")
+    public ResponseEntity getStoreRevenueStatistics() {
+        List<StoreRevenueResponse> storeRevenues = chartService.getStoreRevenueStatistics();
+
+        return ResponseEntity.ok(storeRevenues);
     }
 }
