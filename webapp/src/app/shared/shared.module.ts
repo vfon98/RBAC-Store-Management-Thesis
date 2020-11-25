@@ -29,6 +29,7 @@ import { CustomAgmSearchboxComponent } from './components/custom-agm-searchbox/c
 import { ImageFallbackDirective } from './directives/image-fallback.directive';
 import { BarChartVerticalComponent } from './charts/bar-chart-vertical/bar-chart-vertical.component';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     CustomAgmSearchboxComponent,
     ImageFallbackDirective,
     BarChartVerticalComponent,
+    PieGridChartComponent,
   ],
   imports: [
     CommonModule,
@@ -68,38 +70,39 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     AgmCoreModule,
     NgxChartsModule
   ],
-  exports: [
-    UsdPipe,
-    FormsModule,
-    ReactiveFormsModule,
-    // NgZorro Modules
-    NzUploadModule,
-    NzButtonModule,
-    NzIconModule,
-    NzTagModule,
-    NzTableModule,
-    NzAvatarModule,
-    NzToolTipModule,
-    NzPopconfirmModule,
-    NzStatisticModule,
-    NzCardModule,
-    NzDropDownModule,
-    NzBadgeModule,
-    NzTagModule,
-    NzTabsModule,
-    NzAffixModule,
-    NzModalModule,
-    // Shared Components
-    TableOverviewComponent,
-    BackButtonAdminComponent,
-    ModalWrapperAdminComponent,
-    FormAddWrapperAdminComponent,
-    ActionButtonsAdminComponent,
-    // Google Maps
-    CustomAgmMapComponent,
-    CustomAgmSearchboxComponent,
-    ImageFallbackDirective,
-    BarChartVerticalComponent
-  ],
+    exports: [
+        UsdPipe,
+        FormsModule,
+        ReactiveFormsModule,
+        // NgZorro Modules
+        NzUploadModule,
+        NzButtonModule,
+        NzIconModule,
+        NzTagModule,
+        NzTableModule,
+        NzAvatarModule,
+        NzToolTipModule,
+        NzPopconfirmModule,
+        NzStatisticModule,
+        NzCardModule,
+        NzDropDownModule,
+        NzBadgeModule,
+        NzTagModule,
+        NzTabsModule,
+        NzAffixModule,
+        NzModalModule,
+        // Shared Components
+        TableOverviewComponent,
+        BackButtonAdminComponent,
+        ModalWrapperAdminComponent,
+        FormAddWrapperAdminComponent,
+        ActionButtonsAdminComponent,
+        // Google Maps
+        CustomAgmMapComponent,
+        CustomAgmSearchboxComponent,
+        ImageFallbackDirective,
+        BarChartVerticalComponent,
+        PieGridChartComponent
+    ],
 })
 export class SharedModule {}

@@ -3,6 +3,7 @@ import { SERVER_URL } from "../constants/api.constants";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ITopSaleResponse } from "../models/top-sale-reponse.model";
+import { IStoreRevenueResponse } from "../models/store-revenue.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,7 @@ export class ChartService {
     return this.http.get<ITopSaleResponse[]>(this.REQUEST_URL + `products/top-sale/stores/${storeId}`)
   }
 
+  fetchStoreRevenues(): Observable<IStoreRevenueResponse[]> {
+    return this.http.get<IStoreRevenueResponse[]>(this.REQUEST_URL + `admin/stores/total-revenue`);
+  }
 }

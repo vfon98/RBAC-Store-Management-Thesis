@@ -8,12 +8,16 @@ import { IBarChartData } from "../../core/models";
   styleUrls: ['./admin-charts.component.css']
 })
 export class AdminChartsComponent implements OnInit {
-  topSaleData: IBarChartData[]  = [];
+  topSaleData: IBarChartData[] = [];
+  storeRevenueByQuantity: IBarChartData[] = [];
+  storeRevenueByPrice: IBarChartData[] = [];
 
-  constructor(private chartService: ChartService) { }
+  constructor(private chartService: ChartService) {
+  }
 
   ngOnInit(): void {
     this.fetchTopSaleProductsData();
+    this.fetchStoreRevenues();
   }
 
   fetchTopSaleProductsData(): void {
@@ -22,8 +26,21 @@ export class AdminChartsComponent implements OnInit {
         name: topSale.productName,
         value: topSale.total
       }));
-
-      console.log(this.topSaleData)
     });
   }
+
+  fetchStoreRevenues(): void {
+    this.chartService.fetchStoreRevenues().subscribe(storeRevenues => {
+      this.storeRevenueByQuantity = storeRevenues.map(response => ({
+        name: response.storeName,
+        value: response.totalQuantity
+      }));
+
+      this.storeRevenueByPrice = storeRevenues.map(response => ({
+        name: response.storeName,
+        value: response.totalRevenue
+      }))
+    })
+  }
+
 }
