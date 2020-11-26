@@ -19,6 +19,8 @@ export class ProductsListComponent implements OnInit {
   stores: IStore[] = [];
   isLoading = true;
 
+  priceRange = [20, 50];
+
   constructor(
     private customerService: CustomerService,
     private storeService: StoreService,
@@ -90,5 +92,9 @@ export class ProductsListComponent implements OnInit {
 
   isEmptyResult(): boolean {
     return !this.products.length;
+  }
+
+  handleSlideChanged(value: number[] | number): void {
+    console.log(value)
   }
 }

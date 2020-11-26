@@ -1,0 +1,7 @@
+.nice-select {
+  padding-left: 14px;
+}
+
+input#minamount, input#maxamount {
+  height: 30px;
+}

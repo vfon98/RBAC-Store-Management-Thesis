@@ -17,6 +17,7 @@ import {
   NzTabsModule,
   NzAffixModule,
   NzModalModule,
+  NzSliderModule
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
@@ -66,6 +67,7 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
     NzTabsModule,
     NzAffixModule,
     NzModalModule,
+    NzSliderModule,
     // END NgZorro Module
     AgmCoreModule,
     NgxChartsModule
@@ -91,6 +93,7 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
         NzTabsModule,
         NzAffixModule,
         NzModalModule,
+        NzSliderModule,
         // Shared Components
         TableOverviewComponent,
         BackButtonAdminComponent,
