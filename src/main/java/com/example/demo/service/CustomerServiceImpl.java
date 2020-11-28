@@ -317,6 +317,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public List<Order> findAllOrdersByStoreAndStatus(Integer storeId, Order.Status status) {
+        Store store = storeService.findById(storeId);
+        return orderRepository.findAllByStoreAndStatus(store, status);
+    }
+
+    @Override
     public Order updateOrderStatus(Integer orderId, OrderUpdateForm orderUpdateForm) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderNotFoundException(orderId));

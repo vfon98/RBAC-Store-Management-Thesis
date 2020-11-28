@@ -1,1 +1,63 @@
-<p>store-invoices works!</p>
+<!--<app-shared-table-statistic [statistics]="statistics"></app-shared-table-statistic>-->
+
+<div class="card">
+  <div class="card-body p-2">
+    <div class="mb-2 row"></div>
+
+    <table class="table table-sm table-hover table-striped table-responsive-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Transaction ID</th>
+          <th scope="col">Total</th>
+          <th scope="col">Ship to</th>
+          <th scope="col">Order Date</th>
+<!--          <th scope="col" class="text-center">Action</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <div class="payment-id text-muted">
+              {{ order.transactionId || 'Pay with cash' }}
+            </div>
+
+            <div class="order-status-small" [ngClass]="isShipping(order) ? 'text-danger' : 'text-success'">
+              {{ order.status }}
+              <i [ngClass]="isShipping(order) ? 'fas fa-shipping-fast' : 'fas fa-check-circle'"></i>
+            </div>
+
+          </td>
+          <td class="order-price">{{ order.totalPrice | usd }}</td>
+          <td>
+            {{ order.shipAddress }}
+          </td>
+          <td>
+            {{ order.createdAt | date: "short" }}
+          </td>
+<!--          <td class="text-center">-->
+<!--            <button-->
+<!--              type="button"-->
+<!--              class="btn"-->
+<!--              data-toggle="tooltip" data-placement="top" title="Mark as shipped"-->
+<!--              [ngClass]="isShipping(order) && 'text-secondary'"-->
+<!--              [disabled]="!isShipping(order)"-->
+<!--              (click)="markAsShipped(order.id)"-->
+<!--            >-->
+<!--              <i-->
+<!--                class="fas fa-lg mr-0"-->
+<!--                [ngClass]="isShipping(order) && 'fa-edit'"-->
+<!--              ></i>-->
+<!--            </button>-->
+
+<!--&lt;!&ndash;            <app-order-status-dropdown></app-order-status-dropdown>&ndash;&gt;-->
+<!--          </td>-->
+        </tr>
+        <tr *ngIf="!orders.length">
+          <td colspan="6" class="text-center text-danger font-italic">Sorry! nothing to show</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

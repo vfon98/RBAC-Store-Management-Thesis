@@ -9,9 +9,10 @@ import {
   IPaymentInfo, IProduct, IStore,
 } from 'src/app/core/models';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_URL } from '../constants/api.constants';
+import { ORDER_STATUS } from "../constants/common.constants";
 
 @Injectable({
   providedIn: 'root',
@@ -92,8 +93,13 @@ export class CustomerService {
     return this.http.get<IOrder[]>(this.REQUEST_URL + 'orders');
   }
 
-  fetchOrdersByStore(): Observable<IOrder[]> {
-    return this.http.get<IOrder[]>(SERVER_URL + '/manager/orders');
+  fetchOrdersByStore(status?: ORDER_STATUS): Observable<IOrder[]> {
+    let params: HttpParams = null;
+    if (status) {
+      params = new HttpParams().set('status', `${status}`);
+    }
+    console.log({params})
+    return this.http.get<IOrder[]>(SERVER_URL + '/manager/orders', { params });
   }
 
   updateOrderStatus(id: number, body: { status: string }): Observable<IOrder> {

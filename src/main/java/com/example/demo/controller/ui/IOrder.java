@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IOrder {
 
-    List<Order> findAllOrders();
+    List<Order> findAllOrders(Integer status);
 
     Order findOrderById(Integer id);
 

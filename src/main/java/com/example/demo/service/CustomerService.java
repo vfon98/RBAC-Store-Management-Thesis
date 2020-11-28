@@ -45,6 +45,8 @@ public interface CustomerService {
 
     List<Order> findAllOrdersByStore(Integer storeId);
 
+    List<Order> findAllOrdersByStoreAndStatus(Integer storeId, Order.Status status);
+
     Order updateOrderStatus(Integer orderId, OrderUpdateForm orderUpdateForm);
 
 }

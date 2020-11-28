@@ -29,8 +29,8 @@
           <div class="filter-range-wrap">
             <div class="range-slider">
               <div class="price-input">
-                <input type="text" id="minamount" [value]="priceRange[0] | usd">
-                <input type="text" id="maxamount" [value]="priceRange[1] | usd">
+                <input type="text" [value]="priceRange[0] | usd">
+                <input type="text" [value]="priceRange[1] | usd">
               </div>
             </div>
             <nz-slider

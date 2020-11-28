@@ -15,4 +15,5 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     List<Order> findAllByStore(Store store);
 
+    List<Order> findAllByStoreAndStatus(Store store, Order.Status status);
 }

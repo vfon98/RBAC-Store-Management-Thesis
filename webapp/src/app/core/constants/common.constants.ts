@@ -24,4 +24,23 @@ export enum LANGUAGE_CODE {
   VN = 'vi-VN'
 }
 
+export enum ORDER_STATUS {
+  SHIPPING = 0,
+  SHIPPED = 1,
+// //    STANDARD
+// PENDING,
+//   SHIPPING,
+//   SHIPPING_SUCCESS,
+//
+// //    EXTENDED
+//   STORE_APPROVED,
+//   CUSTOMER_CANCELED,
+//   STORE_CANCELED,
+//   CUSTOMER_REJECTED,
+//   SHIPPING_FAILED,
+//   INVALID,
+//   EXPIRED,
+//   CUSTOMER_REFUND
+}
+
 export default CONSTANTS;

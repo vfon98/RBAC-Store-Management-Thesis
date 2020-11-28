@@ -12,6 +12,8 @@ public interface OrderService {
 
     List<Order> findAllOrdersByStaff(Staff staff);
 
+    List<Order> findAllOrdersByStoreAndStatus(Store store, Order.Status status);
+
     Order findById(Integer id);
 
     Order save(Order order);

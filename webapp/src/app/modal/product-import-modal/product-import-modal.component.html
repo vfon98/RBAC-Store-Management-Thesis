@@ -24,7 +24,14 @@
         <div class="pro-qty">
           <span class="dec qtybtn" (click)="desQuantity()">-</span>
 
-          <input type="number" [(ngModel)]="importedQuan" min="1" required />
+          <input
+            type="number"
+            [(ngModel)]="importedQuan"
+            min="1"
+            required
+            (keyup.enter)="handleImport()"
+            autofocus
+          />
 
           <span class="inc qtybtn" (click)="incQuantity()">+</span>
         </div>

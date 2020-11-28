@@ -19,8 +19,8 @@
         <tr *ngFor="let order of orders; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td>
-            <div>
-              {{ order.transactionId }}
+            <div class="payment-id text-muted">
+              {{ order.transactionId || 'Pay with cash' }}
             </div>
 
             <div class="order-status-small" [ngClass]="isShipping(order) ? 'text-danger' : 'text-success'">

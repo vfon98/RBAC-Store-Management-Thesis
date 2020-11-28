@@ -140,8 +140,15 @@ public class CustomerController {
 
     @GetMapping(value = "orders/stores/{storeId}")
     @PreAuthorize(value = "hasAuthority(\"" + StorePermission.READ + "\")")
-    public ResponseEntity<List<Order>> findAllOrdersByStore(@PathVariable Integer storeId) {
-        return ResponseEntity.ok(customerService.findAllOrdersByStore(storeId));
-    }
+    public ResponseEntity<List<Order>> findAllOrdersByStore(
+            @PathVariable Integer storeId,
+            @RequestParam(value = "status", required = false) Order.Status status
+    ) {
+        if (status == null) {
+            return ResponseEntity.ok(customerService.findAllOrdersByStore(storeId));
+        }
 
+        return ResponseEntity.ok(
+                customerService.findAllOrdersByStoreAndStatus(storeId, status));
+    }
 }

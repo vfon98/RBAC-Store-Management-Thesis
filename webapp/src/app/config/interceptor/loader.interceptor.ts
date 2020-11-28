@@ -13,12 +13,7 @@ export class LoaderInterceptor implements HttpInterceptor {
   // timeout = 100;
   timeout = 0;
 
-  constructor(private loaderService: LoaderService ) {
-    if (location.pathname.startsWith('/admin')) {
-      this.timeout = 0;
-    }
-    console.log("TIMEOUT", this.timeout)
-  }
+  constructor(private loaderService: LoaderService ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 

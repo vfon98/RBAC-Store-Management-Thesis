@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
   stores: IStore[] = [];
   isLoading = true;
 
-  priceRange = [20, 50];
+  priceRange = [20, 1000];
 
   constructor(
     private customerService: CustomerService,

@@ -31,6 +31,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> findAllOrdersByStoreAndStatus(Store store, Order.Status status) {
+        return orderRepository.findAllByStoreAndStatus(store, status);
+    }
+
+    @Override
     public Order findById(Integer id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException(id));

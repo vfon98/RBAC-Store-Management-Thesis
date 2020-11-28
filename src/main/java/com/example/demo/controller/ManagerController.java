@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.controller.ui.*;
 import com.example.demo.entity.*;
+import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.exception.*;
 import com.example.demo.form.*;
 import com.example.demo.response.RoleResponse;
@@ -319,9 +320,18 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @Override
     @GetMapping("orders")
     @PreAuthorize("hasAuthority(\"" + OrderPermission.READ + "\")")
-    public List<Order> findAllOrders() {
+    public List<Order> findAllOrders(
+            @RequestParam(value = "status", required = false) Integer status) {
+
         Staff currentStaff = securityUtil.getCurrentStaff();
         Store store = currentStaff.getStore();
+
+        if (status != null) {
+            return orderService.findAllOrdersByStoreAndStatus(store, Order.Status.valueOf("Shipped")).stream()
+                    .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
+                    .collect(Collectors.toList());
+        }
+
         return orderService.findAllOrdersByStore(store).stream()
                 .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
                 .collect(Collectors.toList());
