@@ -4,6 +4,7 @@ import { StoreService } from  'src/app/core/http';
 import { IProduct } from 'src/app/core/models';
 import { ProductImportModalService } from './../../service/product-import-modal.service';
 import { Component, OnInit } from '@angular/core';
+import { TransferItem } from "ng-zorro-antd";
 
 @Component({
   selector: 'app-product-import-modal',

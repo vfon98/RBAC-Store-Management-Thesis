@@ -1,0 +1,25 @@
+nz-input-number {
+  width: 50px !important;
+
+  &:hover ::ng-deep input.ant-input-number-input {
+    text-align: left;
+    padding-left: 4px !important;
+  }
+}
+
+::ng-deep input.ant-input-number-input {
+  text-align: center;
+
+  &:hover, &:focus {
+    text-align: left;
+    padding-left: 4px !important;
+  }
+}
+
+td > img {
+  width: 30px;
+}
+
+::ng-deep td {
+  cursor: pointer !important;
+}

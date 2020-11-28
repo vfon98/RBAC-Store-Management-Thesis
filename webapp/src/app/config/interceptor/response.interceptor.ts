@@ -36,6 +36,9 @@ export class ResponseInterceptor implements HttpInterceptor {
           // Navigate to error page
         }
         break;
+      case 500:
+        this.notiService.showError('Something went wrong. Try again later!');
+        break;
       case 0:
         this.notiService.showError('Connection refused!');
         break;

@@ -6,3 +6,12 @@
   max-width: 50px;
   max-height: 50px;
 }
+
+nz-tag.remain-quantity {
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.bg-out-stock, .bg-out-stock:hover {
+  background: #FFF1F0 !important;
+}

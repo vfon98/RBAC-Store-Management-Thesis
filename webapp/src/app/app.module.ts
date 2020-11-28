@@ -91,18 +91,19 @@ import { AdminChartsComponent } from "./admin/admin-charts/admin-charts.componen
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [HeaderComponent, ContentComponent, FooterComponent, ErrorComponent, UserManagementComponent, RoleManagementComponent, StoreManagementComponent, ProductManagementComponent, CategoryManagementComponent, RegionManagementComponent, HomeComponent, LoginModalComponent, ViewRoleDetailsManagementComponent, ConfirmModalComponent, UserDetailsModalComponent, UserUpdateModalComponent, RoleUpdateModalComponent, StoreUpdateModalComponent, StoreDetailsModalComponent, ProductDetailsComponent, ProductUpdateComponent, CategoryDetailsComponent, CategoryUpdateComponent, DashboardComponent, ManagementComponent, ShoppingComponent, ShoppingCategoryComponent, ProductCardComponent, ShoppingCartComponent, ShoppingStoreComponent, CartDetailComponent, ProductsListComponent, CartCheckoutComponent, CartDetailItemComponent, StripeFormComponent, UserCheckoutFormComponent, PaymentModalComponent, ShoppingOrderComponent, PaginationComponent, RegisterFormComponent, ShoppingOrderComponent, SettingsComponent, LoadingComponent, ShoppingDetailsComponent, AdminComponent, AdminDashboardComponent, ProductImportModalComponent, UserAddModalComponent, RoleAddModalComponent, LoginComponent, ProductAddModalComponent, CategoryAddModalComponent, ProductDetailsPageComponent, ProductVoiceSearchModalComponent, AdminChartsComponent],
-  imports: [
-    BrowserModule, AppRoutingModule, CoreModule, NgbModule, FormsModule, ReactiveFormsModule, UserManagementModule, StoreManagementModule, RoleManagementModule, ProductManagementModule, CategoryManagementModule, DashboardModule, ManagementModule, BrowserAnimationsModule, ToastModule.forRoot(), ToastrModule.forRoot(), MDBBootstrapModule, MDBBootstrapModulePro, MDBBootstrapModulesPro.forRoot(), HttpClientModule, NzButtonModule, NzUploadModule, NzIconModule, NzResultModule, SharedModule, AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
-      libraries: ['places', 'geometry']
-    }),
-    NgxSpinnerModule
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [LoginModalComponent],
-  providers: [MDBSpinningPreloader, {provide: NZ_I18N, useValue: en_US}],
-  bootstrap: [ContentComponent],
+    declarations: [HeaderComponent, ContentComponent, FooterComponent, ErrorComponent, UserManagementComponent, RoleManagementComponent, StoreManagementComponent, ProductManagementComponent, CategoryManagementComponent, RegionManagementComponent, HomeComponent, LoginModalComponent, ViewRoleDetailsManagementComponent, ConfirmModalComponent, UserDetailsModalComponent, UserUpdateModalComponent, RoleUpdateModalComponent, StoreUpdateModalComponent, StoreDetailsModalComponent, ProductDetailsComponent, ProductUpdateComponent, CategoryDetailsComponent, CategoryUpdateComponent, DashboardComponent, ManagementComponent, ShoppingComponent, ShoppingCategoryComponent, ProductCardComponent, ShoppingCartComponent, ShoppingStoreComponent, CartDetailComponent, ProductsListComponent, CartCheckoutComponent, CartDetailItemComponent, StripeFormComponent, UserCheckoutFormComponent, PaymentModalComponent, ShoppingOrderComponent, PaginationComponent, RegisterFormComponent, ShoppingOrderComponent, SettingsComponent, LoadingComponent, ShoppingDetailsComponent, AdminComponent, AdminDashboardComponent, ProductImportModalComponent, UserAddModalComponent, RoleAddModalComponent, LoginComponent, ProductAddModalComponent, CategoryAddModalComponent, ProductDetailsPageComponent, ProductVoiceSearchModalComponent, AdminChartsComponent],
+    imports: [
+        BrowserModule, AppRoutingModule, CoreModule, NgbModule, FormsModule, ReactiveFormsModule, UserManagementModule, StoreManagementModule, RoleManagementModule, ProductManagementModule, CategoryManagementModule, DashboardModule, ManagementModule, BrowserAnimationsModule, ToastModule.forRoot(), ToastrModule.forRoot(), MDBBootstrapModule, MDBBootstrapModulePro, MDBBootstrapModulesPro.forRoot(), HttpClientModule, NzButtonModule, NzUploadModule, NzIconModule, NzResultModule, SharedModule, AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyC_IsQYE9OrJJnz9im6HDW1ZfeZXplYybM',
+            libraries: ['places', 'geometry']
+        }),
+        NgxSpinnerModule
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    entryComponents: [LoginModalComponent],
+    providers: [MDBSpinningPreloader, { provide: NZ_I18N, useValue: en_US }],
+    bootstrap: [ContentComponent],
+    exports: []
 })
 export class AppModule {
 }

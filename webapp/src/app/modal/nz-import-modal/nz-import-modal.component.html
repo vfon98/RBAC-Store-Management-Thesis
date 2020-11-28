@@ -1,0 +1,109 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Import products to store"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzWidth]="800"
+>
+  <div class="w-100 overflow-hidden">
+    <nz-transfer
+      [nzDataSource]="list"
+      [nzDisabled]="false"
+      [nzTitles]="['Product List', 'Import Product']"
+      [nzShowSearch]="true"
+      [nzShowSelectAll]="false"
+      [nzRenderList]="[srcList, destList]"
+      (nzSelectChange)="select($event)"
+      (nzChange)="change($event)"
+    >
+      <ng-template
+        #srcList
+        let-items
+        let-direction="direction"
+        let-stat="stat"
+        let-disabled="disabled"
+        let-onItemSelectAll="onItemSelectAll"
+        let-onItemSelect="onItemSelect"
+      >
+        <nz-table #t [nzData]="items" nzSize="small">
+          <thead>
+          <tr>
+            <th
+              [nzDisabled]="disabled"
+              [nzChecked]="stat.checkAll"
+              [nzIndeterminate]="stat.checkHalf"
+              (nzCheckedChange)="onItemSelectAll($event)"
+            ></th>
+            <th colspan="2" class="text-left">Name</th>
+            <th class="text-center">In Stock</th>
+            <th>Import</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of t.data" (click)="onItemSelect(data)">
+            <td [nzChecked]="data.checked"
+                [nzDisabled]="disabled || data.disabled"
+                (nzCheckedChange)="onItemSelect(data)"></td>
+            <td><img [src]="data?.img" class="product-img" /></td>
+            <td>{{ data.title }}</td>
+            <td class="text-center">
+              <nz-tag [nzColor]="
+                data.remainQuantity < 10 ? 'red' :
+                  data.remainQuantity < 50 ? 'gold' : 'green'"
+              >{{ data.remainQuantity }}</nz-tag>
+            </td>
+            <td>
+              <nz-input-number
+                [(ngModel)]="data.importedQuantity"
+                [nzMin]="1"
+                [nzMax]="100"
+                [nzStep]="1"
+                (click)="$event.stopPropagation()"
+              ></nz-input-number>
+            </td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </ng-template>
+
+<!--      DEST      -->
+      <ng-template
+        #destList
+        let-items
+        let-direction="direction"
+        let-stat="stat"
+        let-disabled="disabled"
+        let-onItemSelectAll="onItemSelectAll"
+        let-onItemSelect="onItemSelect"
+      >
+        <nz-table #t [nzData]="items" nzSize="small">
+          <thead>
+          <tr>
+            <th
+              [nzDisabled]="disabled"
+              [nzChecked]="stat.checkAll"
+              [nzIndeterminate]="stat.checkHalf"
+              (nzCheckedChange)="onItemSelectAll($event)"
+            ></th>
+            <th colspan="2" class="text-left">Name</th>
+            <th class="text-center">Import</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let data of t.data" (click)="onItemSelect(data)">
+            <td [nzChecked]="data.checked"
+                [nzDisabled]="disabled || data.disabled"
+                (nzCheckedChange)="onItemSelect(data)"></td>
+            <td><img [src]="data?.img" class="product-img" /></td>
+            <td>{{ data.title }}</td>
+            <td class="text-center">
+              {{ data.importedQuantity }}
+            </td>
+          </tr>
+          </tbody>
+        </nz-table>
+      </ng-template>
+    </nz-transfer>
+  </div>
+
+</nz-modal>

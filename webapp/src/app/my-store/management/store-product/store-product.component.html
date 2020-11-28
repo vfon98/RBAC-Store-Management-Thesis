@@ -42,12 +42,6 @@
 
 <div class="card card-body p-2">
   <div class="mb-2 row">
-    <div class="col">
-      <!-- <button class="btn btn-info" (click)="showAddModal()">
-        <i class="fas fa-plus"></i>New product
-      </button> -->
-    </div>
-
     <!-- <div class="form-inline d-flex justify-content-end col">
       <div class="input-group input-group-sm">
         <div class="input-group-prepend">
@@ -89,8 +83,21 @@
       </button>
     </div> -->
   </div>
+  <!--  <app-table-wrapper-manager #table [tableData]="addedProducts">-->
+  <div class="mb-3">
+    <button class="btn btn-info" (click)="modal.showModal()">
+      <i class="fas fa-download"></i> Import product
+    </button>
 
-  <table class="table table-sm table-hover table-striped table-responsive-sm">
+    <app-nz-import-modal #modal [srcProducts]="addedProducts"></app-nz-import-modal>
+  </div>
+
+  <nz-table
+    #productTable
+    [nzData]="addedProducts"
+    [nzShowSizeChanger]="true"
+  >
+<!--  <table class="table table-sm table-hover table-striped table-responsive-sm">-->
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -103,7 +110,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of addedProducts">
+<!--      <tr *ngFor="let product of addedProducts">-->
+      <tr *ngFor="let product of productTable.data" [ngClass]="{'bg-out-stock': !product.quantity}">
         <th scope="row">{{ product.id }}</th>
         <td>
           <img class="product-image" [src]="product?.images[0]?.url || '//placehold.it/50'" [alt]="product.name">
@@ -112,10 +120,12 @@
         <td>{{ product.price | usd }}</td>
         <td>{{ printCategories(product) }}</td>
         <td
-          class="text-center"
-          [ngClass]="{ 'text-danger font-weight-bold': !product.quantity }"
+          class="text-center font-weight-bold"
         >
-          {{ product.quantity }}
+          <nz-tag class="remain-quantity" [nzColor]="
+                product.quantity < 10 ? 'red' :
+                  product.quantity < 50 ? 'gold' : 'green'"
+          >{{ product.quantity || 'out stock' }}</nz-tag>
         </td>
         <td class="text-center">
           <a data-toggle="tooltip" title="Import products">
@@ -144,5 +154,7 @@
         <td colspan="6" class="text-center text-danger font-italic">Sorry! Nothing to show</td>
       </tr>
     </tbody>
-  </table>
+<!--  </table>-->
+<!--  </app-table-wrapper-manager>-->
+    </nz-table>
 </div>

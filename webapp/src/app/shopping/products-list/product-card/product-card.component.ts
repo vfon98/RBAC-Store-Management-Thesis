@@ -84,7 +84,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     return Math.round(Math.random() * 50);
   }
 
-  showProductModal(): void {
+  showProductModal(e: Event): void {
+    // e.stopPropagation();
     this.shoppingModalService.show({ ...this.product, imgUrl: this.imgUrl });
   }
 }

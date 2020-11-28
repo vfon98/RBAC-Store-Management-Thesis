@@ -17,7 +17,7 @@ import {
   NzTabsModule,
   NzAffixModule,
   NzModalModule,
-  NzSliderModule
+  NzSliderModule, NzTransferModule, NzInputNumberModule
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
@@ -31,6 +31,7 @@ import { ImageFallbackDirective } from './directives/image-fallback.directive';
 import { BarChartVerticalComponent } from './charts/bar-chart-vertical/bar-chart-vertical.component';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.component';
+import { TableWrapperManagerComponent } from './components/table-wrapper-manager/table-wrapper-manager.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
     ImageFallbackDirective,
     BarChartVerticalComponent,
     PieGridChartComponent,
+    TableWrapperManagerComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,8 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
     NzAffixModule,
     NzModalModule,
     NzSliderModule,
+    NzTransferModule,
+    NzInputNumberModule,
     // END NgZorro Module
     AgmCoreModule,
     NgxChartsModule
@@ -94,6 +98,8 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
         NzAffixModule,
         NzModalModule,
         NzSliderModule,
+        NzTransferModule,
+        NzInputNumberModule,
         // Shared Components
         TableOverviewComponent,
         BackButtonAdminComponent,
@@ -105,7 +111,8 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
         CustomAgmSearchboxComponent,
         ImageFallbackDirective,
         BarChartVerticalComponent,
-        PieGridChartComponent
+        PieGridChartComponent,
+        TableWrapperManagerComponent
     ],
 })
 export class SharedModule {}

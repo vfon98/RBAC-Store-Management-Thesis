@@ -13,9 +13,9 @@ import { StoreRolesComponent } from './store-roles/store-roles.component';
 import { StoreCategoriesComponent } from './store-categories/store-categories.component';
 import { StoreInvoicesComponent } from './store-invoices/store-invoices.component';
 import { SharedTableStatisticComponent } from './shared-table-statistic/shared-table-statistic.component';
-import { NzDropDownModule } from "ng-zorro-antd";
 import { OrderStatusDropdownComponent } from './store-orders/order-status-dropdown/order-status-dropdown.component';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { NzImportModalComponent } from "../../modal/nz-import-modal/nz-import-modal.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     StoreInvoicesComponent,
     SharedTableStatisticComponent,
     OrderStatusDropdownComponent,
+    NzImportModalComponent
   ],
     imports: [
         CommonModule,
@@ -59,6 +60,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     StoreStatisticsComponent,
     StoreRolesComponent,
     StoreCategoriesComponent,
+    NzImportModalComponent
   ],
 })
 export class ManagementModule {}
