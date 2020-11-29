@@ -17,7 +17,7 @@ import {
   NzTabsModule,
   NzAffixModule,
   NzModalModule,
-  NzSliderModule, NzTransferModule, NzInputNumberModule
+  NzSliderModule, NzTransferModule, NzInputNumberModule, NzSelectModule
 } from 'ng-zorro-antd';
 import { TableOverviewComponent } from './components/table-overview/table-overview.component';
 import { BackButtonAdminComponent } from './components/back-button-admin/back-button-admin.component';
@@ -72,6 +72,7 @@ import { TableWrapperManagerComponent } from './components/table-wrapper-manager
     NzSliderModule,
     NzTransferModule,
     NzInputNumberModule,
+    NzSelectModule,
     // END NgZorro Module
     AgmCoreModule,
     NgxChartsModule
@@ -100,6 +101,7 @@ import { TableWrapperManagerComponent } from './components/table-wrapper-manager
         NzSliderModule,
         NzTransferModule,
         NzInputNumberModule,
+        NzSelectModule,
         // Shared Components
         TableOverviewComponent,
         BackButtonAdminComponent,

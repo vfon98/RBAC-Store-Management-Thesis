@@ -52,16 +52,31 @@
                 <div class="row">
                   <div class="col-lg-12 col-md-6">
                     <div class="select-option">
-                      <select class="sorting nice-select">
-                        <option value="">Default Sorting</option>
-                        <option value="">By Name</option>
-                        <option value="">By Name</option>
-                        <option value="">By Price <i class="fas fa-sort-amount-down-alt"></i></option>
-                        <option value="">By Price <i class="fas fa-sort-amount-up-alt"></i></option>
-                      </select>
-                      <select class="p-show nice-select">
-                        <option value="">Show: <span class="text-right border float-right">09</span></option>
-                      </select>
+
+                      <nz-select
+                        nzSize="large"
+                        nzAllowClear
+                        nzPlaceHolder="Sorting: Default"
+                      >
+                        <nz-option-group nzLabel="By Name">
+                          <nz-option nzCustomContent nzLabel="Sorting: None" nzValue="name-asc"><i nz-icon nzType="windows"></i> Ascending</nz-option>
+                          <nz-option nzCustomContent nzLabel="Name: Ascending" nzValue="name-asc"><i nz-icon nzType="windows"></i> Ascending</nz-option>
+                          <nz-option nzCustomContent nzLabel="Name: Descending" nzValue="name-desc"><i nz-icon nzType="apple"></i> Descending</nz-option>
+                        </nz-option-group>
+                        <nz-option-group nzLabel="By Price">
+                          <nz-option nzCustomContent nzLabel="Price: High to low" nzValue="price-asc"><i nz-icon nzType="android"></i> High to low</nz-option>
+                          <nz-option nzCustomContent nzLabel="Price: Low to high" nzValue="price-desc"><i nz-icon nzType="android"></i> Low to high</nz-option>
+                        </nz-option-group>
+                      </nz-select>
+
+                      <div class="mx-2"></div>
+
+                      <nz-select nzSize="large" nzAllowClear nzPlaceHolder="Show: 09">
+                        <nz-option nzCustomContent nzLabel="Windows" nzValue="windows"><i nz-icon nzType="windows"></i> Windows</nz-option>
+                        <nz-option nzCustomContent nzLabel="Mac" nzValue="mac"><i nz-icon nzType="apple"></i> Mac</nz-option>
+                        <nz-option nzCustomContent nzLabel="Android" nzValue="android"><i nz-icon nzType="android"></i> Android </nz-option>
+                      </nz-select>
+
                     </div>
                   </div>
                 </div>

@@ -60,16 +60,24 @@
         </div>
       </div>
       <div class="col-lg-7 col-md-7">
-        <div class="advanced-search">
-          <button type="button" class="category-btn">All Categories</button>
-          <form action="#" class="input-group" (ngSubmit)="handleSearch()">
+        <div class="advanced-search d-flex">
+<!--          <button type="button" class="category-btn">All Categories</button>-->
+          <div class="h-100 border-right d-flex align-items-center">
+            <nz-select nzSize="large" [nzBorderless]="true" nzAllowClear nzPlaceHolder="All Stores">
+              <nz-option nzCustomContent nzLabel="Windows" nzValue="windows"><i nz-icon nzType="windows"></i> Windows</nz-option>
+              <nz-option nzCustomContent nzLabel="Mac" nzValue="mac"><i nz-icon nzType="apple"></i> Mac</nz-option>
+              <nz-option nzCustomContent nzLabel="Android" nzValue="android"><i nz-icon nzType="android"></i> Android </nz-option>
+            </nz-select>
+          </div>
 
+          <form action="#" class="input-group flex-grow-1" (ngSubmit)="handleSearch()">
             <input
-            type="text"
-            placeholder="What do you need?"
-            name="search"
-            [(ngModel)]="searchKeyword"
-            (input)="handleInput()"
+              class="flex-grow-1"
+              type="text"
+              placeholder="What do you need?"
+              name="search"
+              [(ngModel)]="searchKeyword"
+              (input)="handleInput()"
             />
 
             <i class="icon-voice-search" nz-icon nzType="audio" (click)="showVoiceSearchModal()"></i>

@@ -1,0 +1,31 @@
+$theme-color: #e7ab3c;
+
+.nice-select {
+  padding-left: 14px;
+}
+
+input#minamount, input#maxamount {
+  height: 30px;
+}
+
+::ng-deep .ant-slider:hover {
+  .ant-slider-track {
+    background-color: var(--front-theme-color) !important;
+  }
+}
+
+::ng-deep .ant-slider-track {
+  background-color: var(--front-theme-color) !important;
+
+  &:hover {
+    background-color: darken($theme-color, 10%) !important;
+  }
+}
+
+::ng-deep .ant-slider-handle {
+  border-color: var(--front-theme-color) !important;
+
+  &:hover {
+    border-color: darken($theme-color, 20%) !important;
+  }
+}
