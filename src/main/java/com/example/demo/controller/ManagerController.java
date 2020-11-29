@@ -12,7 +12,9 @@ import com.example.demo.security.SecurityUtil;
 import com.example.demo.security.constants.*;
 import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -360,4 +362,17 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
         return orderService.save(order);
     }
 
+    @PostMapping("stores/{storeId}/products/import/multiple")
+    public ResponseEntity importMultipleProducts(
+            @PathVariable Integer storeId,
+            @RequestBody List<ProductImportForm> products
+    ) {
+        boolean succeeded = storeService.importMultipleProducts(storeId, products);
+
+        if (succeeded) {
+            return ResponseEntity.ok(null);
+        }
+
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
 }

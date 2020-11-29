@@ -4,6 +4,7 @@ import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Staff;
 import com.example.demo.entity.Store;
+import com.example.demo.form.ProductImportForm;
 import com.example.demo.form.StoreForm;
 import com.example.demo.response.StoreProductResponse;
 
@@ -48,4 +49,6 @@ public interface StoreService {
     void updateQuantityOfProductInStore(Integer storeId, Integer productId, Integer quantity);
 
     Store update(Integer id, StoreForm storeForm);
+
+    boolean importMultipleProducts(Integer storeId, List<ProductImportForm> products);
 }

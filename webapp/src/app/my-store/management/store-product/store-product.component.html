@@ -112,7 +112,7 @@
     <tbody>
 <!--      <tr *ngFor="let product of addedProducts">-->
       <tr *ngFor="let product of productTable.data" [ngClass]="{'bg-out-stock': !product.quantity}">
-        <th scope="row">{{ product.id }}</th>
+        <td scope="row">{{ product.id }}</td>
         <td>
           <img class="product-image" [src]="product?.images[0]?.url || '//placehold.it/50'" [alt]="product.name">
         </td>

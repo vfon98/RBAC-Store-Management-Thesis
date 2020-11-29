@@ -16,6 +16,9 @@ export class ProductService {
   public updateSubject = new Subject();
   public updateObservable$ = this.updateSubject.asObservable();
 
+  public changedSubject = new Subject();
+  public changedObservable$ = this.changedSubject.asObservable();
+
   constructor(private http: HttpClient) { }
 
   fetchProducts(): Observable<IProduct[]> {

@@ -5,12 +5,11 @@ import {
   TransferSelectChange
 } from "ng-zorro-antd";
 import { IProduct } from "../../core/models";
-import { ClassGetter } from "@angular/compiler/src/output/output_ast";
-import {
-  IImportedProduct,
-  IImportMultiple
-} from "../../core/models/import-multiple.model";
+import { IImportedProduct } from "../../core/models/import-multiple.model";
 import { ActivatedRoute } from "@angular/router";
+import { ProductService, StoreService } from "../../core/http";
+import { HttpErrorResponse } from "@angular/common/http";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-nz-import-modal',
@@ -21,12 +20,17 @@ export class NzImportModalComponent implements OnInit, OnChanges {
   isVisible = false;
   list: TransferItem[] = [];
   storeId: string;
+  isLoading = false;
 
   @Input()
   srcProducts: IProduct[];
 
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private storeService: StoreService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     this.route.parent.params.subscribe(params => {
@@ -76,7 +80,6 @@ export class NzImportModalComponent implements OnInit, OnChanges {
   }
 
   handleOk(): void {
-    const body: IImportMultiple = new IImportMultiple();
     const importedProducts: IImportedProduct[] = this.list
       .filter(item => item.direction === 'right')
       .map(item => ({
@@ -86,18 +89,21 @@ export class NzImportModalComponent implements OnInit, OnChanges {
 
     if (!importedProducts?.length) return;
 
-    body.storeId = this.storeId;
-    body.products = importedProducts;
+    console.log(importedProducts)
+    this.isLoading = true;
+    this.storeService.importMultipleProducts(this.storeId, importedProducts)
+      .subscribe(res => {
+        this.productService.changedSubject.next();
+        this.isVisible = false;
+        this.resetSelected();
+        this.isLoading = false;
+      });
 
-    console.log(body)
-
-    this.resetSelected();
-    this.isVisible = false;
   }
 
   handleCancel(): void {
-    this.resetSelected();
     this.isVisible = false;
+    this.resetSelected();
   }
 
   filterProducts(input: string, item: TransferItem): boolean {

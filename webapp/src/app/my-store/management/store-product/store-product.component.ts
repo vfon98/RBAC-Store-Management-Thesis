@@ -55,6 +55,11 @@ export class StoreProductComponent implements OnInit {
       const index: number = this.addedProducts.findIndex(p => p.id === product.id);
       this.addedProducts[index] = product;
     })
+
+    this.productService.changedObservable$.subscribe(() => {
+      console.log("LISTENING")
+      this.fetchProducts();
+    })
   }
 
   fetchProducts(): void {

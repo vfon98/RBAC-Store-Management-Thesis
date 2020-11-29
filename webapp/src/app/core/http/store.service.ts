@@ -6,6 +6,7 @@ import { SERVER_URL } from '../../core/constants/api.constants';
 import { Observable } from 'rxjs';
 import { IUser } from 'src/app/core/models/user.model';
 import { ICategory } from 'src/app/core/models';
+import { IImportedProduct } from "../models/import-multiple.model";
 
 @Injectable({
   providedIn: 'root',
@@ -93,7 +94,6 @@ export class StoreService {
     return this.http.post<IStore>(this.ADMIN_URL, body);
   }
 
-  // Deprecated
   addProductWithQuantity(
     storeId: number,
     productId: number,
@@ -110,6 +110,11 @@ export class StoreService {
         },
       }
     );
+  }
+
+  importMultipleProducts(storeId: string, products: IImportedProduct[]): Observable<unknown> {
+    return this.http
+      .post<unknown>(this.MANAGER_URL + `${storeId}/products/import/multiple`, products);
   }
 
   // Deprecated

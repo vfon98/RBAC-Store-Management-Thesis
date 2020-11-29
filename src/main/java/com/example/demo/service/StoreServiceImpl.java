@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.*;
 import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.exception.StoreNotFoundException;
+import com.example.demo.form.ProductImportForm;
 import com.example.demo.form.StoreForm;
 import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
@@ -86,7 +87,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Override
     public void addProductToStore(Integer storeId, Integer productId, Integer quantity) {
-        storeProductService.addProductToStore(storeId, productId, quantity);
+        storeProductService.addProductToStore(storeId, productId, quantity, false);
     }
 
     @Override
@@ -279,4 +280,8 @@ public class StoreServiceImpl implements StoreService {
                 !(currentStaff.getIsManager() && currentStaff.getStore().equals(store));
     }
 
+    @Override
+    public boolean importMultipleProducts(Integer storeId, List<ProductImportForm> products) {
+        return storeProductService.importMultipleProductsToStore(storeId, products);
+    }
 }

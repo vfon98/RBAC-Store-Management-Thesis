@@ -32,6 +32,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findAllByIdIsNotIn(List<Integer> ids);
 
+    List<Product> findAllByIdIsIn(List<Integer> ids);
+
     List<Product> findAllByStore(Store store);
 
     Page<Product> findAllByNameContains(String term, Pageable pageable);

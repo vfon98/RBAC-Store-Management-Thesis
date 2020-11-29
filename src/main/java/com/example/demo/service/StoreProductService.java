@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Store;
 import com.example.demo.entity.StoreProduct;
+import com.example.demo.form.ProductImportForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,7 +20,9 @@ public interface StoreProductService {
 
     Page<StoreProduct> findAllByStore(Store store, Pageable pageable);
 
-    void addProductToStore(Integer storeId, Integer productId, Integer quantity);
+    void addProductToStore(Integer storeId, Integer productId, Integer quantity, boolean isMultiple);
+
+    boolean importMultipleProductsToStore(Integer storeId, List<ProductImportForm> products);
 
     void deleteByStore(Store store);
 

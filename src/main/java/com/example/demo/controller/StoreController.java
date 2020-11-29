@@ -105,14 +105,7 @@ public class StoreController {
 
         storeService.addProductToStore(storeId, productId, quantity);
         String message = "Add product to store successfully!";
-//        String message = "";
-//        if (isImport) { // Revert here
-//            storeService.addProductToStore(storeId, productId, quantity);
-//            message = "Add product to store successfully!";
-//        } else {
-//            storeService.updateQuantityOfProductInStore(storeId, productId, quantity);
-//            message = "Update quantity successfully!";
-//        }
+
         return new ResponseEntity<>(new MessageResponse(message), HttpStatus.OK);
     }
 

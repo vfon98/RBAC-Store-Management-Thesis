@@ -9,6 +9,7 @@ import com.example.demo.exception.NotEnoughQuantityException;
 import com.example.demo.exception.ProductNotExistsInStoreException;
 import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.exception.StoreNotFoundException;
+import com.example.demo.form.ProductImportForm;
 import com.example.demo.repository.ImportedReceiptRepository;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.StoreProductRepository;
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -75,12 +77,20 @@ public class StoreProductServiceImpl implements StoreProductService {
         return storeProductRepository.findAllByStore(store, pageable);
     }
 
-    @Override
-    public void addProductToStore(Integer storeId, Integer productId, Integer quantity) {
-        Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new StoreNotFoundException(storeId));
-        Product product = productRepository.findById(productId)
+    private Product findProductById(Integer productId) {
+        return productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException(productId));
+    }
+
+    private Store findStoreById(Integer storeId) {
+        return storeRepository.findById(storeId)
+                .orElseThrow(() -> new StoreNotFoundException(storeId));
+    }
+
+    @Override
+    public void addProductToStore(Integer storeId, Integer productId, Integer quantity, boolean isMultiple) {
+        Store store = findStoreById(storeId);
+        Product product = findProductById(productId);
 
 //        Integer currentQuantity = product.getQuantity();
 //        if (currentQuantity - quantity < 0) {
@@ -103,8 +113,32 @@ public class StoreProductServiceImpl implements StoreProductService {
 //        productRepository.save(product);
 
         storeProductRepository.save(storeProduct);
+
+        if (!isMultiple) {
+            // Single only
+            importedReceiptRepository.save(
+                    ImportedReceipt.buildFrom(utils.getCurrentStaff(), store, List.of(product), storeProduct.getQuantity()));
+        }
+    }
+
+    @Override
+    public boolean importMultipleProductsToStore(Integer storeId, List<ProductImportForm> products) {
+        products.stream().forEach(product -> {
+            addProductToStore(storeId, product.getProductId(), product.getImportedQuantity(), true);
+        });
+
+        Store store = findStoreById(storeId);
+        List<Integer> productIds = products.stream()
+                .map(product -> product.getProductId()).collect(Collectors.toList());
+        List<Product> productList = productRepository.findAllByIdIsIn(productIds);
+
+        Integer totalImportedQuantity = products.stream()
+                .map(product -> product.getImportedQuantity())
+                .reduce(0, Integer::sum);
         importedReceiptRepository.save(
-                ImportedReceipt.buildFrom(utils.getCurrentStaff(), store, List.of(product), storeProduct.getQuantity()));
+                ImportedReceipt.buildFrom(utils.getCurrentStaff(), store, productList, totalImportedQuantity));
+
+        return true;
     }
 
     @Override
