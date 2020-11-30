@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   password: string;
   messageError: string;
 
+  isLoginFromPage = false;
+
   isRegHidden = true;
   @ViewChild('loginBtn') loginBtn: ElementRef;
   @ViewChild('regBtn') regBtn: ElementRef;
@@ -22,7 +24,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLoginFromPage = location.pathname.startsWith('/account/login');
+  }
 
   authenticate(): void {
     this.authService.loginUser(this.username, this.password).subscribe(

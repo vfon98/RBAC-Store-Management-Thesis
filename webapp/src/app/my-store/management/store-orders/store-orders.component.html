@@ -4,7 +4,12 @@
   <div class="card-body p-2">
     <div class="mb-2 row"></div>
 
-    <table class="table table-sm table-hover table-striped table-responsive-sm">
+<!--    <table class="table table-sm table-hover table-striped table-responsive-sm">-->
+    <nz-table
+      #nzTable
+      [nzData]="orders"
+      [nzShowSizeChanger]="true"
+    >
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -16,8 +21,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orders; index as i">
-          <th scope="row">{{ i + 1 }}</th>
+        <tr *ngFor="let order of nzTable.data; index as i">
+          <td scope="row">{{ i + 1 }}</td>
           <td>
             <div class="payment-id text-muted">
               {{ order.transactionId || 'Pay with cash' }}
@@ -51,13 +56,14 @@
               ></i>
             </button>
 
-<!--            <app-order-status-dropdown></app-order-status-dropdown>-->
+            <app-order-status-dropdown></app-order-status-dropdown>
           </td>
         </tr>
         <tr *ngIf="!orders.length">
           <td colspan="6" class="text-center text-danger font-italic">Sorry! nothing to show</td>
         </tr>
       </tbody>
-    </table>
+    </nz-table>
+<!--    </table>-->
   </div>
 </div>

@@ -8,15 +8,21 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 import { NotificationService } from '../../layouts/notification/notification.service';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
+  delayTime = 0;
+
   constructor(
     private notiService: NotificationService,
     private userService: UserService
-  ) {}
+  ) {
+    if (location.pathname.startsWith('/my-store')) {
+      this.delayTime = 1000;
+    }
+  }
 
   intercept(
     request: HttpRequest<any>,

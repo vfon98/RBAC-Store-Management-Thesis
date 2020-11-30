@@ -2,7 +2,7 @@
   Click me
   <i nz-icon nzType="down"></i>
 </a>
-<nz-dropdown-menu #menu="nzDropdownMenu">
+<nz-dropdown-menu #menu="nzDropdownMenu" nzNoAnimation>
   <ul nz-menu>
     <li nz-menu-item>
       <nz-tag nzColor="success">
@@ -12,25 +12,26 @@
     </li>
     <li nz-menu-item>
       <nz-tag nzColor="processing">
-        <i nz-icon nzType="sync" nzSpin></i>
+        <i nz-icon nzType="sync"></i>
         <span>processing</span>
       </nz-tag>
     </li>
-    <li nz-menu-divider>
-      <nz-tag [nzColor]="'magenta'">magenta</nz-tag>
-    </li>
-    <li nz-menu-item nzDisabled>disabled menu item</li>
-    <li nz-submenu nzTitle="sub menu">
-      <ul>
-        <li nz-menu-item>3rd menu item</li>
-        <li nz-menu-item>4th menu item</li>
-      </ul>
-    </li>
-    <li nz-submenu nzDisabled nzTitle="disabled sub menu">
-      <ul>
-        <li nz-menu-item>3rd menu item</li>
-        <li nz-menu-item>4th menu item</li>
-      </ul>
-    </li>
+    <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
+    <nz-tag [nzColor]="'#2db7f5'">#2db7f5</nz-tag>
+    <nz-tag [nzColor]="'#87d068'">#87d068</nz-tag>
+    <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
+<!--    <li nz-menu-item nzDisabled>disabled menu item</li>-->
+<!--    <li nz-submenu nzTitle="sub menu">-->
+<!--      <ul>-->
+<!--        <li nz-menu-item>3rd menu item</li>-->
+<!--        <li nz-menu-item>4th menu item</li>-->
+<!--      </ul>-->
+<!--    </li>-->
+<!--    <li nz-submenu nzDisabled nzTitle="disabled sub menu">-->
+<!--      <ul>-->
+<!--        <li nz-menu-item>3rd menu item</li>-->
+<!--        <li nz-menu-item>4th menu item</li>-->
+<!--      </ul>-->
+<!--    </li>-->
   </ul>
 </nz-dropdown-menu>
