@@ -27,9 +27,7 @@ export class StoreRolesComponent implements OnInit {
   ngOnInit(): void {
     this.fetchRoles();
     this.roleService.roleAddObservable$.subscribe((role) => {
-      if (role) {
-        this.roles.unshift(role);
-      }
+      this.fetchRoles();
     });
 
     this.roleService.updateObservable$.subscribe((role: IRole) => {

@@ -1,37 +1,20 @@
 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-  Click me
-  <i nz-icon nzType="down"></i>
+  <nz-tag nzColor="purple">
+    <span>Change status</span>
+    <i nz-icon nzType="down"></i>
+  </nz-tag>
 </a>
 <nz-dropdown-menu #menu="nzDropdownMenu" nzNoAnimation>
-  <ul nz-menu>
-    <li nz-menu-item>
-      <nz-tag nzColor="success">
-        <i nz-icon nzType="check-circle"></i>
-        <span>success</span>
+  <ul nz-menu class="p-2">
+    <li
+      nz-menu-item
+      *ngFor="let status of statusList"
+      (click)="changeStatus(orderId, status.value)"
+    >
+      <nz-tag [nzColor]="status.color">
+        <i nz-icon [nzType]="status.icon || 'sync'"></i>
+        <span>{{ status.text }}</span>
       </nz-tag>
     </li>
-    <li nz-menu-item>
-      <nz-tag nzColor="processing">
-        <i nz-icon nzType="sync"></i>
-        <span>processing</span>
-      </nz-tag>
-    </li>
-    <nz-tag [nzColor]="'#f50'">#f50</nz-tag>
-    <nz-tag [nzColor]="'#2db7f5'">#2db7f5</nz-tag>
-    <nz-tag [nzColor]="'#87d068'">#87d068</nz-tag>
-    <nz-tag [nzColor]="'#108ee9'">#108ee9</nz-tag>
-<!--    <li nz-menu-item nzDisabled>disabled menu item</li>-->
-<!--    <li nz-submenu nzTitle="sub menu">-->
-<!--      <ul>-->
-<!--        <li nz-menu-item>3rd menu item</li>-->
-<!--        <li nz-menu-item>4th menu item</li>-->
-<!--      </ul>-->
-<!--    </li>-->
-<!--    <li nz-submenu nzDisabled nzTitle="disabled sub menu">-->
-<!--      <ul>-->
-<!--        <li nz-menu-item>3rd menu item</li>-->
-<!--        <li nz-menu-item>4th menu item</li>-->
-<!--      </ul>-->
-<!--    </li>-->
   </ul>
 </nz-dropdown-menu>

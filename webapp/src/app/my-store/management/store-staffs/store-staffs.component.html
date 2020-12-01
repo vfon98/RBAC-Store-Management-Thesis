@@ -27,7 +27,8 @@
 
     </div>
 
-    <table class="table table-sm table-hover table-striped table-responsive-sm">
+<!--    <table class="table table-sm table-hover table-striped table-responsive-sm">-->
+    <nz-table #nzTable [nzData]="addedStaffs" [nzShowSizeChanger]="true">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -38,8 +39,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let staff of addedStaffs">
-          <th scope="row">{{ staff.id }}</th>
+        <tr *ngFor="let staff of nzTable.data">
+          <td>{{ staff.id }}</td>
           <td>{{ staff.name }}</td>
           <td>{{ staff.username }}</td>
           <!-- <td [ngClass]="staff.isManager ? 'text-success' : ''">
@@ -63,10 +64,11 @@
             </ng-container>
           </td>
         </tr>
-        <tr *ngIf="!addedStaffs.length">
-          <td colspan="5" class="text-center text-danger font-italic">Sorry! Nothing to show</td>
-        </tr>
+<!--        <tr *ngIf="!addedStaffs.length">-->
+<!--          <td colspan="5" class="text-center text-danger font-italic">Sorry! Nothing to show</td>-->
+<!--        </tr>-->
       </tbody>
-    </table>
+<!--    </table>-->
+    </nz-table>
   </div>
 </div>
