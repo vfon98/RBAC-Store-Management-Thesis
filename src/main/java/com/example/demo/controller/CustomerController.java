@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Store;
+import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
@@ -142,7 +143,7 @@ public class CustomerController {
     @PreAuthorize(value = "hasAuthority(\"" + StorePermission.READ + "\")")
     public ResponseEntity<List<Order>> findAllOrdersByStore(
             @PathVariable Integer storeId,
-            @RequestParam(value = "status", required = false) Order.Status status
+            @RequestParam(value = "status", required = false) OrderStatusEnum status
     ) {
         if (status == null) {
             return ResponseEntity.ok(customerService.findAllOrdersByStore(storeId));

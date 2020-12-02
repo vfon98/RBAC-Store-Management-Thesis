@@ -5,7 +5,7 @@ nz-tag {
   font-size: .8rem;
 
   i.anticon {
-    transform: rotate(-90deg);
+    //transform: rotate(-90deg);
     transition: all .3s ease-in-out;
   }
 
@@ -31,4 +31,17 @@ ul i.anticon {
   position: relative;
   font-size: 1rem;
   margin-left: 4px;
+  transform: rotate(-90deg);
+}
+
+nz-tag i.anticon {
+  top: -1px;
+  position: relative;
+  font-size: 1rem;
+}
+
+.disabled {
+  opacity: .4;
+  user-select: none;
+  pointer-events: none;
 }

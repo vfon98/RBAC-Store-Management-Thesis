@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IOrder {
 
-    List<Order> findAllOrders(Integer status);
+    List<Order> findAllOrders(String status);
 
     Order findOrderById(Integer id);
 
-    Order changeStatusOrder(Integer id, Order.Status status);
+    Order changeStatusOrder(Integer id, String status);
 
 }

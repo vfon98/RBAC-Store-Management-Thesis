@@ -323,13 +323,14 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @GetMapping("orders")
     @PreAuthorize("hasAuthority(\"" + OrderPermission.READ + "\")")
     public List<Order> findAllOrders(
-            @RequestParam(value = "status", required = false) Integer status) {
+            @RequestParam(value = "status", required = false) String status) {
 
         Staff currentStaff = securityUtil.getCurrentStaff();
         Store store = currentStaff.getStore();
 
         if (status != null) {
-            return orderService.findAllOrdersByStoreAndStatus(store, Order.Status.valueOf("Shipped")).stream()
+            return orderService.findAllOrdersByStoreAndStatus(store, OrderStatusEnum.valueOf(status))
+                    .stream()
                     .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
                     .collect(Collectors.toList());
         }
@@ -356,9 +357,9 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
     @Override
     @PutMapping("orders/{id}/status")
     @PreAuthorize("hasAuthority(\"" + OrderPermission.UPDATE + "\")")
-    public Order changeStatusOrder(@PathVariable Integer id, @RequestParam("status") Order.Status status) {
+    public Order changeStatusOrder(@PathVariable Integer id, @RequestParam("status") String status) {
         Order order = findOrderById(id);
-        order.setStatus(status);
+        order.setStatus(OrderStatusEnum.valueOf(status));
         return orderService.save(order);
     }
 

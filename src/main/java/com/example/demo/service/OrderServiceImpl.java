@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Staff;
 import com.example.demo.entity.Store;
+import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.exception.OrderNotFoundException;
 import com.example.demo.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findAllOrdersByStoreAndStatus(Store store, Order.Status status) {
+    public List<Order> findAllOrdersByStoreAndStatus(Store store, OrderStatusEnum status) {
         return orderRepository.findAllByStoreAndStatus(store, status);
     }
 

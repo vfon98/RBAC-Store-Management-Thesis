@@ -57,15 +57,15 @@ export class StoreInvoicesComponent implements OnInit {
     return order.status === 'Shipping';
   }
 
-  markAsShipped(id: number): void {
-    this.confirmService.show('Mark as shipped?').onYes(() => {
-      this.customerService
-        .updateOrderStatus(id, { status: 'Shipped' })
-        .subscribe((order) => {
-          const index = this.orders.findIndex((order) => order.id === id);
-          this.orders[index] = order;
-          this.notiService.showSuccess('Update order successfully!');
-        });
-    });
-  }
+  // markAsShipped(id: string): void {
+  //   this.confirmService.show('Mark as shipped?').onYes(() => {
+  //     this.customerService
+  //       .updateOrderStatus(id, { status: 'Shipped' })
+  //       .subscribe((order) => {
+  //         const index = this.orders.findIndex((order) => order.id === id);
+  //         this.orders[index] = order;
+  //         this.notiService.showSuccess('Update order successfully!');
+  //       });
+  //   });
+  // }
 }

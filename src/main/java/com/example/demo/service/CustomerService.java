@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Store;
+import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
@@ -45,7 +46,7 @@ public interface CustomerService {
 
     List<Order> findAllOrdersByStore(Integer storeId);
 
-    List<Order> findAllOrdersByStoreAndStatus(Integer storeId, Order.Status status);
+    List<Order> findAllOrdersByStoreAndStatus(Integer storeId, OrderStatusEnum status);
 
     Order updateOrderStatus(Integer orderId, OrderUpdateForm orderUpdateForm);
 

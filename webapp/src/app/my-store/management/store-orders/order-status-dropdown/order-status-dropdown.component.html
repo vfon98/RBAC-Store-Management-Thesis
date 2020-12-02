@@ -1,6 +1,7 @@
 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-  <nz-tag nzColor="purple">
-    <span>Change status</span>
+  <nz-tag [nzColor]="currentStatus.color">
+    <i nz-icon [nzType]="currentStatus.icon"></i>
+    <span>{{ currentStatus?.value || 'Change status' | titlecase }}</span>
     <i nz-icon nzType="down"></i>
   </nz-tag>
 </a>
@@ -8,8 +9,9 @@
   <ul nz-menu class="p-2">
     <li
       nz-menu-item
-      *ngFor="let status of statusList"
-      (click)="changeStatus(orderId, status.value)"
+      *ngFor="let status of statusList; index as i"
+      (click)="changeStatus(order.id, status.value)"
+      [ngClass]="{disabled: !currentStatus?.allow.includes(i)}"
     >
       <nz-tag [nzColor]="status.color">
         <i nz-icon [nzType]="status.icon || 'sync'"></i>

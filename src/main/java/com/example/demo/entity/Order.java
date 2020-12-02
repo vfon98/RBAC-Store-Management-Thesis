@@ -43,7 +43,8 @@ public class Order {
     @JoinColumn(name = "staff_id")
     private Staff staff;
 
-    private Status status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatusEnum status;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethodEnums paymentMethod;
@@ -71,7 +72,7 @@ public class Order {
                 .transactionId(transactionId)
                 .staff(cart.getStaff())
                 .store(cart.getStore())
-                .status(Status.Shipping)
+                .status(OrderStatusEnum.PENDING)
                 .paymentMethod(paymentForm.getPaymentMethod())
                 .build();
     }

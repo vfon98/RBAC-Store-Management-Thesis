@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { IOrder } from 'src/app/core/models';
 import { CustomerService } from 'src/app/core/http';
 import { IManagerTableStatistic } from '../shared-table-statistic/shared-table-statistic.component';
+import { ORDER_STATUS } from "../../../core/constants/common.constants";
 
 @Component({
   selector: 'app-store-orders',
@@ -28,6 +29,9 @@ export class StoreOrdersComponent implements OnInit {
       this.storeId = +params.id;
     });
     this.fetchOrders();
+    this.customerService.orderChanged$.subscribe(() => {
+      this.fetchOrders();
+    })
   }
 
   initializeStatistics(): void {
@@ -52,7 +56,20 @@ export class StoreOrdersComponent implements OnInit {
   }
 
   isShipping(order: IOrder): boolean {
-    return order.status === 'Shipping';
+    return order.status === ORDER_STATUS.SHIPPING;
+  }
+  isFailed(order: IOrder): boolean {
+    const failedStatus = [
+      ORDER_STATUS.CUSTOMER_CANCELED,
+      ORDER_STATUS.STORE_CANCELED,
+      ORDER_STATUS.CUSTOMER_REFUND,
+      ORDER_STATUS.SHIPPING_FAILED,
+      ORDER_STATUS.CUSTOMER_REJECTED,
+      ORDER_STATUS.INVALID,
+      ORDER_STATUS.EXPIRED
+    ];
+
+    return failedStatus.some(item => item.toString() === order.status);
   }
 
   markAsShipped(id: number): void {

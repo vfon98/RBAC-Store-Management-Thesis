@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.*;
+import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.enums.PaymentMethodEnums;
 import com.example.demo.exception.*;
 import com.example.demo.form.CartItemMergeForm;
@@ -317,7 +318,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Order> findAllOrdersByStoreAndStatus(Integer storeId, Order.Status status) {
+    public List<Order> findAllOrdersByStoreAndStatus(Integer storeId, OrderStatusEnum status) {
         Store store = storeService.findById(storeId);
         return orderRepository.findAllByStoreAndStatus(store, status);
     }

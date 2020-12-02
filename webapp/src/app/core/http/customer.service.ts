@@ -8,7 +8,7 @@ import {
   IMessageResponse,
   IPaymentInfo, IProduct, IStore,
 } from 'src/app/core/models';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_URL } from '../constants/api.constants';
@@ -19,6 +19,9 @@ import { ORDER_STATUS } from "../constants/common.constants";
 })
 export class CustomerService {
   private REQUEST_URL = SERVER_URL + '/customer/';
+
+  orderChanged = new Subject();
+  orderChanged$ = this.orderChanged.asObservable();
 
   constructor(private http: HttpClient) {}
 

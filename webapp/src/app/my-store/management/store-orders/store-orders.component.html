@@ -28,9 +28,10 @@
               {{ order.transactionId || 'Pay with cash' }}
             </div>
 
-            <div class="order-status-small" [ngClass]="isShipping(order) ? 'text-danger' : 'text-success'">
-              {{ order.status }}
-              <i [ngClass]="isShipping(order) ? 'fas fa-shipping-fast' : 'fas fa-check-circle'"></i>
+            <div class="order-status-small" [ngClass]="isShipping(order) ? 'text-info' : isFailed(order) ? 'text-danger' : 'text-success'">
+              {{ order.status | titlecase }}
+              <i [ngClass]="isShipping(order) ? 'fas fa-shipping-fast' :
+                isFailed(order) ? 'fas fa-times-circle' : 'fas fa-check-circle'"></i>
             </div>
 
           </td>
@@ -41,7 +42,7 @@
           <td>
             {{ order.createdAt | date: "short" }}
           </td>
-          <td class="text-center">
+          <td class="text-left">
 <!--            <button-->
 <!--              type="button"-->
 <!--              class="btn"-->
@@ -56,12 +57,12 @@
 <!--              ></i>-->
 <!--            </button>-->
 
-            <app-order-status-dropdown></app-order-status-dropdown>
+            <app-order-status-dropdown [order]="order"></app-order-status-dropdown>
           </td>
         </tr>
-        <tr *ngIf="!orders.length">
-          <td colspan="6" class="text-center text-danger font-italic">Sorry! nothing to show</td>
-        </tr>
+<!--        <tr *ngIf="!orders.length">-->
+<!--          <td colspan="6" class="text-center text-danger font-italic">Sorry! nothing to show</td>-->
+<!--        </tr>-->
       </tbody>
     </nz-table>
 <!--    </table>-->
