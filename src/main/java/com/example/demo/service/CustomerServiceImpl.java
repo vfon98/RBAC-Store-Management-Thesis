@@ -242,17 +242,36 @@ public class CustomerServiceImpl implements CustomerService {
                     productService.findAllByCategoryAndKeywordSearch(category, keyword, pageable);
         }
 
-        response = addStockStatus(response);
+        response = addStockStatus(response, storeId);
+
+        if (storeId != null && storeId > 0) {
+            Store store = storeService.findById(storeId);
+
+            List<ProductResponse> productResponses = response.getProducts().stream().map(product -> {
+                product.setStoreName(store.getName());
+                return product;
+            }).collect(Collectors.toList());
+
+            response.setProducts(productResponses);
+        }
+
 
         return response;
     }
 
-    private PageableProductResponse addStockStatus(PageableProductResponse response) {
-        List<StoreProduct> storeProductList = storeProductService.findAll();
+    private PageableProductResponse addStockStatus(PageableProductResponse response, Integer storeId) {
+        List<StoreProduct> storeProductList = new ArrayList<>();
+        if (storeId != null && storeId > 0) {
+            Store store = storeService.findById(storeId);
+            storeProductList = storeProductService.findAllByStore(store);
+        } else {
+            storeProductList = storeProductService.findAll();
+        }
 
         // Check if StoreProduct table has this productId => inStock
+        List<StoreProduct> finalStoreProductList = storeProductList;
         List<ProductResponse> productResponses = response.getProducts().stream().map(product -> {
-            boolean existed = storeProductList.stream()
+            boolean existed = finalStoreProductList.stream()
                     .anyMatch(storeProduct -> storeProduct.getProduct().getId().equals(product.getId()));
             product.setOutStock(!existed);
             return product;
