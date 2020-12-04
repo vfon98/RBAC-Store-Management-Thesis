@@ -1,13 +1,13 @@
 <div class="filter-widget">
   <h4 class="fw-title">Store</h4>
   <div class="fw-brand-check">
-    <!-- <div class="bc-item">
+    <div class="bc-item">
       <label for="bc-calvin" class="font-weight-bold">
         ALL
-        <input type="radio" id="bc-calvin" checked name="storeId" />
+        <input type="radio" id="bc-calvin" checked name="storeId" (click)="navigateUrl(-1)" />
         <span class="checkmark"></span>
       </label>
-    </div> -->
+    </div>
     <div class="bc-item" *ngFor="let store of stores">
       <label for="bc-diesel-{{ store.id }}">
         {{ store.name }}

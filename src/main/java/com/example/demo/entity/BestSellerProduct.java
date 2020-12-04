@@ -31,7 +31,7 @@ public class BestSellerProduct {
     private Product product;
 
     @ColumnDefault("0")
-    private int quantity = 0;
+    private long quantity = 0L;
 
     @CreationTimestamp
     private Date insertedAt;

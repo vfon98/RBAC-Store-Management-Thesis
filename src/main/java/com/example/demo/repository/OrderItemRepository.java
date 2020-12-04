@@ -28,6 +28,12 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
             "ORDER BY SUM(quantity) DESC")
     List<TopSaleProductsResponse> getTopSaleProductsByStoreId(@Param("storeId") Integer storeId);
 
+    @Query("select new com.example.demo.response.BestSellerProductsResponse(oi.product, oi.store, sum(oi.quantity)) FROM OrderItem oi " +
+            "where oi.product.id is not null " +
+            "group by oi.product.id " +
+            "order by sum(oi.quantity) desc, oi.createdAt desc")
+    List getTop10BestSellerProducts();
+
     @Query("SELECT NEW com.example.demo.response.StoreRevenueResponse(store.id, store.name, sum(quantity), sum(product.price)) " +
             "FROM OrderItem " +
             "WHERE store.id is not null " +

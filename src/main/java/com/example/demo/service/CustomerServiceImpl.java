@@ -260,7 +260,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     private PageableProductResponse addStockStatus(PageableProductResponse response, Integer storeId) {
-        List<StoreProduct> storeProductList = new ArrayList<>();
+        List<StoreProduct> storeProductList;
         if (storeId != null && storeId > 0) {
             Store store = storeService.findById(storeId);
             storeProductList = storeProductService.findAllByStore(store);
@@ -348,6 +348,12 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new OrderNotFoundException(orderId));
         order.setStatus(orderUpdateForm.getStatus());
         return orderRepository.save(order);
+    }
+
+    @Override
+    public List findTop10BestSellerProducts() {
+        List<BestSellerProduct> bestSellerProducts = orderItemRepository.getTop10BestSellerProducts();
+        return bestSellerProducts;
     }
 
     private CartItem getCartItemInCart(CartItemMergeForm cartItemMergeForm, List<CartItem> cartItems) {

@@ -50,4 +50,5 @@ public interface CustomerService {
 
     Order updateOrderStatus(Integer orderId, OrderUpdateForm orderUpdateForm);
 
+    List findTop10BestSellerProducts();
 }

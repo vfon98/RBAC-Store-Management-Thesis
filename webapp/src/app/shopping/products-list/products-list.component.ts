@@ -19,6 +19,8 @@ export class ProductsListComponent implements OnInit {
   stores: IStore[] = [];
   isLoading = true;
 
+  pageSize = 9;
+
   priceRange = [20, 1000];
 
   constructor(

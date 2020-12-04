@@ -152,4 +152,11 @@ public class CustomerController {
         return ResponseEntity.ok(
                 customerService.findAllOrdersByStoreAndStatus(storeId, status));
     }
+
+    @GetMapping(value = "products/best-sellers")
+    public ResponseEntity<List<?>> findTopBestSellerProducts(
+            @RequestParam(name = "limit", required = false, defaultValue = "10") String limit
+    ) {
+        return ResponseEntity.ok(customerService.findTop10BestSellerProducts());
+    }
 }

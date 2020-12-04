@@ -29,7 +29,9 @@ a {
 
   &:hover {
     top: -2px;
-    box-shadow: 0 3px 0 rgb(84 94 111 / 20%);
+    //box-shadow: 0 3px 0 rgb(84 94 111 / 20%);
+    box-shadow: 0 3px 0 lighten(#e5a737, 10%);
+
 
     //.btn-details {
     //  display: block;
