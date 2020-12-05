@@ -7,10 +7,7 @@ import com.example.demo.exception.*;
 import com.example.demo.form.CartItemMergeForm;
 import com.example.demo.form.CartItemUpdateForm;
 import com.example.demo.form.PaymentForm;
-import com.example.demo.repository.CartItemRepository;
-import com.example.demo.repository.CartRepository;
-import com.example.demo.repository.OrderItemRepository;
-import com.example.demo.repository.OrderRepository;
+import com.example.demo.repository.*;
 import com.example.demo.response.*;
 import com.example.demo.security.SecurityUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,13 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
 import java.util.*;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service(value = "customerService")
 public class CustomerServiceImpl implements CustomerService {
@@ -46,6 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
     private CategoryService categoryService;
     private StoreProductService storeProductService;
     private StaffService staffService;
+    private BestSellerProductRepository bestSellerProductRepository;
 
     @Autowired
     public CustomerServiceImpl(SecurityUtil securityUtil,
@@ -57,7 +51,8 @@ public class CustomerServiceImpl implements CustomerService {
                                StoreService storeService,
                                CategoryService categoryService,
                                StoreProductService storeProductService,
-                               StaffService staffService) {
+                               StaffService staffService,
+                               BestSellerProductRepository bestSellerProductRepository) {
 
         this.securityUtil = securityUtil;
         this.cartRepository = cartRepository;
@@ -70,6 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
         this.categoryService = categoryService;
         this.storeProductService = storeProductService;
         this.staffService = staffService;
+        this.bestSellerProductRepository = bestSellerProductRepository;
     }
 
     @Override
@@ -353,7 +349,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List findTop10BestSellerProducts() {
         List<BestSellerProduct> bestSellerProducts = orderItemRepository.getTop10BestSellerProducts();
-        return bestSellerProducts;
+        List<BestSellerProductsResponse> topBestSellers = bestSellerProductRepository.findTopByInsertedAtDesc();
+        return topBestSellers;
     }
 
     private CartItem getCartItemInCart(CartItemMergeForm cartItemMergeForm, List<CartItem> cartItems) {
