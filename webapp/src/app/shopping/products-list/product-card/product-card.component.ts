@@ -32,7 +32,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     this.addFieldsToProduct();
     this.checkOutOfStock();
     // this.imgUrl = this.product?.imageUrl || `https://picsum.photos/id/${this.randomImgId()}/400`;
-    this.imgUrl = this.product?.imageUrl;
+    this.imgUrl = this.product?.imageUrl ||
+      (this.product?.images?.length && this.product?.images[0]?.secureUrl);
     this.listener = this.cartService.outStockListener$.subscribe((id) => {
       if (id === this.product.id && !this.isSoldOut()) {
         this.isOutOfStock = true;
@@ -44,7 +45,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.listener.unsubscribe();
+    if (this.listener)
+      this.listener.unsubscribe();
   }
 
   addFieldsToProduct(): void {
@@ -62,7 +64,10 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   printCategories(): string {
-    return this.product.categoryNames.join(', ');
+    if (this.product?.categoryNames?.length)
+      return this.product.categoryNames.join(', ');
+
+    return this.product.categories.map(c => c.name).join(', ') ?? '';
   }
 
   isSoldOut(): boolean {

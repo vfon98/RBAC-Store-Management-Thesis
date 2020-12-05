@@ -1,5 +1,5 @@
 <!-- Breadcrumb Section Begin -->
-<div class="breacrumb-section">
+<div class="breacrumb-section mb-5">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -13,6 +13,15 @@
   </div>
 </div>
 <!-- Breadcrumb Section End -->
+
+<div class="container">
+  <div class="banner-wrapper text-center">
+    <h1 class="ribbon">
+      <strong class="ribbon-content">Top Best Selling</strong>
+    </h1>
+    <app-shopping-banner></app-shopping-banner>
+  </div>
+</div>
 
 <section class="product-shop spad">
   <div class="container">
@@ -58,24 +67,52 @@
                         nzPlaceHolder="Sorting: Default"
                       >
                         <nz-option-group nzLabel="By Name">
-                          <nz-option nzCustomContent nzLabel="Sorting: None" nzValue="name-asc"><i nz-icon nzType="windows"></i> Ascending</nz-option>
-                          <nz-option nzCustomContent nzLabel="Name: Ascending" nzValue="name-asc"><i nz-icon nzType="windows"></i> Ascending</nz-option>
-                          <nz-option nzCustomContent nzLabel="Name: Descending" nzValue="name-desc"><i nz-icon nzType="apple"></i> Descending</nz-option>
+                          <nz-option nzCustomContent nzLabel="Sorting: None"
+                                     nzValue="name-asc"><i nz-icon
+                                                           nzType="windows"></i>
+                            Ascending
+                          </nz-option>
+                          <nz-option nzCustomContent nzLabel="Name: Ascending"
+                                     nzValue="name-asc"><i nz-icon
+                                                           nzType="windows"></i>
+                            Ascending
+                          </nz-option>
+                          <nz-option nzCustomContent nzLabel="Name: Descending"
+                                     nzValue="name-desc"><i nz-icon
+                                                            nzType="apple"></i>
+                            Descending
+                          </nz-option>
                         </nz-option-group>
                         <nz-option-group nzLabel="By Price">
-                          <nz-option nzCustomContent nzLabel="Price: High to low" nzValue="price-asc"><i nz-icon nzType="android"></i> High to low</nz-option>
-                          <nz-option nzCustomContent nzLabel="Price: Low to high" nzValue="price-desc"><i nz-icon nzType="android"></i> Low to high</nz-option>
+                          <nz-option nzCustomContent
+                                     nzLabel="Price: High to low"
+                                     nzValue="price-asc"><i nz-icon
+                                                            nzType="android"></i>
+                            High to low
+                          </nz-option>
+                          <nz-option nzCustomContent
+                                     nzLabel="Price: Low to high"
+                                     nzValue="price-desc"><i nz-icon
+                                                             nzType="android"></i>
+                            Low to high
+                          </nz-option>
                         </nz-option-group>
                       </nz-select>
 
                       <div class="mx-2"></div>
 
-                      <nz-select nzSize="large" nzPlaceHolder="Show: 09" [(ngModel)]="pageSize">
-                        <nz-option nzLabel="Show: 09" [nzValue]="9">Show: 09</nz-option>
-                        <nz-option nzLabel="Show: 15" [nzValue]="15">Show: 15</nz-option>
-                        <nz-option nzLabel="Show: 20" [nzValue]="20">Show: 20</nz-option>
-                        <nz-option nzLabel="Show: 25" [nzValue]="25">Show: 25</nz-option>
-                        <nz-option nzLabel="Show: 30" [nzValue]="30">Show: 30</nz-option>
+                      <nz-select nzSize="large" nzPlaceHolder="Show: 09"
+                                 [(ngModel)]="pageSize">
+                        <nz-option nzLabel="Show: 09" [nzValue]="9">Show: 09
+                        </nz-option>
+                        <nz-option nzLabel="Show: 15" [nzValue]="15">Show: 15
+                        </nz-option>
+                        <nz-option nzLabel="Show: 20" [nzValue]="20">Show: 20
+                        </nz-option>
+                        <nz-option nzLabel="Show: 25" [nzValue]="25">Show: 25
+                        </nz-option>
+                        <nz-option nzLabel="Show: 30" [nzValue]="30">Show: 30
+                        </nz-option>
                       </nz-select>
 
                     </div>
@@ -84,7 +121,8 @@
               </div>
             </div>
             <div class="col-lg-5 col-md-5 text-right">
-              <p>Show {{ pageableProducts?.size }} of {{ pageableProducts?.totalElements }} Products</p>
+              <p>Show {{ pageableProducts?.size }}
+                of {{ pageableProducts?.totalElements }} Products</p>
             </div>
           </div>
         </div>
@@ -95,8 +133,9 @@
               <app-product-card [product]="product"></app-product-card>
             </div>
           </div>
-          <div class="row d-flex justify-content-center" *ngIf="isEmptyResult()">
-            <img src="assets/img/no-result-found.png" />
+          <div class="row d-flex justify-content-center"
+               *ngIf="isEmptyResult()">
+            <img src="assets/img/no-result-found.png"/>
           </div>
         </div>
         <!-- <div class="loading-more" *ngIf="!isEmptyResult()">
@@ -109,7 +148,8 @@
             Loading More
           </a>
         </div> -->
-        <app-pagination [pagination]="pageableProducts" *ngIf="pageableProducts"></app-pagination>
+        <app-pagination [pagination]="pageableProducts"
+                        *ngIf="pageableProducts"></app-pagination>
       </div>
     </div>
   </div>

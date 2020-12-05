@@ -34,9 +34,14 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss",
-              "src/assets/css/animation.global.scss"
+              "src/assets/css/animation.global.scss",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -82,7 +87,7 @@
           "hmrWarning": false,
           "options": {
             "browserTarget": "webapp:build",
-            "hmrWarning": false,
+            "hmrWarning": false
           },
           "configurations": {
             "production": {
@@ -107,11 +112,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
               "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss",
-              "src/assets/css/font-awesome-5-pro.css",
+              "src/assets/css/font-awesome-5-pro.css"
             ],
             "scripts": []
           }
@@ -124,7 +132,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {

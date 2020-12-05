@@ -18,7 +18,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HttpClientModule,
     StoreModule.forRoot(rootReducer, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
-    NgxChartsModule
+    NgxChartsModule,
   ],
   providers: [
     {

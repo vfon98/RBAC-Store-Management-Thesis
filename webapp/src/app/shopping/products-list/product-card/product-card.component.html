@@ -29,6 +29,12 @@
   </div>
 
   <div class="pi-text">
+    <div class="text-center w-100" *ngIf="product?.rank">
+      <nz-tag nzColor="error">
+        <i nz-icon nzType="trophy"></i>
+        <span>Top {{ product.rank }}</span>
+      </nz-tag>
+    </div>
     <div class="catagory-name categories" [title]="printCategories()">
       {{ printCategories() }}
     </div>

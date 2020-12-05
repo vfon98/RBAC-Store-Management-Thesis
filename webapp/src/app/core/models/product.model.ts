@@ -22,6 +22,7 @@ export interface IProduct {
   discountPercent?: number;
   description?: string;
   outStock?: boolean;
+  rank?: number;
 }
 
 export interface IProductBody {

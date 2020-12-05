@@ -13,6 +13,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVER_URL } from '../constants/api.constants';
 import { ORDER_STATUS } from "../constants/common.constants";
+import { IBestSeller } from "../models/best-seller.model";
 
 @Injectable({
   providedIn: 'root',
@@ -110,5 +111,9 @@ export class CustomerService {
       this.REQUEST_URL + `orders/${id}/status`,
       body
     );
+  }
+
+  fetchTopBestSellersProducts(): Observable<IBestSeller[]> {
+    return this.http.get<IBestSeller[]>(this.REQUEST_URL + `products/best-sellers`);
   }
 }

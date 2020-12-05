@@ -1,4 +1,5 @@
 $theme-color: #e7ab3c;
+$highlight-color: #fd9830;
 
 .nice-select {
   padding-left: 14px;
@@ -28,4 +29,83 @@ input#minamount, input#maxamount {
   &:hover {
     border-color: darken($theme-color, 20%) !important;
   }
+}
+
+.banner-wrapper {
+  border: 2px solid $highlight-color;
+  padding: 16px 8px;
+  padding-top: 0;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  z-index: 0;
+  position: relative;
+}
+
+.banner-wrapper ::ng-deep app-shopping-banner .slide {
+  margin: 0 8px;
+
+  .product-item {
+    margin-bottom: 0;
+  }
+}
+
+.ribbon {
+  font-size: 18px !important;
+  font-weight: 600;
+
+  width: 30vw;
+  top: -42px;
+
+  position: relative;
+  //background: #ba89b6;
+  //background: $highlight-color;
+  background: #f38514;
+  color: #fff;
+  text-align: center;
+  padding: 1em 2em; /* Adjust to suit */
+  margin: 0 auto;
+}
+
+.ribbon:before, .ribbon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: -1em;
+  //border: 1.5em solid lighten($highlight-color, 5%);
+  border: 1.5em solid #ff8b14ad;
+  z-index: -1;
+  background: #fff;
+}
+
+.ribbon:before {
+  left: -2em;
+  border-right-width: 1.5em;
+  border-left-color: transparent;
+}
+
+.ribbon:after {
+  right: -2em;
+  border-left-width: 1.5em;
+  border-right-color: transparent;
+}
+
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  //border-color: #d65f4a transparent transparent transparent;
+  border-color: #fd9830 transparent transparent transparent;
+  bottom: -1em;
+}
+
+.ribbon .ribbon-content:before {
+  left: 0;
+  border-width: 1em 0 0 1em;
+}
+
+.ribbon .ribbon-content:after {
+  right: 0;
+  border-width: 1em 1em 0 0;
 }
