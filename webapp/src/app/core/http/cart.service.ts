@@ -31,11 +31,20 @@ export class CartService {
     private customerService: CustomerService,
     private userService: UserService,
     private notiService: NotificationService
-  ) {}
+  ) {
+  }
 
   getCart(): ICart {
     this.cart.totalPrice = this.cart.items.reduce(
       (total, item) => total + item.price * item.quantity,
+      0
+    );
+    this.cart.totalPriceWithDiscount = this.cart.items.reduce(
+      (total, item) => total + (item.price - item.price * item.discountPercent / 100) * item.quantity,
+      0
+    );
+    this.cart.totalDiscount = this.cart.items.reduce(
+      (total, item) => total + (item.price * item.discountPercent / 100) * item.quantity,
       0
     );
     return this.cart;
@@ -121,12 +130,11 @@ export class CartService {
 
   addItem(product: IProduct, quantity = 1): void {
     if (!this.isValidItem(product)) return;
+    console.log("ADD ITEM", product)
 
     // Item id and product in cart id are not same
     if (!this.userService.isLogin()) {
       product.quantity = quantity;
-
-      console.log("PRODUCT", product)
 
       this.localCartService.addItem(product);
       this.doPostAddded(product);

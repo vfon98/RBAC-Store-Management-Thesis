@@ -21,6 +21,7 @@ public class CartItemResponse {
     private Integer quantity;
     private Integer productId;
     private Collection<Image> images;
+    private Integer discountPercent = 0;
 
     public static CartItemResponse build(CartItem cartItem) {
         return new CartItemResponse(
@@ -30,7 +31,8 @@ public class CartItemResponse {
                 cartItem.getProduct().getPrice(),
                 cartItem.getQuantity(),
                 cartItem.getProduct().getId(),
-                cartItem.getProduct().getImages());
+                cartItem.getProduct().getImages(),
+                cartItem.getProduct().getDiscountPercent());
     }
 
 }

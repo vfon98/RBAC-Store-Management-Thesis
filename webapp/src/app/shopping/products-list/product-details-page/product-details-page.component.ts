@@ -46,7 +46,9 @@ export class ProductDetailsPageComponent implements OnInit {
     this.customerService.fetchStoreListByProductId(productId)
       .subscribe(stores => {
         this.stores = stores;
-        console.log("StoreList", stores);
+        this.product.storeId = stores[0].id;
+        this.product.storeName = stores[0].name;
+
         this.storeMarkers = this.stores.map(store => ({
           latitude: store.latitude,
           longitude: store.longitude,

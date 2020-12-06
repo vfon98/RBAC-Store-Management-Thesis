@@ -32,7 +32,7 @@
   <div class="pi-text">
     <div class="text-center w-100" *ngIf="product?.rank">
       <nz-tag nzColor="error">
-        <i nz-icon nzType="trophy"></i>
+       <i nz-icon nzType="trophy"></i>
         <span>Top {{ product.rank }}</span>
       </nz-tag>
     </div>
@@ -47,7 +47,9 @@
       <span *ngIf="product.discountPercent">{{ product.price | usd }}</span>
     </div>
   </div>
-  <div class="text-muted small text-center mb-2"><i class="far fa-gem"></i>{{ product.storeName || 'All Stores' }}</div>
+  <div class="text-muted small text-center mb-2" *ngIf="!product?.rank">
+    <i class="far fa-gem"></i>{{ product.storeName || 'All Stores' }}
+  </div>
 
   <div class="text-center px-2 mb-2 btn-details">
     <button class="btn btn-block btn-outline-warning font-weight-bold">SEE DETAIL</button>

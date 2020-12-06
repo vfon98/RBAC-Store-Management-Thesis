@@ -18,7 +18,7 @@
             <td class="si-text">
               <div class="product-selected">
                 <p>
-                  {{ item.price | usd }} x
+                  {{ item.price - (item.price * item.discountPercent / 100) | usd }} x
                   {{ item.quantity }}
                 </p>
                 <h6 class="mb-1">{{ item.name }}</h6>
@@ -42,7 +42,7 @@
     </div>
     <div class="select-total">
       <span>total:</span>
-      <h5>{{ cart.totalPrice | usd }}</h5>
+      <h5>{{ cart.totalPriceWithDiscount | usd }}</h5>
     </div>
     <div class="select-button">
       <a

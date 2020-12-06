@@ -31,15 +31,36 @@
                 {{ item.name }} x {{ item.quantity }}
                 <span>{{
                   item.price * item.quantity | usd
-                }}</span>
+                  }}</span>
               </li>
-              <li class="total-price">
-                Total
-                <span>{{
-                  cart.totalPrice | usd
-                }}</span>
+              <li class="border-bottom-0">
+                <div>
+                  <div class="proceed-checkout">
+                    <ul>
+                      <li class="subtotal pb-2">
+                        Subtotal
+                        <span>{{
+                          cart.totalPrice | usd
+                          }}</span>
+                      </li>
+                      <li class="subtotal text-muted py-2">
+                        Discount
+                        <span>{{
+                          cart.totalDiscount | usd
+                          }}</span>
+                      </li>
+                      <li class="cart-total py-2 border-bottom-0">
+                        Total
+                        <span>{{
+                          cart.totalPriceWithDiscount | usd
+                          }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </li>
             </ul>
+
             <!-- <div class="checkout-content">
               <input type="text" placeholder="Enter Your Card Number" />
             </div> -->
@@ -53,10 +74,10 @@
 
         <div class="cart-buttons mt-2">
           <a class="primary-btn continue-shop" routerLink="/shopping"
-            >Continue shopping</a
+          >Continue shopping</a
           >
           <a class="primary-btn up-cart" routerLink="/shopping/cart"
-            ><i class="fas fa-angle-double-left"></i>Back to cart</a
+          ><i class="fas fa-angle-double-left"></i>Back to cart</a
           >
         </div>
       </div>

@@ -23,6 +23,8 @@ export interface ICart {
   id?: number;
   createdAt?: number;
   totalPrice?: number;
+  totalPriceWithDiscount?: number;
+  totalDiscount?: number;
   items: ICartItem[];
 }
 
@@ -39,6 +41,7 @@ export interface ICartItem {
   storeName?: string;
   images?: IImage[];
   imageUrl?: string;
+  discountPercent?: number;
 }
 
 export interface ICartItemBody {

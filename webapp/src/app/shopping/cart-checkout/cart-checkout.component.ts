@@ -51,7 +51,7 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
       return;
     }
 
-    body.totalPrice = this.cartService.getCart().totalPrice;
+    body.totalPrice = this.cartService.getCart().totalPriceWithDiscount;
     this.paymentModal.show(body);
   }
 

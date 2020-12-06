@@ -26,8 +26,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     private notiService: NotificationService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.addFieldsToProduct();

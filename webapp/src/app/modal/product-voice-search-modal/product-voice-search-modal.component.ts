@@ -30,7 +30,6 @@ export class ProductVoiceSearchModalComponent implements OnInit, OnDestroy {
       if (CONFIRM_COMMANDS.includes(text)) {
         this.hideModal();
         return this.voiceSearchModalService.emitConfirm(this.text);
-        this.text = text.toLowerCase();
       }
       // Check word before setting to property
       this.text = text.toLowerCase();

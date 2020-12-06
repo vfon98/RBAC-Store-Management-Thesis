@@ -48,6 +48,8 @@ export class ShoppingComponent implements OnInit {
 
   listenVoiceSearchResponse(): void {
     this.voiceSearchModalService.confirm$.subscribe(text => {
+      if (!text) return;
+
       this.searchKeyword = text;
       this.handleSearch();
     })
@@ -63,11 +65,11 @@ export class ShoppingComponent implements OnInit {
   }
 
   handleSearch(): void {
-    console.log("HERE")
     this.router.navigate(['/shopping/store/-1/category/all'], {
       queryParams: { search: this.searchKeyword },
       queryParamsHandling: 'merge',
     });
+    document.getElementById('product-list-div').scrollIntoView();
   }
 
   handleInput(): void {
@@ -108,6 +110,7 @@ export class ShoppingComponent implements OnInit {
   backToHome(): void {
     if (location.pathname.startsWith('/shopping/store')) return;
     this.router.navigate(['/shopping']);
+    console.log("BACKING HOME")
   }
 
   showVoiceSearchModal(): void {
