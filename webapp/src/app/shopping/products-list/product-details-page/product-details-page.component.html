@@ -99,15 +99,19 @@
         <nz-card nzType="inner" nzTitle="Available Stores">
           <div
             *ngFor="let store of stores; index as i"
-            class="mb-2 p-2 pt-0"
-            [ngClass]="{ 'selected-store': selectedIndex === i }"
-            (click)="selectedIndex = i"
+            class="mb-2 p-2 pt-0 cursor-pointer"
+            [ngClass]="{ 'selected-store': isSelected(i) }"
+            (click)="changeSelectedStore(i)"
           >
-            <div class="strong">{{ store.name }}</div>
-            <div class="small">{{ store.address }}</div>
+            <div class="icon-wrapper" *ngIf="isSelected(i)">
+              <i nz-icon nzType="check-circle" nzTheme="twotone" nzTwotoneColor="#f50"></i>
+            </div>
+
+            <div class="strong s-name">{{ store.name }}</div>
+            <div class="small mb-1">{{ store.address }}</div>
             <div>
               <nz-tag nzColor="success">
-                <i nz-icon nzType="check-circle"></i>
+                <i nz-icon nzType="sync"></i>
                 <span>{{ store.quantity }} remained</span>
               </nz-tag>
             </div>

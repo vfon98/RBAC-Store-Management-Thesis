@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {CartService, CustomerService} from "../../../core/http";
 import { IAgmMarker, ICartItem, IProduct, IStore } from "../../../core/models";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ShoppingModalService} from "../../../service/shopping-modal.service";
 
 @Component({
   selector: 'app-product-details-page',
@@ -81,6 +80,19 @@ export class ProductDetailsPageComponent implements OnInit {
   addToCartAndCheckout(): void {
     this.addToCart();
     this.router.navigate(['/shopping', 'cart']);
+  }
+
+  isSelected(index: number): boolean {
+    return this.selectedIndex === index;
+  }
+
+  changeSelectedStore(index: number): void {
+    const currentStore = this.stores?.length && this.stores[index];
+
+    this.product.storeName = currentStore.name;
+    this.product.storeId = currentStore.id;
+
+    this.selectedIndex = index;
   }
 }
 

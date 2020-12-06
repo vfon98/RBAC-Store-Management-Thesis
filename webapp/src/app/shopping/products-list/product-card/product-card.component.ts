@@ -33,8 +33,7 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     this.addFieldsToProduct();
     this.checkOutOfStock();
     // this.imgUrl = this.product?.imageUrl || `https://picsum.photos/id/${this.randomImgId()}/400`;
-    this.imgUrl = this.product?.imageUrl ||
-      (this.product?.images?.length && this.product?.images[0]?.secureUrl);
+    this.imgUrl = this.product?.imageUrl || this.product?.images?.[0]?.secureUrl;
     this.listener = this.cartService.outStockListener$.subscribe((id) => {
       if (id === this.product.id && !this.isSoldOut()) {
         this.isOutOfStock = true;

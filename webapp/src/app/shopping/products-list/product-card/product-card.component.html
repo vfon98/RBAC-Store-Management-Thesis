@@ -5,8 +5,8 @@
 >
   <div class="pi-pic">
 
-    <img [src]="imgUrl" class="product-img" />
-    <img *ngIf="isOutOfStock" src="assets/img/out-of-stock.png" class="out-of-stock" />
+    <img [src]="imgUrl" class="product-img" alt="Product image" />
+    <img *ngIf="isOutOfStock" src="assets/img/out-of-stock.png" class="out-of-stock" alt="Out of stock" />
     <img *ngIf="isSoldOut()" src="assets/img/sold-out.png" alt="Sold out" class="sold-out">
 
     <div *ngIf="product.discountPercent" class="sale pp-sale text-center">Sale {{ product.discountPercent }}%</div>
