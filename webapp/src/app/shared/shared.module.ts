@@ -37,6 +37,7 @@ import { BarChartVerticalComponent } from './charts/bar-chart-vertical/bar-chart
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.component';
 import { TableWrapperManagerComponent } from './components/table-wrapper-manager/table-wrapper-manager.component';
+import { BarChartHorizontalComponent } from './charts/bar-chart-horizontal/bar-chart-horizontal.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { TableWrapperManagerComponent } from './components/table-wrapper-manager
     BarChartVerticalComponent,
     PieGridChartComponent,
     TableWrapperManagerComponent,
+    BarChartHorizontalComponent,
   ],
   imports: [
     CommonModule,
@@ -83,45 +85,46 @@ import { TableWrapperManagerComponent } from './components/table-wrapper-manager
     AgmCoreModule,
     NgxChartsModule
   ],
-    exports: [
-        UsdPipe,
-        FormsModule,
-        ReactiveFormsModule,
-        // NgZorro Modules
-        NzUploadModule,
-        NzButtonModule,
-        NzIconModule,
-        NzTagModule,
-        NzTableModule,
-        NzAvatarModule,
-        NzToolTipModule,
-        NzPopconfirmModule,
-        NzStatisticModule,
-        NzCardModule,
-        NzDropDownModule,
-        NzBadgeModule,
-        NzTagModule,
-        NzTabsModule,
-        NzAffixModule,
-        NzModalModule,
-        NzSliderModule,
-        NzTransferModule,
-        NzInputNumberModule,
-        NzSelectModule,
-        NzNoAnimationModule,
-        // Shared Components
-        TableOverviewComponent,
-        BackButtonAdminComponent,
-        ModalWrapperAdminComponent,
-        FormAddWrapperAdminComponent,
-        ActionButtonsAdminComponent,
-        // Google Maps
-        CustomAgmMapComponent,
-        CustomAgmSearchboxComponent,
-        ImageFallbackDirective,
-        BarChartVerticalComponent,
-        PieGridChartComponent,
-        TableWrapperManagerComponent
-    ],
+  exports: [
+    UsdPipe,
+    FormsModule,
+    ReactiveFormsModule,
+    // NgZorro Modules
+    NzUploadModule,
+    NzButtonModule,
+    NzIconModule,
+    NzTagModule,
+    NzTableModule,
+    NzAvatarModule,
+    NzToolTipModule,
+    NzPopconfirmModule,
+    NzStatisticModule,
+    NzCardModule,
+    NzDropDownModule,
+    NzBadgeModule,
+    NzTagModule,
+    NzTabsModule,
+    NzAffixModule,
+    NzModalModule,
+    NzSliderModule,
+    NzTransferModule,
+    NzInputNumberModule,
+    NzSelectModule,
+    NzNoAnimationModule,
+    // Shared Components
+    TableOverviewComponent,
+    BackButtonAdminComponent,
+    ModalWrapperAdminComponent,
+    FormAddWrapperAdminComponent,
+    ActionButtonsAdminComponent,
+    // Google Maps
+    CustomAgmMapComponent,
+    CustomAgmSearchboxComponent,
+    ImageFallbackDirective,
+    BarChartVerticalComponent,
+    PieGridChartComponent,
+    TableWrapperManagerComponent,
+    BarChartHorizontalComponent
+  ],
 })
 export class SharedModule {}

@@ -12,6 +12,11 @@
     ></app-bar-chart-vertical>
   </div>
   <div class="col-lg-6">
-<!--    <app-bar-chart-vertical [data]="topSaleData"></app-bar-chart-vertical>-->
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12" style="height: 300px" [style.height.px]="topSaleData.length * 50">
+    <app-bar-chart-hirizontal [data]="topSaleData"></app-bar-chart-hirizontal>
   </div>
 </div>
