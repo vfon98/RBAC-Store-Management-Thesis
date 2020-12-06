@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'src/app/layouts/notification/notification.service';
 import { ShoppingModalService } from './../../../service/shopping-modal.service';
 import { CartService } from '../../../core/http/cart.service';
@@ -24,7 +24,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private shoppingModalService: ShoppingModalService,
     private notiService: NotificationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -81,6 +82,10 @@ export class ProductCardComponent implements OnInit, OnDestroy {
       return this.notiService.showError('Product has sold out!');
     }
 
+    if (!this.product?.storeName) {
+      return this.gotoDetailsPage();
+    }
+
     // this.cartService.addItem({ ...this.product, quantity: 1 });
     this.cartService.addItem({ ...this.product });
   }
@@ -92,5 +97,9 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   showProductModal(e: Event): void {
     // e.stopPropagation();
     this.shoppingModalService.show({ ...this.product, imgUrl: this.imgUrl });
+  }
+
+  gotoDetailsPage(): void {
+    this.router.navigate(['/shopping', 'products', this.product.id, 'details']);
   }
 }

@@ -117,3 +117,10 @@ i.anticon {
   }
 }
 
+.selected-store {
+  background: #f0f8ff;
+}
+
+.right-sidebar ::ng-deep .ant-card-body {
+  padding: 8px;
+}

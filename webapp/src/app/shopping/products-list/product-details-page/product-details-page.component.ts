@@ -16,6 +16,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
   quantity = 1;
   addedQuantity = 0;
+  selectedIndex = 0;
 
   constructor(
     private customerService: CustomerService,

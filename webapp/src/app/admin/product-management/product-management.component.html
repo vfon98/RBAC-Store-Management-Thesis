@@ -48,7 +48,7 @@
         <span
           *ngIf="product.description; else emptyBlock"
           class="product-desc"
-          [innerHTML]="product.description"
+          [innerHTML]="product.description || ''"
         >
 <!--          {{ product.description }}-->
         </span>

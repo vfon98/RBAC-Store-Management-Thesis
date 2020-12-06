@@ -69,12 +69,15 @@ public class Product {
             Set<Category> categorySet,
             Image image) {
 
+        String description =
+                productForm.getDescription().equals("null") ? null : productForm.getDescription();
+
         product.setName(productForm.getName());
         product.setPrice(productForm.getPrice());
         product.setDiscountPercent(productForm.getDiscount());
         product.setCategories(categorySet);
         product.setQuantity(productForm.getQuantity());
-        product.setDescription(productForm.getDescription());
+        product.setDescription(description);
         if (image != null) {
             List images = new ArrayList();
             images.add(image);

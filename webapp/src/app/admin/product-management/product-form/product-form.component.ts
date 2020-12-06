@@ -26,7 +26,7 @@ export class ProductFormComponent implements OnInit {
     discount: [0, [Validators.min(0), Validators.max(99)]],
     categories: [[]],
     image: [null],
-    description: [null]
+    description: ['']
   });
 
   constructor(
@@ -56,7 +56,8 @@ export class ProductFormComponent implements OnInit {
 
   emitSubmitEvent(): void {
     if (this.productForm.valid) {
-      this.onSubmit.emit(this.productForm.value);
+      const formData = this.productForm.value;
+      this.onSubmit.emit(formData);
       return;
     }
     this.notiService.showWaring('Invalid form. Please check again!');

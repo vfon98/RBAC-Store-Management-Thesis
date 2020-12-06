@@ -1,6 +1,7 @@
+<!--  [routerLink]="['/shopping', 'products', product.id, 'details']"-->
 <div
   class="product-item border rounded"
-  [routerLink]="['/shopping', 'products', product.id, 'details']"
+  (click)="gotoDetailsPage()"
 >
   <div class="pi-pic">
 

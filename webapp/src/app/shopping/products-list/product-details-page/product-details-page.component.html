@@ -94,10 +94,15 @@
     </div>
 
     <!--    RIGHT SECTION -->
-    <div class="col-lg-4">
+    <div class="col-lg-4 right-sidebar">
       <div>
         <nz-card nzType="inner" nzTitle="Available Stores">
-          <div *ngFor="let store of stores" class="mb-2">
+          <div
+            *ngFor="let store of stores; index as i"
+            class="mb-2 p-2 pt-0"
+            [ngClass]="{ 'selected-store': selectedIndex === i }"
+            (click)="selectedIndex = i"
+          >
             <div class="strong">{{ store.name }}</div>
             <div class="small">{{ store.address }}</div>
             <div>
