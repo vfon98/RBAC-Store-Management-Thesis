@@ -329,10 +329,11 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
         Store store = currentStaff.getStore();
 
         if (status != null) {
-            return orderService.findAllOrdersByStoreAndStatus(store, OrderStatusEnum.valueOf(status))
+            List<Order> orders = orderService.findAllOrdersByStoreAndStatus(store, OrderStatusEnum.valueOf(status))
                     .stream()
                     .sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()))
                     .collect(Collectors.toList());
+            return orders;
         }
 
         return orderService.findAllOrdersByStore(store).stream()

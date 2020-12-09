@@ -2,7 +2,7 @@ nz-tag {
   cursor: pointer;
   font-weight: 500;
   padding: 2px 8px;
-  font-size: .8rem;
+  //font-size: .8rem;
 
   i.anticon {
     //transform: rotate(-90deg);
@@ -29,7 +29,7 @@ ul li, ul nz-tag {
 ul i.anticon {
   top: -1px;
   position: relative;
-  font-size: 1rem;
+  //font-size: 1rem;
   margin-left: 4px;
   transform: rotate(-90deg);
 }

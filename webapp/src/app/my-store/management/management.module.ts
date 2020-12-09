@@ -16,6 +16,7 @@ import { SharedTableStatisticComponent } from './shared-table-statistic/shared-t
 import { OrderStatusDropdownComponent } from './store-orders/order-status-dropdown/order-status-dropdown.component';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { NzImportModalComponent } from "../../modal/nz-import-modal/nz-import-modal.component";
+import { InvoicePrintModalComponent } from './store-invoices/invoice-print-modal/invoice-print-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NzImportModalComponent } from "../../modal/nz-import-modal/nz-import-mo
     StoreInvoicesComponent,
     SharedTableStatisticComponent,
     OrderStatusDropdownComponent,
-    NzImportModalComponent
+    NzImportModalComponent,
+    InvoicePrintModalComponent
   ],
     imports: [
         CommonModule,

@@ -12,6 +12,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.Date;
 
 import java.util.List;
@@ -53,6 +54,9 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
+
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems;
 
     public enum Status {
         Shipping, Shipped

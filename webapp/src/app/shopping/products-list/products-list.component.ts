@@ -21,6 +21,7 @@ export class ProductsListComponent implements OnInit {
 
   pageSize = 9;
 
+  sorting = 'default';
   priceRange = [20, 1000];
 
   constructor(

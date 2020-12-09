@@ -30,7 +30,7 @@
             </div>
 
           </td>
-          <td class="order-price">{{ order.totalPrice | usd }}</td>
+          <td class="order-price font-weight-bold">{{ order.totalPrice | usd }}</td>
           <td>
             {{ order.shipAddress }}
           </td>
@@ -38,7 +38,7 @@
             {{ order.createdAt | date: "short" }}
           </td>
           <td class="text-center">
-            <button class="btn btn-info">
+            <button class="btn btn-info" (click)="modal.showModal()">
               <i class="fas fa-print"></i> Print
             </button>
           </td>
@@ -49,5 +49,6 @@
       </tbody>
 <!--    </table>-->
     </nz-table>
+    <app-invoice-print-modal #modal></app-invoice-print-modal>
   </div>
 </div>

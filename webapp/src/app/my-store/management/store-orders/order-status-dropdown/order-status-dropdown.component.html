@@ -1,6 +1,6 @@
 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
-  <nz-tag [nzColor]="currentStatus.color">
-    <i nz-icon [nzType]="currentStatus.icon"></i>
+  <nz-tag [nzColor]="currentStatus?.color">
+    <i nz-icon [nzType]="currentStatus?.icon"></i>
     <span>{{ currentStatus?.value || 'Change status' | titlecase }}</span>
     <i nz-icon nzType="down"></i>
   </nz-tag>

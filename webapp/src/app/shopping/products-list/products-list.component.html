@@ -65,36 +65,25 @@
                       <nz-select
                         nzSize="large"
                         nzPlaceHolder="Sorting: Default"
+                        [(ngModel)]="sorting"
                       >
-                        <nz-option-group nzLabel="By Name">
-                          <nz-option nzCustomContent nzLabel="Sorting: None"
-                                     nzValue="name-asc"><i nz-icon
-                                                           nzType="windows"></i>
-                            Ascending
+                        <nz-option nzCustomContent nzLabel="Sorting: Default" nzValue="default">
+                          Sorting: Default
+                        </nz-option>
+                        <nz-option-group nzLabel="By Price">
+                          <nz-option nzCustomContent nzLabel="Price - Low to High" nzValue="price-asc"><i nz-icon nzType="vertical-align-top" nzTheme="outline"></i>
+                            Low to High
                           </nz-option>
-                          <nz-option nzCustomContent nzLabel="Name: Ascending"
-                                     nzValue="name-asc"><i nz-icon
-                                                           nzType="windows"></i>
-                            Ascending
-                          </nz-option>
-                          <nz-option nzCustomContent nzLabel="Name: Descending"
-                                     nzValue="name-desc"><i nz-icon
-                                                            nzType="apple"></i>
-                            Descending
+                          <nz-option nzCustomContent nzLabel="Price - High to Low" nzValue="price-desc"><i nz-icon nzType="vertical-align-bottom" nzTheme="outline"></i>
+                            High to Low
                           </nz-option>
                         </nz-option-group>
-                        <nz-option-group nzLabel="By Price">
-                          <nz-option nzCustomContent
-                                     nzLabel="Price: High to low"
-                                     nzValue="price-asc"><i nz-icon
-                                                            nzType="android"></i>
-                            High to low
+                        <nz-option-group nzLabel="By Name">
+                          <nz-option nzCustomContent nzLabel="Name: Ascending" nzValue="name-asc"><i nz-icon nzType="sort-ascending" nzTheme="outline"></i>
+                            Ascending
                           </nz-option>
-                          <nz-option nzCustomContent
-                                     nzLabel="Price: Low to high"
-                                     nzValue="price-desc"><i nz-icon
-                                                             nzType="android"></i>
-                            Low to high
+                          <nz-option nzCustomContent nzLabel="Name: Descending" nzValue="name-desc"><i nz-icon nzType="sort-descending" nzTheme="outline"></i>
+                            Descending
                           </nz-option>
                         </nz-option-group>
                       </nz-select>
