@@ -38,7 +38,7 @@
             {{ order.createdAt | date: "short" }}
           </td>
           <td class="text-center">
-            <button class="btn btn-info" (click)="modal.showModal()">
+            <button class="btn btn-info" (click)="modal.showModal(order.id)">
               <i class="fas fa-print"></i> Print
             </button>
           </td>

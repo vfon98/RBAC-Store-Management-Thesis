@@ -1,8 +1,119 @@
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Invoice Preview"
+          nzClassName="nz-modal-wrapper"
           (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-  <ng-container *nzModalContent>
-    <p>Content one</p>
-    <p>Content two</p>
-    <p>Content three</p>
-  </ng-container>
+  <div id="invoice">
+
+    <!--      <div class="toolbar hidden-print">-->
+    <!--        <div class="text-right">-->
+    <!--          <button (click)="printInvoice()" class="btn btn-info"><i-->
+    <!--            class="fa fa-print"></i> Print-->
+    <!--          </button>-->
+    <!--          <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export-->
+    <!--            as PDF-->
+    <!--          </button>-->
+    <!--        </div>-->
+    <!--        <hr>-->
+    <!--      </div>-->
+    <div class="invoice overflow-auto" *ngIf="order" #invoiceDiv>
+      <div style="min-width: 600px">
+        <!--          <header>-->
+        <!--            <div class="row">-->
+        <!--              <div class="col">-->
+        <!--                <a target="_blank" href="https://lobianijs.com">-->
+        <!--                  <img-->
+        <!--                    src="http://lobianijs.com/lobiadmin/version/1.0/ajax/img/logo/lobiadmin-logo-text-64.png"-->
+        <!--                    data-holder-rendered="true"/>-->
+        <!--                </a>-->
+        <!--              </div>-->
+        <!--              <div class="col company-details">-->
+        <!--                <h2 class="name">-->
+        <!--                  <a target="_blank" href="https://lobianijs.com">-->
+        <!--                    Arboshiki-->
+        <!--                  </a>-->
+        <!--                </h2>-->
+        <!--                <div>455 Foggy Heights, AZ 85004, US</div>-->
+        <!--                <div>(123) 456-789</div>-->
+        <!--                <div>company@example.com</div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </header>-->
+        <main>
+          <div class="row contacts">
+            <div class="col invoice-to">
+              <div class="text-gray-light">INVOICE TO:</div>
+              <h2 class="to">{{ order?.staff?.name }}</h2>
+              <div class="address">{{ order?.shipAddress }}</div>
+              <div class="email"><a>Phone: {{ order?.phone }}</a>
+              </div>
+            </div>
+            <div class="col invoice-details">
+              <h1 class="invoice-id">INVOICE #{{ order?.id }}</h1>
+              <div class="date">Date of
+                Invoice: {{ order?.createdAt | date:'short' }}</div>
+              <div class="date">Payment method: {{ order?.paymentMethod | titlecase }}</div>
+            </div>
+          </div>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th class="text-left">PRODUCT</th>
+              <th class="text-right">PRICE</th>
+              <th class="text-right">QUANTITY</th>
+              <th class="text-right">TOTAL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of order?.orderItems">
+              <td class="no">04</td>
+              <td class="text-left"><h3>
+                <a>
+                  {{ item.product.name }}
+                </a>
+              </h3>
+                <span *ngIf="item?.product.discountPercent">
+                    Discount: {{ item.product.discountPercent }}%
+                  </span>
+              </td>
+              <td class="unit">{{ item.product.price | usd }}</td>
+              <td class="qty">{{ item.quantity }}</td>
+              <td
+                class="total">{{ item.product.price * item.quantity | usd }}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">SUBTOTAL</td>
+              <td>{{ getSubtotal() | usd }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">DISCOUNT</td>
+              <td>{{ getDiscount() | usd }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2">GRAND TOTAL</td>
+              <td>{{ (getSubtotal() - getDiscount()) | usd }}</td>
+            </tr>
+            </tfoot>
+          </table>
+          <div class="thanks">Thank you!</div>
+          <div class="notices">
+            <div>NOTICE:</div>
+            <div class="notice">A finance charge of 1.5% will be made on
+              unpaid balances after 30 days.
+            </div>
+          </div>
+        </main>
+        <footer>
+          Invoice was created on a computer and is valid without the signature
+          and seal.
+        </footer>
+      </div>
+      <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+      <div></div>
+    </div>
+  </div>
 </nz-modal>

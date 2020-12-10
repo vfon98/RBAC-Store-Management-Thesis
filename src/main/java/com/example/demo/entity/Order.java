@@ -4,6 +4,7 @@ import com.example.demo.enums.OrderStatusEnum;
 import com.example.demo.enums.PaymentMethodEnums;
 import com.example.demo.form.PaymentForm;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,7 +40,8 @@ public class Order {
 
     private String transactionId;
 
-    @JsonIgnore
+    //    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "staff_id")
     private Staff staff;

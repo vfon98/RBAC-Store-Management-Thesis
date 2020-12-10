@@ -1,6 +1,7 @@
 import { IProduct } from './product.model';
 import { ICategory } from './category.model';
 import { IImage } from "./image.model";
+import { IUser } from "./user.model";
 
 export interface IPageableProduct {
   currentPage: number;
@@ -63,6 +64,9 @@ export interface IOrder {
   shipAddress: string;
   transactionId: string;
   status: string;
+  orderItems?: [{ id: number, product: IProduct, quantity: number }],
+  paymentMethod?: string;
+  staff?: IUser;
 }
 
 export interface IProductFilter {

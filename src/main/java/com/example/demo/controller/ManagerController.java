@@ -343,14 +343,14 @@ public class ManagerController implements IStore, IStaff, IRole, IProduct, ICate
 
     @Override
     @GetMapping("orders/{id}")
-    @PreAuthorize("hasAuthority(\"" + OrderPermission.READ + "\")")
+//    @PreAuthorize("hasAuthority(\"" + OrderPermission.READ + "\")")
     public Order findOrderById(@PathVariable Integer id) {
-        Staff currentStaff = securityUtil.getCurrentStaff();
+//        Staff currentStaff = securityUtil.getCurrentStaff();
         Order order = orderService.findById(id);
 
-        if (!order.getStore().equals(currentStaff.getStore())) {
-            throw new OrderNotFoundException(id);
-        }
+//        if (!order.getStore().equals(currentStaff.getStore())) {
+//            throw new OrderNotFoundException(id);
+//        }
 
         return order;
     }
