@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.ImportedReceipt;
+import com.example.demo.response.ImportedChartResponse;
 import com.example.demo.response.StoreRevenueResponse;
 import com.example.demo.response.TopSaleProductsResponse;
 
@@ -11,4 +13,6 @@ public interface ChartService {
     List<TopSaleProductsResponse> getTopSaleProductsByStoreId(Integer storeId);
 
     List<StoreRevenueResponse> getStoreRevenueStatistics();
+
+    List<ImportedChartResponse> getImportedChartAllStores();
 }

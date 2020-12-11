@@ -4,6 +4,7 @@ import com.example.demo.entity.OrderItem;
 import com.example.demo.response.StoreRevenueResponse;
 import com.example.demo.response.TopSaleProductsResponse;
 import com.example.demo.service.ChartService;
+import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +44,11 @@ public class ChartController {
         List<StoreRevenueResponse> storeRevenues = chartService.getStoreRevenueStatistics();
 
         return ResponseEntity.ok(storeRevenues);
+    }
+
+    @GetMapping("/admin/imported-chart")
+    public ResponseEntity getImportedChartAllStores() {
+        var response = chartService.getImportedChartAllStores();
+        return ResponseEntity.ok(response);
     }
 }
