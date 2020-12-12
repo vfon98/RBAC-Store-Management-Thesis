@@ -94,7 +94,7 @@ public class CustomerController {
             @RequestParam(name = "search", required = false, defaultValue = "") String keyword,
             @RequestParam(name = "sortBy", required = false) String sortBy,
             @RequestParam(name = "direction", required = false) String direction,
-            @RequestParam(name = "priceFrom", required = false) String priceForm,
+            @RequestParam(name = "priceFrom", required = false) String priceFrom,
             @RequestParam(name = "priceTo", required = false) String priceTo
     ) {
         Sort sort;
@@ -108,8 +108,8 @@ public class CustomerController {
         Pageable pageable = PageRequest.of(page - 1, size, sort);
 
         PageableProductResponse responses =
-                customerService.searchProducts(storeId, categoryId, pageable, keyword.trim());
-//        customerService.findProductsByStoreAndCategory(storeId, categoryId, pageable);
+                customerService.searchProducts(storeId, categoryId, pageable, keyword.trim(), priceFrom, priceTo);
+
         return ResponseEntity.ok(responses);
     }
 

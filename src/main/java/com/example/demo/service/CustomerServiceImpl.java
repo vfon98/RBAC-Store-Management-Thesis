@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
@@ -223,7 +224,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public PageableProductResponse searchProducts(
-            Integer storeId, Integer categoryId, Pageable pageable, String keyword) {
+            Integer storeId, Integer categoryId, Pageable pageable, String keyword, String priceFrom, String priceTo) {
 //        Store store = storeService.findById(storeId);
 
         PageableProductResponse response;
@@ -247,6 +248,14 @@ public class CustomerServiceImpl implements CustomerService {
                 product.setStoreName(store.getName());
                 return product;
             }).collect(Collectors.toList());
+
+            response.setProducts(productResponses);
+        } else if (StringUtils.isNotBlank(priceFrom) && StringUtils.isNotBlank(priceTo)) {
+            List<ProductResponse> productResponses = response.getProducts().stream()
+                    .filter(product ->
+                            product.getPrice().doubleValue() >= Double.valueOf(priceFrom) &&
+                            product.getPrice().doubleValue() <= Double.valueOf(priceTo))
+                    .collect(Collectors.toList());
 
             response.setProducts(productResponses);
         }

@@ -36,7 +36,7 @@ export class ShoppingStoreComponent implements OnInit {
   navigateUrl(storeId: number): void {
     this.router.navigate(
       ['/shopping', 'store', storeId, 'category', this.categoryId || 'all'],
-      { queryParams: { page: 1 } }
+      { queryParams: { page: 1 }, queryParamsHandling: 'merge' }
     );
   }
 }

@@ -46,10 +46,11 @@
               nzMax="5000"
               nzRange
               [(ngModel)]="priceRange"
-              (ngModelChange)="handleSlideChanged($event)"
+              (ngModelChange)="handlePriceFilterChanged($event)"
             ></nz-slider>
           </div>
-          <a href="#" class="filter-btn">Filter</a>
+          <a class="filter-btn text-dark mr-2" style="background: #F3F3F3" (click)="resetPriceFilter()">Reset</a>
+          <a class="filter-btn" (click)="handleSubmitPriceFilter()">Filter</a>
         </div>
       </div>
 

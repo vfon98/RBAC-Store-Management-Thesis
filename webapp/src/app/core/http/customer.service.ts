@@ -14,6 +14,7 @@ import { Injectable } from '@angular/core';
 import { SERVER_URL } from '../constants/api.constants';
 import { ORDER_STATUS } from "../constants/common.constants";
 import { IBestSeller } from "../models/best-seller.model";
+import { IFilter } from "../models/customer.model";
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +28,8 @@ export class CustomerService {
   constructor(private http: HttpClient) {
   }
 
-  fetchProductsByStoreAndCategory(
-    storeId: number,
+  fetchProductsByStoreAndCategory({
+    storeId,
     categoryId = -1,
     page = 1,
     size = 9,
@@ -36,7 +37,7 @@ export class CustomerService {
     sortBy = '',
     direction = 'asc',
     priceFrom = '',
-    priceTo = ''
+    priceTo = ''}: IFilter
   ): Observable<IPageableProduct> {
     if (page < 1) page = 1;
     return this.http.get<IPageableProduct>(

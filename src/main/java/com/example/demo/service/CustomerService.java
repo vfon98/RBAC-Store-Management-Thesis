@@ -34,7 +34,7 @@ public interface CustomerService {
 
     List<StoreHasProductResponse> getStoreListFromProductId(Integer productId);
 
-    PageableProductResponse searchProducts(Integer storeId, Integer categoryId, Pageable pageable, String keyword);
+    PageableProductResponse searchProducts(Integer storeId, Integer categoryId, Pageable pageable, String keyword, String priceFrom, String priceTo);
 
     PageableProductResponse findProductsByStoreAndCategory(Integer storeId, Integer categoryId, Pageable pageable);
 

@@ -7,6 +7,7 @@ import { IPageableProduct, IProductFilter } from 'src/app/core/models';
 import { IProduct } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
+import { IFilter } from "../../core/models/customer.model";
 
 @Component({
   selector: 'app-products-list',
@@ -49,39 +50,17 @@ export class ProductsListComponent implements OnInit {
           return;
         }
 
-        console.log(params, query);
-
-        this.fetchProducts(
-          params.storeId,
-          params.categoryId,
-          query.page,
-          query.size,
-          query.search,
-          query.sortBy,
-          query.direction,
-          query.priceForm,
-          query.priceTo
-        );
+        this.fetchProducts({ ...params, ...query });
       });
   }
 
-  fetchProducts(
-    storeId: number,
-    categoryId: number,
-    page: number,
-    size?: number,
-    search?: string,
-    sortBy?: string,
-    direction?: string,
-    priceForm?: string,
-    priceTo?: string
-  ): void {
-    if (String(categoryId) === 'all') {
-      categoryId = -1;
+  fetchProducts(filter: IFilter): void {
+    if (String(filter.categoryId) === 'all') {
+      filter.categoryId = -1;
     }
 
     this.customerService
-      .fetchProductsByStoreAndCategory(storeId, categoryId, page, size, search, sortBy, direction, priceForm, priceTo)
+      .fetchProductsByStoreAndCategory(filter)
       .subscribe((res) => {
         this.pageableProducts = res;
         this.products = res.products;
@@ -108,16 +87,24 @@ export class ProductsListComponent implements OnInit {
     return !this.products.length;
   }
 
-  handleSlideChanged(value: number[] | number): void {
-    console.log(value)
-  }
-
   handleSizeChanged(size: number): void {
     this.navigateWithQuery({ size });
   }
 
+  handlePriceFilterChanged(value: number[] | number): void {
+    console.log(value)
+  }
+
+  handleSubmitPriceFilter(): void {
+    const [priceFrom, priceTo] = this.priceRange;
+    this.navigateWithQuery({ priceFrom, priceTo })
+  }
+
   handleSortChanged(value: string): void {
-    const sorter = value.split('-');
+    let sorter = value.split('-');
+    if (value === 'default') {
+      sorter = [];
+    }
     this.navigateWithQuery({ sortBy: sorter[0], direction: sorter[1] })
   }
 
@@ -127,5 +114,9 @@ export class ProductsListComponent implements OnInit {
       queryParams: query,
       queryParamsHandling: 'merge',
     })
+  }
+
+  resetPriceFilter(): void {
+    this.navigateWithQuery({ priceFrom: null, priceTo: null });
   }
 }

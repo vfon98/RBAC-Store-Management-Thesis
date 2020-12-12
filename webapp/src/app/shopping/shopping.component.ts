@@ -28,9 +28,22 @@ export class ShoppingComponent implements OnInit {
     private loginModal: LoginModalService,
     private authService: AuthService,
     private voiceSearchModalService: VoiceSearchModalService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        sortBy: null,
+        direction: null,
+        priceFrom: null,
+        priceTo: null,
+        size: null,
+        page: 1
+      }
+    });
+
     this.loadSearchQuery();
     this.userService.currentUser$.subscribe((user) => {
       this.user = user;
@@ -109,8 +122,7 @@ export class ShoppingComponent implements OnInit {
 
   backToHome(): void {
     if (location.pathname.startsWith('/shopping/store')) return;
-    this.router.navigate(['/shopping']);
-    console.log("BACKING HOME")
+    this.router.navigate(['/shopping'], { queryParams: null });
   }
 
   showVoiceSearchModal(): void {

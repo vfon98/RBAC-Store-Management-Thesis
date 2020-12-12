@@ -5,6 +5,7 @@
       <a
         [routerLink]="['/shopping', 'store', storeId, 'category', 'all']"
         [queryParams]="{ page: 1 }"
+        queryParamsHandling="merge"
         [ngClass]="this.categoryId === 'all' ? 'active' : ''"
         >ALL</a
       >
@@ -13,6 +14,7 @@
       <a
         [routerLink]="['/shopping', 'store', storeId, 'category', category.id]"
         [queryParams]="{ page: 1 }"
+        queryParamsHandling="merge"
         [ngClass]="{active: category.isActive}"
         >{{ category.name }}</a
         >

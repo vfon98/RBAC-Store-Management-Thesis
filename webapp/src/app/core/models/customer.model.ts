@@ -85,6 +85,18 @@ export interface IProductFilter {
   };
 }
 
+export interface IFilter {
+  storeId: number,
+  categoryId: number,
+  page: number,
+  size?: number,
+  search?: string,
+  sortBy?: string,
+  direction?: string,
+  priceFrom?: string,
+  priceTo?: string
+}
+
 export interface ICustomerBody {
   name: string;
   email: string;
