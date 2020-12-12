@@ -66,8 +66,9 @@
                         nzSize="large"
                         nzPlaceHolder="Sorting: Default"
                         [(ngModel)]="sorting"
+                        (ngModelChange)="handleSortChanged($event)"
                       >
-                        <nz-option nzCustomContent nzLabel="Sorting: Default" nzValue="default">
+                        <nz-option nzCustomContent nzLabel="Sorting: Default" [nzValue]="'default'">
                           Sorting: Default
                         </nz-option>
                         <nz-option-group nzLabel="By Price">
@@ -91,17 +92,13 @@
                       <div class="mx-2"></div>
 
                       <nz-select nzSize="large" nzPlaceHolder="Show: 09"
-                                 [(ngModel)]="pageSize">
-                        <nz-option nzLabel="Show: 09" [nzValue]="9">Show: 09
-                        </nz-option>
-                        <nz-option nzLabel="Show: 15" [nzValue]="15">Show: 15
-                        </nz-option>
-                        <nz-option nzLabel="Show: 20" [nzValue]="20">Show: 20
-                        </nz-option>
-                        <nz-option nzLabel="Show: 25" [nzValue]="25">Show: 25
-                        </nz-option>
-                        <nz-option nzLabel="Show: 30" [nzValue]="30">Show: 30
-                        </nz-option>
+                                 [(ngModel)]="pageSize" (ngModelChange)="handleSizeChanged($event)">
+                        <nz-option nzLabel="Show: 09" [nzValue]="9">Show: 09</nz-option>
+                        <nz-option nzLabel="Show: 15" [nzValue]="15">Show: 15</nz-option>
+                        <nz-option nzLabel="Show: 20" [nzValue]="20">Show: 20</nz-option>
+                        <nz-option nzLabel="Show: 25" [nzValue]="25">Show: 25</nz-option>
+                        <nz-option nzLabel="Show: 30" [nzValue]="30">Show: 30</nz-option>
+                        <nz-option nzLabel="Show: 50" [nzValue]="50">Show: 50</nz-option>
                       </nz-select>
 
                     </div>

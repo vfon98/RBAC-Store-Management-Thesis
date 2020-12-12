@@ -15,6 +15,7 @@ import com.example.demo.service.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -90,10 +91,20 @@ public class CustomerController {
             @PathVariable Integer categoryId,
             @RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "6") Integer size,
-            @RequestParam(name = "search", required = false, defaultValue = "") String keyword
+            @RequestParam(name = "search", required = false, defaultValue = "") String keyword,
+            @RequestParam(name = "sortBy", required = false) String sortBy,
+            @RequestParam(name = "direction", required = false) String direction,
+            @RequestParam(name = "priceFrom", required = false) String priceForm,
+            @RequestParam(name = "priceTo", required = false) String priceTo
     ) {
+        Sort sort;
+        if (StringUtils.isBlank(sortBy) || StringUtils.isBlank(direction)) {
+            sort = Sort.by(Sort.Direction.DESC, "createdAt");
+        } else {
+            var directionEnum = Sort.Direction.valueOf(direction.toUpperCase());
+            sort = Sort.by(directionEnum, sortBy);
+        }
         /* Page starts from 0 */
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
         Pageable pageable = PageRequest.of(page - 1, size, sort);
 
         PageableProductResponse responses =

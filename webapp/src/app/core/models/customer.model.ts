@@ -78,6 +78,10 @@ export interface IProductFilter {
     page: number;
     size?: number;
     search?: string;
+    sortBy?: string;
+    direction?: string;
+    priceForm?: string;
+    priceTo?: string;
   };
 }
 

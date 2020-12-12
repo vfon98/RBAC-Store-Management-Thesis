@@ -1,6 +1,6 @@
 import { IStore } from 'src/app/core/models';
 import { NotificationService } from './../../layouts/notification/notification.service';
-import { StoreService, CustomerService } from  'src/app/core/http';
+import { StoreService, CustomerService } from 'src/app/core/http';
 import { map, debounceTime } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPageableProduct, IProductFilter } from 'src/app/core/models';
@@ -30,7 +30,8 @@ export class ProductsListComponent implements OnInit {
     private notiService: NotificationService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     combineLatest(this.route.params, this.route.queryParams)
@@ -48,12 +49,18 @@ export class ProductsListComponent implements OnInit {
           return;
         }
 
+        console.log(params, query);
+
         this.fetchProducts(
           params.storeId,
           params.categoryId,
           query.page,
           query.size,
-          query.search
+          query.search,
+          query.sortBy,
+          query.direction,
+          query.priceForm,
+          query.priceTo
         );
       });
   }
@@ -63,14 +70,18 @@ export class ProductsListComponent implements OnInit {
     categoryId: number,
     page: number,
     size?: number,
-    search?: string
+    search?: string,
+    sortBy?: string,
+    direction?: string,
+    priceForm?: string,
+    priceTo?: string
   ): void {
     if (String(categoryId) === 'all') {
       categoryId = -1;
     }
 
     this.customerService
-      .fetchProductsByStoreAndCategory(storeId, categoryId, page, size, search)
+      .fetchProductsByStoreAndCategory(storeId, categoryId, page, size, search, sortBy, direction, priceForm, priceTo)
       .subscribe((res) => {
         this.pageableProducts = res;
         this.products = res.products;
@@ -99,5 +110,22 @@ export class ProductsListComponent implements OnInit {
 
   handleSlideChanged(value: number[] | number): void {
     console.log(value)
+  }
+
+  handleSizeChanged(size: number): void {
+    this.navigateWithQuery({ size });
+  }
+
+  handleSortChanged(value: string): void {
+    const sorter = value.split('-');
+    this.navigateWithQuery({ sortBy: sorter[0], direction: sorter[1] })
+  }
+
+  navigateWithQuery(query: Record<string, unknown>): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: query,
+      queryParamsHandling: 'merge',
+    })
   }
 }

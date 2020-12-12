@@ -24,19 +24,34 @@ export class CustomerService {
   orderChanged = new Subject();
   orderChanged$ = this.orderChanged.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   fetchProductsByStoreAndCategory(
     storeId: number,
     categoryId = -1,
     page = 1,
     size = 9,
-    search = ''
+    search = '',
+    sortBy = '',
+    direction = 'asc',
+    priceFrom = '',
+    priceTo = ''
   ): Observable<IPageableProduct> {
     if (page < 1) page = 1;
     return this.http.get<IPageableProduct>(
       this.REQUEST_URL + `stores/${storeId}/categories/${categoryId}/products`,
-      { params: { page: String(page), size: String(size), search: search } }
+      {
+        params: {
+          page: String(page),
+          size: String(size),
+          search,
+          sortBy,
+          direction,
+          priceFrom,
+          priceTo,
+        }
+      }
     );
   }
 
@@ -102,7 +117,7 @@ export class CustomerService {
     if (status) {
       params = new HttpParams().set('status', `${status}`);
     }
-    console.log({params})
+    console.log({ params })
     return this.http.get<IOrder[]>(SERVER_URL + '/manager/orders', { params });
   }
 
