@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartService } from "../../../core/http/chart.service";
+import { ChartService, IImportedData } from "../../../core/http/chart.service";
 import { IBarChartData } from "../../../core/models";
 import { ActivatedRoute } from "@angular/router";
+import { ILineChartData } from "../../../core/models/line-chart-data.model";
 
 @Component({
   selector: 'app-store-statistics',
@@ -14,6 +15,8 @@ export class StoreStatisticsComponent implements OnInit {
   topSaleData: IBarChartData[];
   storeId: string;
 
+  importedData: ILineChartData[] = [];
+
   constructor(
     private chartService: ChartService,
     private route: ActivatedRoute
@@ -25,6 +28,7 @@ export class StoreStatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchTopSalesProductsByStoreId();
+    this.fetchImportedLineChartData();
   }
 
   fetchTopSalesProductsByStoreId(): void {
@@ -33,6 +37,20 @@ export class StoreStatisticsComponent implements OnInit {
         name: elem.productName,
         value: elem.total
       }))
+    })
+  }
+
+  fetchImportedLineChartData(): void {
+    this.chartService.fetchImportedLineChartData().subscribe(res => {
+      const series: any = res.map(elem => ({
+        name: new Date(elem.date).toLocaleDateString(),
+        value: elem.totalImported
+      }));
+      this.importedData = [{
+        name: 'Imported quantity',
+        series: series
+      }]
+      console.log(this.importedData)
     })
   }
 }

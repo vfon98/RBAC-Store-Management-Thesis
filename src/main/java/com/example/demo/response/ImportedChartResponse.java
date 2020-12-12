@@ -14,10 +14,10 @@ import java.util.Date;
 @Builder
 public class ImportedChartResponse {
 
-    private Collection<Product> products;
+//    private Collection<Product> products;
 
     private Date date;
 
-    private Integer totalImported;
+    private long totalImported = 0;
 
 }

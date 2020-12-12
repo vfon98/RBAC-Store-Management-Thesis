@@ -37,12 +37,11 @@ public class ChartServiceImpl implements ChartService {
     public List<ImportedChartResponse> getImportedChartAllStores() {
         var response = importedReceiptRepository.getImportedChartAllStores();
 
-        return response.stream().map(res -> {
-            return ImportedChartResponse.builder()
-                    .products(null)
-                    .date(res.getCreatedAt())
-                    .totalImported(res.getImportedQuantity())
-                    .build();
-        }).collect(Collectors.toList());
+//        return response.stream().map(
+//                res -> ImportedChartResponse.builder()
+//                .date(res.getCreatedAt())
+//                .totalImported(res.getImportedQuantity())
+//                .build()).collect(Collectors.toList());
+        return response;
     }
 }
