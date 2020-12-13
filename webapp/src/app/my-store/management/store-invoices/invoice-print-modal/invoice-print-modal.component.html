@@ -1,21 +1,13 @@
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Invoice Preview"
           nzClassName="nz-modal-wrapper"
-          (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk(order?.staff?.name)"
+          nzOkText="Download"
+          [nzWidth]="680"
+>
   <div id="invoice">
-
-    <!--      <div class="toolbar hidden-print">-->
-    <!--        <div class="text-right">-->
-    <!--          <button (click)="printInvoice()" class="btn btn-info"><i-->
-    <!--            class="fa fa-print"></i> Print-->
-    <!--          </button>-->
-    <!--          <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export-->
-    <!--            as PDF-->
-    <!--          </button>-->
-    <!--        </div>-->
-    <!--        <hr>-->
-    <!--      </div>-->
-    <div class="invoice overflow-auto" *ngIf="order" #invoiceDiv>
-      <div style="min-width: 600px">
+    <div class="invoice overflow-auto text-center" *ngIf="order" #invoiceDiv>
+      <div>
         <!--          <header>-->
         <!--            <div class="row">-->
         <!--              <div class="col">-->

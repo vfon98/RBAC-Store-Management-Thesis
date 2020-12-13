@@ -36,35 +36,29 @@ export class InvoicePrintModalComponent implements OnInit {
     this.fetchOrderById(this.orderId);
   }
 
-  handleOk(): void {
-    this.printInvoice();
+  handleOk(name = ''): void {
+    this.printInvoice(name);
   }
 
   handleCancel(): void {
     this.isVisible = false;
   }
 
-  printInvoice(): void {
-    // console.log("PRINTKJASDKLjf")
-    // // Popup($('.invoice')[0].outerHTML);
-    // Popup(this.invoiceDiv.outerHTML);
-    //
-    // function Popup(data) {
-    //   window.print();
-    //   return true;
-    // }
-
+  printInvoice(name): void {
     const content = this.invoiceDiv.nativeElement;
-    const doc = new jsPDF();
-    const _elementHandlers =
-      {
-        '#editor': function (element, renderer) {
-          return true;
-        }
-      };
-    doc.addPage();
-
-    doc.save('test.pdf');
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'pt',
+      format: [680, 1000]
+    });
+    doc.html(content, {
+      callback: function (doc) {
+        doc.autoPrint();
+        doc.save(`Invoice_${name}_${new Date().toLocaleString()}`);
+      },
+      x: 10,
+      y: 10,
+    })
   }
 
   getSubtotal(): number {
