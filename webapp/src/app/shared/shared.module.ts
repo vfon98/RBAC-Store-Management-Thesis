@@ -39,6 +39,7 @@ import { PieGridChartComponent } from './charts/pie-grid-chart/pie-grid-chart.co
 import { TableWrapperManagerComponent } from './components/table-wrapper-manager/table-wrapper-manager.component';
 import { BarChartHorizontalComponent } from './charts/bar-chart-horizontal/bar-chart-horizontal.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { TableUtilsDirective } from './directives/table-utils.directive';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
     TableWrapperManagerComponent,
     BarChartHorizontalComponent,
     LineChartComponent,
+    TableUtilsDirective,
   ],
   imports: [
     CommonModule,
@@ -87,47 +89,48 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
     AgmCoreModule,
     NgxChartsModule
   ],
-    exports: [
-        UsdPipe,
-        FormsModule,
-        ReactiveFormsModule,
-        // NgZorro Modules
-        NzUploadModule,
-        NzButtonModule,
-        NzIconModule,
-        NzTagModule,
-        NzTableModule,
-        NzAvatarModule,
-        NzToolTipModule,
-        NzPopconfirmModule,
-        NzStatisticModule,
-        NzCardModule,
-        NzDropDownModule,
-        NzBadgeModule,
-        NzTagModule,
-        NzTabsModule,
-        NzAffixModule,
-        NzModalModule,
-        NzSliderModule,
-        NzTransferModule,
-        NzInputNumberModule,
-        NzSelectModule,
-        NzNoAnimationModule,
-        // Shared Components
-        TableOverviewComponent,
-        BackButtonAdminComponent,
-        ModalWrapperAdminComponent,
-        FormAddWrapperAdminComponent,
-        ActionButtonsAdminComponent,
-        // Google Maps
-        CustomAgmMapComponent,
-        CustomAgmSearchboxComponent,
-        ImageFallbackDirective,
-        BarChartVerticalComponent,
-        PieGridChartComponent,
-        TableWrapperManagerComponent,
-        BarChartHorizontalComponent,
-        LineChartComponent
-    ],
+  exports: [
+    UsdPipe,
+    FormsModule,
+    ReactiveFormsModule,
+    // NgZorro Modules
+    NzUploadModule,
+    NzButtonModule,
+    NzIconModule,
+    NzTagModule,
+    NzTableModule,
+    NzAvatarModule,
+    NzToolTipModule,
+    NzPopconfirmModule,
+    NzStatisticModule,
+    NzCardModule,
+    NzDropDownModule,
+    NzBadgeModule,
+    NzTagModule,
+    NzTabsModule,
+    NzAffixModule,
+    NzModalModule,
+    NzSliderModule,
+    NzTransferModule,
+    NzInputNumberModule,
+    NzSelectModule,
+    NzNoAnimationModule,
+    // Shared Components
+    TableOverviewComponent,
+    BackButtonAdminComponent,
+    ModalWrapperAdminComponent,
+    FormAddWrapperAdminComponent,
+    ActionButtonsAdminComponent,
+    // Google Maps
+    CustomAgmMapComponent,
+    CustomAgmSearchboxComponent,
+    ImageFallbackDirective,
+    BarChartVerticalComponent,
+    PieGridChartComponent,
+    TableWrapperManagerComponent,
+    BarChartHorizontalComponent,
+    LineChartComponent,
+    TableUtilsDirective
+  ],
 })
 export class SharedModule {}

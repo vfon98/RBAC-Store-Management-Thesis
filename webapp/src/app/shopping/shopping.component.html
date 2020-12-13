@@ -63,10 +63,13 @@
         <div class="advanced-search d-flex">
 <!--          <button type="button" class="category-btn">All Categories</button>-->
           <div class="h-100 border-right d-flex align-items-center">
-            <nz-select nzSize="large" [nzBorderless]="true" nzAllowClear nzPlaceHolder="All Stores">
-              <nz-option nzCustomContent nzLabel="Windows" nzValue="windows"><i nz-icon nzType="windows"></i> Windows</nz-option>
-              <nz-option nzCustomContent nzLabel="Mac" nzValue="mac"><i nz-icon nzType="apple"></i> Mac</nz-option>
-              <nz-option nzCustomContent nzLabel="Android" nzValue="android"><i nz-icon nzType="android"></i> Android </nz-option>
+            <nz-select nzSize="large" [nzBorderless]="true" [(ngModel)]="selectedCate">
+              <nz-option nzLabel="All Categories" nzValue="all"></nz-option>
+              <nz-option
+                *ngFor="let category of categories"
+                [nzLabel]="category.name"
+                [nzValue]="category.id"
+              ></nz-option>
             </nz-select>
           </div>
 

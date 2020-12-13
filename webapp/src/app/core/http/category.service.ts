@@ -32,18 +32,18 @@ export class CategoryService {
   }
 
   fetchCategoryById(id: number): Observable<ICategory> {
-    return this.http.get<ICategory>(this.MANAGER_URL + id);
+    return this.http.get<ICategory>(this.REQUEST_URL + id);
   }
 
   save(body: ICategoryBody): Observable<ICategory> {
-    return this.http.post<ICategory>(this.MANAGER_URL, body);
+    return this.http.post<ICategory>(this.REQUEST_URL, body);
   }
 
   update(id: number, body: ICategoryBody): Observable<ICategory> {
-    return this.http.put<ICategory>(this.MANAGER_URL + id, body);
+    return this.http.put<ICategory>(this.REQUEST_URL + id, body);
   }
 
   deleteById(id: number): Observable<unknown> {
-    return this.http.delete<unknown>(this.MANAGER_URL + id);
+    return this.http.delete<unknown>(this.REQUEST_URL + id);
   }
 }

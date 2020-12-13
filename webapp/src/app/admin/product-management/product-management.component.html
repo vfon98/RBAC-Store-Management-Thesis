@@ -6,8 +6,10 @@
     Add a new product
   </button>
 </div>
+
 <nz-table
   #productTable
+  [tableUtils]="products"
   class="shadow admin-table"
   [nzData]="products"
   [nzShowSizeChanger]="true"
@@ -16,7 +18,10 @@
     <tr>
       <th scope="col">#</th>
       <th class="img-col text-center" scope="col">Image</th>
-      <th scope="col">Name</th>
+      <th scope="col" nzCustomFilter>
+        Name
+        <nz-filter-trigger><i nz-icon nzType="search"></i></nz-filter-trigger>
+      </th>
       <th scope="col">Price</th>
       <th scope="col" class="text-center">Discount</th>
 <!--      <th scope="col" class="text-center">Quantity</th>-->

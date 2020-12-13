@@ -1,12 +1,13 @@
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { LoginModalService } from './../service/login-modal.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IStore } from 'src/app/core/models';
+import { ICategory, IStore } from 'src/app/core/models';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/auth/user.service';
 import { Subscription } from 'rxjs';
 import { IUser } from '../core/models/user.model';
 import { VoiceSearchModalService } from "../service/voice-search-modal.service";
+import { CategoryService } from "../core/http";
 
 @Component({
   selector: 'app-shopping',
@@ -16,6 +17,8 @@ import { VoiceSearchModalService } from "../service/voice-search-modal.service";
 export class ShoppingComponent implements OnInit {
   stores: IStore[] = [];
   listener: Subscription;
+  categories: ICategory[] = [];
+  selectedCate = 'all';
 
   searchKeyword: string;
   user: IUser;
@@ -27,7 +30,8 @@ export class ShoppingComponent implements OnInit {
     private route: ActivatedRoute,
     private loginModal: LoginModalService,
     private authService: AuthService,
-    private voiceSearchModalService: VoiceSearchModalService
+    private voiceSearchModalService: VoiceSearchModalService,
+    private categoryService: CategoryService
   ) {
   }
 
@@ -51,6 +55,13 @@ export class ShoppingComponent implements OnInit {
     });
     this.kickoutMangerAndAdmin();
     this.listenVoiceSearchResponse();
+    this.fetchCategoriesForSearch();
+  }
+
+  fetchCategoriesForSearch(): void {
+    this.categoryService.fetchCategories().subscribe(categories => {
+      this.categories = categories;
+    })
   }
 
   kickoutMangerAndAdmin(): void {
@@ -78,7 +89,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   handleSearch(): void {
-    this.router.navigate(['/shopping/store/-1/category/all'], {
+    this.router.navigate([`/shopping/store/-1/category/${this.selectedCate}`], {
       queryParams: { search: this.searchKeyword },
       queryParamsHandling: 'merge',
     });
