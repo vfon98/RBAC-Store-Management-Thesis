@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IBarChartData } from "../../../core/models/bar-chart-data.model";
 
 @Component({
@@ -6,7 +6,7 @@ import { IBarChartData } from "../../../core/models/bar-chart-data.model";
   templateUrl: './bar-chart-vertical.component.html',
   styleUrls: ['./bar-chart-vertical.component.css']
 })
-export class BarChartVerticalComponent implements OnInit {
+export class BarChartVerticalComponent implements OnInit, OnChanges {
   @Input()
   width: number | string;
 
@@ -23,6 +23,26 @@ export class BarChartVerticalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  async ngOnChanges(): Promise<unknown> {
+    if (!this.data || !this.data.length) return;
+
+    const dataClone = [...this.data];
+    this.data = [];
+    for (let i = 0; i < dataClone.length; i++) {
+      await this.pushAsync();
+      this.data = [...this.data, dataClone[i]];
+      console.log(this.data)
+    }
+  }
+
+  async pushAsync(): Promise<unknown> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 300)
+    })
   }
 
 }

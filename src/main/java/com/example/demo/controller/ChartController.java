@@ -51,4 +51,9 @@ public class ChartController {
         var response = chartService.getImportedChartAllStores();
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/admin/statistics")
+    public ResponseEntity getAdminStatistic() {
+        return ResponseEntity.ok(chartService.getAdminStatistics());
+    }
 }

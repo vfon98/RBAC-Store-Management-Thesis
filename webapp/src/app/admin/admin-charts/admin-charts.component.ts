@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartService } from "../../core/http/chart.service";
+import { ChartService, IAdminStats } from "../../core/http/chart.service";
 import { IBarChartData } from "../../core/models";
 
 @Component({
@@ -11,6 +11,7 @@ export class AdminChartsComponent implements OnInit {
   topSaleData: IBarChartData[] = [];
   storeRevenueByQuantity: IBarChartData[] = [];
   storeRevenueByPrice: IBarChartData[] = [];
+  stats: IAdminStats;
 
   constructor(private chartService: ChartService) {
   }
@@ -18,6 +19,7 @@ export class AdminChartsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchTopSaleProductsData();
     this.fetchStoreRevenues();
+    this.fetchAdminStatistics();
   }
 
   fetchTopSaleProductsData(): void {
@@ -40,6 +42,12 @@ export class AdminChartsComponent implements OnInit {
         name: response.storeName,
         value: response.totalRevenue
       }))
+    })
+  }
+
+  fetchAdminStatistics(): void {
+    this.chartService.fetchAdminStatistics().subscribe(stats => {
+      this.stats = stats;
     })
   }
 

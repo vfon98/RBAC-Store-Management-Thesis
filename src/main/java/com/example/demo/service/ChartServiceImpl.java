@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.repository.ImportedReceiptRepository;
-import com.example.demo.repository.OrderItemRepository;
+import com.example.demo.repository.*;
+import com.example.demo.response.AdminStatsResponse;
 import com.example.demo.response.ImportedChartResponse;
 import com.example.demo.response.StoreRevenueResponse;
 import com.example.demo.response.TopSaleProductsResponse;
@@ -16,9 +16,16 @@ public class ChartServiceImpl implements ChartService {
 
     @Autowired
     private OrderItemRepository orderItemRepository;
-
     @Autowired
     private ImportedReceiptRepository importedReceiptRepository;
+    @Autowired
+    private StoreRepository storeRepository;
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
+    @Autowired
+    private StaffRepository staffRepository;
 
     public List<TopSaleProductsResponse> getTopSaleProducts() {
         return orderItemRepository.getTopSaleProducts();
@@ -43,5 +50,14 @@ public class ChartServiceImpl implements ChartService {
 //                .totalImported(res.getImportedQuantity())
 //                .build()).collect(Collectors.toList());
         return response;
+    }
+
+    public AdminStatsResponse getAdminStatistics() {
+        return AdminStatsResponse.builder()
+                .totalStore(storeRepository.count())
+                .totalProduct(productRepository.count())
+                .totalCategory(categoryRepository.count())
+                .totalStaff(storeRepository.count())
+                .build();
     }
 }

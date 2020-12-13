@@ -29,9 +29,20 @@ export class ChartService {
   fetchImportedLineChartData(): Observable<IImportedData[]> {
     return this.http.get<IImportedData[]>(this.REQUEST_URL + `admin/imported-chart`);
   }
+
+  fetchAdminStatistics(): Observable<IAdminStats> {
+    return this.http.get<IAdminStats>(this.REQUEST_URL + `admin/statistics`);
+  }
 }
 
 export class IImportedData {
   date: number;
   totalImported: number;
+}
+
+export class IAdminStats {
+  totalStore: number;
+  totalProduct: number;
+  totalCategory: number;
+  totalStaff: number;
 }

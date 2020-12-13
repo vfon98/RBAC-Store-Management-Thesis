@@ -1,12 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { IBarChartData } from "../../../core/models";
+import { ClassGetter } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnChanges {
   @Input()
   width: number | string;
 
@@ -30,6 +31,26 @@ export class PieChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  async ngOnChanges(): Promise<unknown> {
+    if (!this.data || !this.data.length) return;
+
+    const dataClone = [...this.data].reverse();
+    this.data = [];
+    for (let i = 0; i < dataClone.length; i++) {
+      await this.pushAsync(dataClone[1]);
+      this.data = [dataClone[i], ...this.data]
+      console.log(this.data)
+    }
+  }
+
+  async pushAsync(record: any): Promise<unknown> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 400)
+    })
   }
 
 }

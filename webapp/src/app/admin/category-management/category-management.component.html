@@ -23,7 +23,10 @@
   <tbody>
     <tr *ngFor="let category of categoryTable.data; index as i">
       <td>{{ i + 1}}</td>
-      <td>{{ category.name }}</td>
+      <td class="fw-500">
+        <i nz-icon nzType="tags" nzTheme="outline" class="mr-1"></i>
+        {{ category.name }}
+      </td>
       <td>{{ category.description }}</td>
       <td>{{ category.createdAt | date:"short" }}</td>
       <td class="text-center">

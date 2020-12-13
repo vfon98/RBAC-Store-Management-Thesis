@@ -1,10 +1,46 @@
-<div class="jumbotron" style="height: 100px">
+<div class="rounded py-3 mb-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card-counter primary">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="count-numbers" [countUp]="stats?.totalStore">0</span>
+          <span class="count-name">Stores</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card-counter danger">
+          <i class="fas fa-gifts"></i>
+          <span class="count-numbers" [countUp]="stats?.totalProduct">0</span>
+          <span class="count-name">Products</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card-counter success">
+          <i class="fa fa-database"></i>
+          <span class="count-numbers" [countUp]="stats?.totalCategory">0</span>
+          <span class="count-name">Categories</span>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card-counter info">
+          <i class="fa fa-users"></i>
+          <span class="count-numbers" [countUp]="stats?.totalStaff">0</span>
+          <span class="count-name">Staffs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-    <h5 class="text-muted">Best selling products in all stores</h5>
+      <h5 class="text-muted">Best selling products in all stores</h5>
       <app-bar-chart-vertical
         [data]="topSaleData"
       ></app-bar-chart-vertical>
