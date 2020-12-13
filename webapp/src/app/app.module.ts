@@ -100,7 +100,7 @@ registerLocaleData(en);
       libraries: ['places', 'geometry']
     }),
     NgxSpinnerModule,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [LoginModalComponent],

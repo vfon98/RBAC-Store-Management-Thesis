@@ -25,6 +25,8 @@ export class StoreProductComponent implements OnInit {
   selectedProductId: number;
   quantity = 1;
 
+  overview: { totalStock: number, totalProduct: number, inDanger: number };
+
   constructor(
     private storeService: StoreService,
     private route: ActivatedRoute,
@@ -81,6 +83,11 @@ export class StoreProductComponent implements OnInit {
       .fetchProducts()
       .subscribe((products) => {
         this.addedProducts = products;
+        this.overview = {
+          totalProduct: products.length,
+          totalStock: products.reduce((total, p) => total + p.quantity, 0),
+          inDanger: products.filter(p => p.quantity <= 10).length,
+        }
       });
   }
 

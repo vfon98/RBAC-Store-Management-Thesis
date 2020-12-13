@@ -40,6 +40,8 @@ import { TableWrapperManagerComponent } from './components/table-wrapper-manager
 import { BarChartHorizontalComponent } from './charts/bar-chart-horizontal/bar-chart-horizontal.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { TableUtilsDirective } from './directives/table-utils.directive';
+import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { CountUpModule } from "ngx-countup";
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { TableUtilsDirective } from './directives/table-utils.directive';
     BarChartHorizontalComponent,
     LineChartComponent,
     TableUtilsDirective,
+    PieChartComponent,
   ],
   imports: [
     CommonModule,
@@ -87,7 +90,8 @@ import { TableUtilsDirective } from './directives/table-utils.directive';
     NzNoAnimationModule,
     // END NgZorro Module
     AgmCoreModule,
-    NgxChartsModule
+    NgxChartsModule,
+    CountUpModule
   ],
   exports: [
     UsdPipe,
@@ -130,7 +134,9 @@ import { TableUtilsDirective } from './directives/table-utils.directive';
     TableWrapperManagerComponent,
     BarChartHorizontalComponent,
     LineChartComponent,
-    TableUtilsDirective
+    TableUtilsDirective,
+    PieChartComponent,
+    CountUpModule
   ],
 })
 export class SharedModule {}

@@ -6,9 +6,11 @@
   <div class="row">
     <div class="col" *ngFor="let figure of figures">
       <div class="title">{{ figure.title }}</div>
-      <div class="content">{{ figure.number }}</div>
+      <div class="content" [countUp]="figure.number" [options]="{duration: 3}">
+        0
+      </div>
       <div *ngIf="figure.extra" class="extra">{{ figure.extra }}</div>
     </div>
   </div>
 </div>
-<hr />
+<hr/>

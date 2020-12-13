@@ -1,11 +1,10 @@
-<div class="row mb-3">
+<div class="row mb-3" *ngIf="overview">
   <div class="col-4">
     <nz-card>
       <nz-statistic
-        [nzValue]="(11.28 | number: '1.0-2')!"
-        nzTitle="Total product"
-        [nzPrefix]="prefixTplOne"
-        [nzSuffix]="'%'"
+        [nzValue]="overview.totalProduct"
+        nzTitle="Total"
+        nzSuffix="products"
         [nzValueStyle]="{ color: '#3F8600' }"
       >
       </nz-statistic>
@@ -15,11 +14,10 @@
   <div class="col-4">
     <nz-card>
       <nz-statistic
-        [nzValue]="(9.3 | number: '1.0-2')!"
-        nzTitle="In danger"
-        [nzPrefix]="prefixTplTwo"
-        [nzSuffix]="'%'"
-        [nzValueStyle]="{ color: '#CF1322' }"
+        [nzValue]="overview.totalStock"
+        nzTitle="In Stock"
+        nzSuffix="products"
+        [nzValueStyle]="{ color: '#3F8600' }"
       >
       </nz-statistic>
       <ng-template #prefixTplTwo><i nz-icon nzType="arrow-down"></i></ng-template>
@@ -28,10 +26,9 @@
   <div class="col-4">
     <nz-card>
       <nz-statistic
-        [nzValue]="(9.3 | number: '1.0-2')!"
-        nzTitle="In danger"
-        [nzPrefix]="prefixTplTwo"
-        [nzSuffix]="'%'"
+        [nzValue]="(overview.inDanger)!"
+        nzTitle="Low In Stock"
+        nzSuffix="items"
         [nzValueStyle]="{ color: '#CF1322' }"
       >
       </nz-statistic>
@@ -117,7 +114,7 @@
           <img class="product-image" [src]="product?.images[0]?.url || '//placehold.it/50'" [alt]="product.name">
         </td>
         <td>{{ product.name }}</td>
-        <td>{{ product.price | usd }}</td>
+        <td class="fw-600">{{ product.price | usd }}</td>
         <td>{{ printCategories(product) }}</td>
         <td
           class="text-center font-weight-bold"

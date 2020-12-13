@@ -18,6 +18,15 @@ html {
   scroll-behavior: smooth;
 }
 
+// UTILS
+$i: 100;
+@while $i <= 900 {
+  .fw-#{$i} {
+    font-weight: $i;
+  }
+  $i: $i + 100;
+}
+
 .fas,
 .far {
   margin-right: 4px;
@@ -212,3 +221,5 @@ nz-table {
   top: 0;
   right: 0;
 }
+
+::ng-deep .ngx-charts { text { fill: #fff !important; } }
