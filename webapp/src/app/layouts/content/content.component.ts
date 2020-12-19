@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/auth/user.service';
-import {ToastService} from "ng-uikit-pro-standard";
+import * as AOS from "aos";
+
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,13 @@ import {ToastService} from "ng-uikit-pro-standard";
 })
 export class ContentComponent implements OnInit {
 
-  constructor(private userService: UserService, private toastService: ToastService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
-  getUser(): void {
+getUser(): void {
     console.log(this.userService.getCurrentUser());
   }
 }

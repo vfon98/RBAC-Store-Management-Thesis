@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, HostBinding, Input } from '@angular/core';
 
 @Directive({
   selector: 'img.product-img',
@@ -9,6 +9,9 @@ import { Directive, Input } from '@angular/core';
 })
 export class ImageFallbackDirective {
   @Input() src: string;
+
+  @HostBinding('attr.data-aos')
+  dataAOS = 'zoom-in';
 
   constructor() { }
 
