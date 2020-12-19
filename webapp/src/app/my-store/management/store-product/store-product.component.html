@@ -97,12 +97,12 @@
 <!--  <table class="table table-sm table-hover table-striped table-responsive-sm">-->
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col" [nzSortFn]="columnSorter('id')">ID</th>
         <th scope="col">Image</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
+        <th scope="col" [nzSortFn]="stringComparator">Name</th>
+        <th scope="col" [nzSortFn]="columnSorter('price')">Price</th>
         <th scope="col">Category</th>
-        <th scope="col" class="text-center">In stock</th>
+        <th scope="col" class="text-center" [nzSortFn]="columnSorter('quantity')">In stock</th>
         <th scope="col" class="text-center">Action</th>
       </tr>
     </thead>

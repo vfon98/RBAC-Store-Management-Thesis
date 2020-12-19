@@ -8,8 +8,6 @@ import { IProduct } from "../../core/models";
 import { IImportedProduct } from "../../core/models/import-multiple.model";
 import { ActivatedRoute } from "@angular/router";
 import { ProductService, StoreService } from "../../core/http";
-import { HttpErrorResponse } from "@angular/common/http";
-import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-nz-import-modal',
@@ -22,6 +20,9 @@ export class NzImportModalComponent implements OnInit, OnChanges {
   storeId: string;
   isLoading = false;
 
+  numberComparator: any = (a: any, b: any) => a?.remainQuantity - b?.remainQuantity;
+  stringComparator: any = (a: any, b: any) => a?.title.localeCompare(b?.title);
+
   @Input()
   srcProducts: IProduct[];
 
@@ -29,7 +30,7 @@ export class NzImportModalComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
-    private productService: ProductService
+    private productService: ProductService,
   ) {}
 
   ngOnInit(): void {

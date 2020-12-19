@@ -24,6 +24,10 @@ export class StoreProductComponent implements OnInit {
   storeId: number;
   selectedProductId: number;
   quantity = 1;
+  stringComparator: any = (a: IProduct, b: IProduct) => a.name.localeCompare(b.name);
+  columnSorter = (columnName: string) => {
+    return (a: any, b: any) => Number(a[columnName]) - Number(b[columnName]);
+  }
 
   overview: { totalStock: number, totalProduct: number, inDanger: number };
 

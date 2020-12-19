@@ -36,8 +36,8 @@
               [nzIndeterminate]="stat.checkHalf"
               (nzCheckedChange)="onItemSelectAll($event)"
             ></th>
-            <th colspan="2" class="text-left">Name</th>
-            <th class="text-center">In Stock</th>
+            <th colspan="2" class="text-left" [nzSortFn]="stringComparator">Name</th>
+            <th class="text-center" [nzSortFn]="numberComparator">In Stock</th>
             <th>Import</th>
           </tr>
           </thead>
