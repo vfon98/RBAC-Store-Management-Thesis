@@ -8,6 +8,19 @@
   }"
 >
   <agm-marker
+    *ngIf="myPos"
+    [latitude]="myPos.latitude"
+    [longitude]="myPos.longitude"
+    iconUrl="assets/img/star24.png"
+    [opacity]="0.95"
+    [title]="myPos.label"
+    [label]="{
+      fontSize: '10px',
+      fontWeight: '600'
+    }"
+    animation="BOUNCE"
+  ></agm-marker>
+  <agm-marker
     *ngFor="let marker of markers"
     [latitude]="marker.latitude"
     [longitude]="marker.longitude"

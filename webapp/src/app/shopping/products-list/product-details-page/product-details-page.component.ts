@@ -17,6 +17,9 @@ export class ProductDetailsPageComponent implements OnInit {
   addedQuantity = 0;
   selectedIndex = 0;
 
+  selectedLongitude: number = null;
+  selectedLatitude: number = null;
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
@@ -46,8 +49,8 @@ export class ProductDetailsPageComponent implements OnInit {
     this.customerService.fetchStoreListByProductId(productId)
       .subscribe(stores => {
         this.stores = stores;
-        this.product.storeId = stores[0].id;
-        this.product.storeName = stores[0].name;
+        this.product.storeId = stores?.[0].id;
+        this.product.storeName = stores?.[0].name;
 
         this.storeMarkers = this.stores.map(store => ({
           latitude: store.latitude,
@@ -91,10 +94,18 @@ export class ProductDetailsPageComponent implements OnInit {
   changeSelectedStore(index: number): void {
     const currentStore = this.stores?.length && this.stores[index];
 
-    this.product.storeName = currentStore.name;
-    this.product.storeId = currentStore.id;
+    this.product.storeName = currentStore?.name;
+    this.product.storeId = currentStore?.id;
 
     this.selectedIndex = index;
+
+    this.resetFocusAgmMarker();
+  }
+
+  resetFocusAgmMarker(): void {
+    const index = this.selectedIndex;
+    this.selectedLongitude = this.stores?.[index].longitude ?? null;
+    this.selectedLatitude = this.stores?.[index].latitude ?? null;
   }
 }
 

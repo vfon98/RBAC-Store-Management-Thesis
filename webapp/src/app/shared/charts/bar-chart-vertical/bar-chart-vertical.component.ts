@@ -26,22 +26,24 @@ export class BarChartVerticalComponent implements OnInit, OnChanges {
   }
 
   async ngOnChanges(): Promise<unknown> {
+    return;
     if (!this.data || !this.data.length) return;
 
     const dataClone = [...this.data];
-    this.data = [];
+    this.data = this.data.map(d => ({ ...d, value: "0" }));
     for (let i = 0; i < dataClone.length; i++) {
-      await this.pushAsync();
-      this.data = [...this.data, dataClone[i]];
+      await this.debounce();
+      this.data[i].value = dataClone[i].value;
+      this.data = [...this.data];
       console.log(this.data)
     }
   }
 
-  async pushAsync(): Promise<unknown> {
+  async debounce(ms = 300): Promise<unknown> {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve();
-      }, 300)
+      }, ms)
     })
   }
 

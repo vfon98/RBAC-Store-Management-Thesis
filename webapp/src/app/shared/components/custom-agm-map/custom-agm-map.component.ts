@@ -25,6 +25,9 @@ export class CustomAgmMapComponent implements OnInit, OnChanges {
   @Input()
   markers: IAgmMarker[] = [];
 
+  hasDefault = false;
+  myPos: IAgmMarker;
+
 
   constructor() {}
 
@@ -38,6 +41,7 @@ export class CustomAgmMapComponent implements OnInit, OnChanges {
     }, 200)
 
     this.setDefaultLocation();
+    this.getCurrentGeolocation();
   }
 
   ngOnChanges() {
@@ -50,9 +54,10 @@ export class CustomAgmMapComponent implements OnInit, OnChanges {
       this.longitude = CONSTANTS.DEFAULT_LONGITUDE;
       console.log("SET DEFAULT LOCATION FOR AGM");
     }
-    if (this.markers?.length) {
+    if (!this.hasDefault && this.markers?.length) {
       this.latitude = this.markers[0].latitude;
       this.longitude = this.markers[0].longitude;
+      this.hasDefault = true;
     }
   }
 
@@ -60,6 +65,11 @@ export class CustomAgmMapComponent implements OnInit, OnChanges {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
         this.position = position;
+        this.myPos = {
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude,
+          label: 'You'
+        }
       })
     }
   }

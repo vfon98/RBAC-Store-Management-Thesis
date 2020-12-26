@@ -4,7 +4,7 @@ import { IBarChartData } from "../../../core/models";
 @Component({
   selector: 'app-bar-chart-hirizontal',
   templateUrl: './bar-chart-hirizontal.component.html',
-  styleUrls: ['./bar-chart-hirizontal.component.css']
+  styleUrls: ['./bar-chart-hirizontal.component.scss']
 })
 export class BarChartHorizontalComponent implements OnInit, OnChanges {
   @Input()
@@ -26,18 +26,23 @@ export class BarChartHorizontalComponent implements OnInit, OnChanges {
   }
 
   async ngOnChanges(): Promise<unknown> {
+    return;
+
     if (!this.data || !this.data.length) return;
+
+    // this.data = this.data.map(d => ({ ...d, value: 0 }))
 
     const dataClone = [...this.data].reverse();
     this.data = [];
     for (let i = 0; i < dataClone.length; i++) {
-      await this.pushAsync(dataClone[1]);
+      await this.debounce();
       this.data = [dataClone[i], ...this.data]
+      // this.data[i].value = dataClone[i].value;
       console.log(this.data)
     }
   }
 
-  async pushAsync(record: any): Promise<unknown> {
+  async debounce(): Promise<unknown> {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve();

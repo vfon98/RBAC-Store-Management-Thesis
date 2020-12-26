@@ -123,6 +123,8 @@
       <div class="mt-4">
         <nz-affix [nzOffsetTop]="24">
           <app-custom-agm-map
+            [longitude]="selectedLongitude"
+            [latitude]="selectedLatitude"
             [markers]="storeMarkers"
           ></app-custom-agm-map>
         </nz-affix>
