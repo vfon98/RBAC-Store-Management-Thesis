@@ -1,0 +1,22 @@
+.active .page-link {
+  background-color: #e7ab3c !important;
+  border-color: transparent;
+}
+
+.page-link {
+  color: #000;
+  outline: none !important;
+}
+
+@media all and (max-width: 425px) {
+  .wrapper {
+    width: 90vw;
+    overflow: auto;
+  }
+
+  .pagination {
+    ::ng-deep li {
+      font-size: unset !important;
+    }
+  }
+}

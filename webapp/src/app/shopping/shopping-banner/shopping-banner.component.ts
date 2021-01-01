@@ -14,11 +14,27 @@ export class ShoppingBannerComponent implements OnInit {
     autoplay: true,
     adaptiveHeight: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 2
+        }
+      }]
   };
 
   bestSellerProducts: IBestSeller[] = [];
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService) {
+  }
 
   ngOnInit(): void {
     this.fetchTopBestSellers();
