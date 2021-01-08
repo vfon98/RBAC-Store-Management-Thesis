@@ -30,11 +30,12 @@ export class LoginModalComponent implements OnInit {
         this.modalRef.hide();
       },
       (error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.messageError = 'Wrong username or password. Please try again!';
-        } else {
-          this.messageError = error.error.message;
-        }
+        this.messageError = 'Invalid username or password. Please try again!';
+        // if (error.status === 401) {
+        //   this.messageError = 'Invalid username or password. Please try again!';
+        // } else {
+        //   this.messageError = error.error.message;
+        // }
       }
     );
   }

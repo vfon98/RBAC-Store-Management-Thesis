@@ -3,7 +3,7 @@ import { VoiceSearchModalService } from "../../service/voice-search-modal.servic
 import { VoiceRecognitionService } from "../../service/voice-recognition.service";
 import {
   CANCEL_COMMANDS,
-  CONFIRM_COMMANDS,
+  CONFIRM_COMMANDS, START_COMMANDS,
 } from "../../core/constants/voice-search.constants";
 
 @Component({
@@ -31,6 +31,13 @@ export class ProductVoiceSearchModalComponent implements OnInit, OnDestroy {
         this.hideModal();
         return this.voiceSearchModalService.emitConfirm(this.text);
       }
+      START_COMMANDS.forEach(command => {
+        if (this.text?.startsWith(command) && this.text !== command) {
+          this.hideModal();
+          return this.voiceSearchModalService.emitConfirm(this.text.replace(command, ''));
+        }
+      })
+
       // Check word before setting to property
       this.text = text.toLowerCase();
     })

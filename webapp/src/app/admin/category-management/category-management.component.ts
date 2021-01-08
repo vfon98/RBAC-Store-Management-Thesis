@@ -25,8 +25,9 @@ export class CategoryManagementComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCategories();
     this.categoryService.updateObservable$.subscribe((category: ICategory) => {
-      const index = this.categories.findIndex((c) => c.id === category.id);
-      this.categories[index] = category;
+      this.fetchCategories();
+      // const index = this.categories.findIndex((c) => c.id === category.id);
+      // this.categories[index] = category;
     });
   }
 

@@ -26,3 +26,10 @@ export const COMMAND_PREFIX = [
   'search for',
   'looking for'
 ];
+
+export const START_COMMANDS = [
+  "hey i'm looking for a",
+  "hey i'm looking for an",
+  "i'm looking for a",
+  "i'm looking for an",
+]
